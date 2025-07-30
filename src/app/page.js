@@ -10,6 +10,22 @@ import TeamSection from '../components/TeamSection';
 import Footer from '../components/Footer';
 
 export default function Home() {
+  // Add this effect for hash navigation on load
+  React.useEffect(() => {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) {
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        const elementTop = el.getBoundingClientRect().top + window.scrollY;
+        const scrollTo = elementTop - headerHeight - 8;
+        window.scrollTo({
+          top: scrollTo,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, []);
   return (
     <div className="bg-black text-gray-200 font-sans">
       <style jsx global>{`

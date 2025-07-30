@@ -21,7 +21,17 @@ const HeroSection = () => (
         onClick={e => {
           e.preventDefault();
           const el = document.querySelector('#about');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          if (el) {
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            const elementTop = el.getBoundingClientRect().top + window.scrollY;
+            const scrollTo = elementTop - headerHeight - 8;
+            window.scrollTo({
+              top: scrollTo,
+              behavior: 'smooth'
+            });
+            history.replaceState(null, '', '#about');
+          }
         }}
       >
         Discover More
