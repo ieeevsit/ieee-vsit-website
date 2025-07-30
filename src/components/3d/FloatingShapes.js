@@ -22,7 +22,10 @@ const FloatingShape = ({ position, rotation, scale, rotationSpeed }) => {
 
 const FloatingShapes = () => {
     const { viewport } = useThree();
+    const [mounted, setMounted] = React.useState(false);
+    React.useEffect(() => setMounted(true), []);
     const shapes = useMemo(() => {
+        if (!mounted) return [];
         return Array.from({ length: 15 }).map((_, i) => {
             const position = new THREE.Vector3(
                 (Math.random() - 0.5) * viewport.width,
@@ -34,8 +37,9 @@ const FloatingShapes = () => {
             const rotationSpeed = new THREE.Vector3(Math.random() * 0.005, Math.random() * 0.005, Math.random() * 0.005);
             return { id: i, position, rotation, scale, rotationSpeed };
         });
-    }, [viewport]);
+    }, [viewport, mounted]);
 
+    if (!mounted) return null;
     return (
         <group>
             {shapes.map(shapeInfo => (

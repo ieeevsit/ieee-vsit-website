@@ -9,6 +9,7 @@ function ParallaxIcosahedron() {
   const target = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const handleMouseMove = (e) => {
       // Track all cursor movements, normalized to [-1, 1]
       const x = (e.clientX / window.innerWidth) * 2 - 1;

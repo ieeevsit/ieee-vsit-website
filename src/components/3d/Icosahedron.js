@@ -9,6 +9,7 @@ const Icosahedron = () => {
   const [targetRotation, setTargetRotation] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
       const x = (clientX / window.innerWidth) * 2 - 1;
