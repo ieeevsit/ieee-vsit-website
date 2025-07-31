@@ -43,15 +43,21 @@ const TeamSection = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet the Committee</h2>
         <div className="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
-        <div className="flex justify-center mb-10">
+        {/* Tabs */}
+        <div className="flex flex-col gap-3 items-stretch max-w-xs mx-auto mb-10 sm:flex-row sm:justify-center sm:gap-0 sm:max-w-none">
           {tabs.map(tab => (
             <button
               key={tab.key}
-              className={`px-6 py-2 mx-2 rounded-full font-semibold transition-colors duration-200 ${
-                activeTab === tab.key
+              className={`w-full sm:w-auto px-6 py-2 rounded-full font-semibold transition-colors duration-200
+                ${activeTab === tab.key
                   ? "bg-blue-500 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
+                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"}
+                ${activeTab === tab.key ? "" : "sm:mx-2"}
+                `}
+              style={{
+                borderRadius: '9999px',
+                marginBottom: '0px'
+              }}
               onClick={() => setActiveTab(tab.key)}
             >
               {tab.label}

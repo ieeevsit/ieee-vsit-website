@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Icosahedron, Stars } from '@react-three/drei';
 
@@ -7,6 +7,7 @@ function ParallaxIcosahedron() {
   useThree(); // Only call to ensure context, but don't destructure unused values
   const mouse = useRef({ x: 0, y: 0 });
   const target = useRef({ x: 0, y: 0 });
+  const [radius, setRadius] = useState(2.5);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -21,6 +22,16 @@ function ParallaxIcosahedron() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []); // Always an empty array
 
+  useEffect(() => {
+    // Set radius based on screen width (mobile < 640px)
+    const updateRadius = () => {
+      setRadius(window.innerWidth < 640 ? 1.5 : 2.5);
+    };
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, []);
+
   useFrame((state, delta) => {
     // Smoothly interpolate to target
     mouse.current.x += (target.current.x - mouse.current.x) * 0.08;
@@ -33,7 +44,7 @@ function ParallaxIcosahedron() {
 
   return (
     <group ref={mesh}>
-      <Icosahedron args={[2.5, 0]}>
+      <Icosahedron args={[radius, 0]}>
         <meshBasicMaterial
           color={'#60a5fa'} // matches hero text color
           wireframe
@@ -42,7 +53,7 @@ function ParallaxIcosahedron() {
         />
       </Icosahedron>
       {/* Glow effect */}
-      <Icosahedron args={[2.7, 0]}>
+      <Icosahedron args={[radius + 0.2, 0]}>
         <meshBasicMaterial
           color={'#60a5fa'}
           wireframe

@@ -24,3 +24,82 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Responsive helpers */
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (max-width: 640px) {
+  h1, .text-4xl, .md\:text-7xl { font-size: 2rem !important; }
+  h2, .text-3xl, .md\:text-4xl { font-size: 1.5rem !important; }
+  h3, .text-xl, .md\:text-2xl { font-size: 1.125rem !important; }
+  .glass-card, .domain-card {
+    padding: 1rem !important;
+  }
+  .rounded-xl, .rounded-t-3xl {
+    border-radius: 1rem !important;
+  }
+  .px-6 { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .py-20 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+  .mb-12 { margin-bottom: 2rem !important; }
+  .w-80 { width: 90vw !important; min-width: 260px !important; }
+  .h-40, .h-48 { height: 160px !important; }
+  .max-w-3xl { max-width: 95vw !important; }
+  .grid, .grid-cols-1, .md\:grid-cols-2, .lg\:grid-cols-3, .lg\:grid-cols-4, .sm\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .flex { flex-direction: column !important; }
+  .items-center { align-items: center !important; }
+  .text-center { text-align: center !important; }
+  .gap-8 { gap: 1.5rem !important; }
+  .space-x-8 { gap: 1rem !important; }
+  .py-7, .py-8 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+  .h-16, .w-16 { height: 3rem !important; width: 3rem !important; }
+  .h-12, .w-12 { height: 2.5rem !important; width: 2.5rem !important; }
+  /* TeamSection tab buttons mobile fix */
+  #team .flex.flex-col > button {
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+    border-radius: 9999px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  #team .flex.flex-col > button:last-child {
+    margin-bottom: 0 !important;
+  }
+  #team .flex.flex-col {
+    gap: 0.5rem !important;
+  }
+  /* Remove horizontal margin for mobile tabs */
+  #team .flex.flex-col > button.sm\:mx-2 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /* Header mobile row fix */
+  header > .flex.items-center.justify-between.md\:hidden {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  /* Keep header title in one line for mobile */
+  header .flex.items-center.gap-3 > span.flex.items-center {
+    flex-direction: row !important;
+  }
+  @media (min-width: 640px) {
+    header .flex.items-center.gap-3 > span.flex.items-center.sm\:flex-col {
+      flex-direction: column !important;
+    }
+  }
+  /* Header mobile: disable sticky/fixed */
+  @media (max-width: 767px) {
+    header {
+      position: static !important;
+    }
+  }
+}

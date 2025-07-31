@@ -51,14 +51,32 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/70 backdrop-blur-sm' : ''}`}>
-      <nav className="container mx-auto px-6 py-6 flex justify-between items-center">
-        <a href="/" className="text-3xl font-bold text-white tracking-wider flex items-center gap-4">
-          {/* IEEE Emblem */}
+    <header className={`md:fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/70 backdrop-blur-sm' : ''}`}>
+      {/* Mobile Header: logo left, burger right */}
+      <div className="flex items-center justify-between md:hidden container mx-auto px-3 sm:px-6 py-4 sm:py-6">
+        <a href="/" className="text-2xl sm:text-3xl font-bold text-white tracking-wider flex items-center gap-3 sm:gap-4">
           <img
             src="/ieee-emblem.png"
             alt="IEEE Emblem"
-            className="h-12 w-12 object-contain"
+            className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
+            style={{ display: 'inline-block', verticalAlign: 'middle' }}
+          />
+          <span className="leading-none flex items-center sm:flex-col">
+            <span className="text-blue-500">IEEE</span>
+            <span className="ml-2 sm:ml-0">-VSIT</span>
+          </span>
+        </a>
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-white focus:outline-none">
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+      {/* Desktop Header */}
+      <nav className="hidden md:flex container mx-auto px-3 sm:px-6 py-4 sm:py-6 justify-between items-center">
+        <a href="/" className="text-2xl sm:text-3xl font-bold text-white tracking-wider flex items-center gap-3 sm:gap-4">
+          <img
+            src="/ieee-emblem.png"
+            alt="IEEE Emblem"
+            className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
             style={{ display: 'inline-block', verticalAlign: 'middle' }}
           />
           <span className="leading-none flex items-center">
@@ -66,23 +84,21 @@ const Header = () => {
             <span className="ml-2">-VSIT</span>
           </span>
         </a>
-        <div className="hidden md:flex items-center space-x-10">
+        <div className="flex items-center space-x-6 sm:space-x-10">
           {navLinks.map(link => (
             <a
               key={link.href}
               href={link.href}
-              className="nav-link text-lg text-gray-300 hover:text-blue-500 transition-colors relative"
+              className="nav-link text-base sm:text-lg text-gray-300 hover:text-blue-500 transition-colors relative px-2 py-1"
               onClick={e => handleNavClick(e, link.href)}
             >
               {link.label}
             </a>
           ))}
         </div>
-        <a href="#" className="hidden md:block bg-blue-600 hover:bg-blue-700 text-lg font-bold py-3 px-6 rounded-lg transition-colors duration-300">Join IEEE</a>
-        <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-white focus:outline-none">
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </button>
+        <a href="#" className="bg-blue-600 hover:bg-blue-700 text-base sm:text-lg font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-300">Join IEEE</a>
       </nav>
+      {/* Mobile Menu Dropdown */}
       <div className={`${menuOpen ? 'block' : 'hidden'} md:hidden bg-black/90`}>
         {navLinks.map(link => (
           <a
@@ -90,6 +106,7 @@ const Header = () => {
             href={link.href}
             onClick={e => handleNavClick(e, link.href)}
             className="block py-3 px-6 text-base hover:bg-gray-800"
+            style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
           >
             {link.label}
           </a>
