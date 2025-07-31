@@ -1,11 +1,13 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [societiesOpen, setSocietiesOpen] = useState(false); // For desktop dropdown
   const [mobileSocietiesOpen, setMobileSocietiesOpen] = useState(false); // For mobile dropdown
+
+  const societiesRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -18,6 +20,26 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    // Close societies dropdown on outside click (desktop)
+    function handleClickOutside(event) {
+      if (
+        societiesRef.current &&
+        !societiesRef.current.contains(event.target)
+      ) {
+        setSocietiesOpen(false);
+      }
+    }
+    if (societiesOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [societiesOpen]);
 
   const navLinks = [
     { href: '#about', label: 'About' },
@@ -96,22 +118,20 @@ const Header = () => {
             </a>
           ))}
           {/* Our Societies Dropdown (Desktop) */}
-          <div
-            className="relative"
-            onMouseEnter={() => setSocietiesOpen(true)}
-            onMouseLeave={() => setSocietiesOpen(false)}
-          >
-            <button
-              className="nav-link text-base sm:text-lg text-gray-300 hover:text-blue-500 transition-colors relative px-2 py-1 flex items-center"
-              type="button"
+          <div className="relative" ref={societiesRef}>
+            <span
+              className="nav-link text-base sm:text-lg text-gray-300 hover:text-blue-500 transition-colors relative px-2 py-1 flex items-center cursor-pointer select-none"
+              role="button"
               aria-haspopup="true"
               aria-expanded={societiesOpen}
+              tabIndex={0}
+              onClick={() => setSocietiesOpen(open => !open)}
             >
               Our Societies
               <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
+            </span>
             {societiesOpen && (
               <div
                 className="absolute left-0 mt-2 w-56 bg-black border border-gray-700 rounded-lg shadow-lg z-50"
@@ -144,16 +164,20 @@ const Header = () => {
         ))}
         {/* Our Societies Dropdown (Mobile) */}
         <div>
-          <button
-            className="w-full text-left block py-3 px-6 text-base hover:bg-gray-800 flex items-center justify-between"
+          <span
+            className="w-full text-left block py-3 px-6 text-base hover:bg-gray-800 flex items-center justify-between cursor-pointer select-none"
             style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
             onClick={() => setMobileSocietiesOpen(open => !open)}
+            tabIndex={0}
+            role="button"
+            aria-haspopup="true"
+            aria-expanded={mobileSocietiesOpen}
           >
             Our Societies
             <svg className={`ml-2 w-4 h-4 transform transition-transform ${mobileSocietiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
-          </button>
+          </span>
           {mobileSocietiesOpen && (
             <div className="bg-black/95">
               <a
