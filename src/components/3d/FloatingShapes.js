@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -22,10 +22,11 @@ const FloatingShape = ({ position, rotation, scale, rotationSpeed }) => {
 
 const FloatingShapes = () => {
     const { viewport } = useThree();
-    const [mounted, setMounted] = React.useState(false);
-    React.useEffect(() => setMounted(true), []);
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
     const shapes = useMemo(() => {
         if (!mounted) return [];
+        // Only generate random shapes after mount (client-side)
         return Array.from({ length: 15 }).map((_, i) => {
             const position = new THREE.Vector3(
                 (Math.random() - 0.5) * viewport.width,
@@ -37,9 +38,10 @@ const FloatingShapes = () => {
             const rotationSpeed = new THREE.Vector3(Math.random() * 0.005, Math.random() * 0.005, Math.random() * 0.005);
             return { id: i, position, rotation, scale, rotationSpeed };
         });
-    }, [viewport, mounted]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [viewport, mounted]); // Only regenerate on viewport/mounted
 
-    if (!mounted) return null;
+    if (!mounted) return null; // Don't render on server
     return (
         <group>
             {shapes.map(shapeInfo => (

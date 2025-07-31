@@ -7,9 +7,12 @@ const Icosahedron = () => {
   const mesh = useRef();
   const { viewport } = useThree();
   const [targetRotation, setTargetRotation] = useState({ x: 0, y: 0 });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (!mounted) return;
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
       const x = (clientX / window.innerWidth) * 2 - 1;
@@ -18,9 +21,10 @@ const Icosahedron = () => {
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [mounted]);
 
   useFrame(() => {
+    if (!mounted) return;
     if (mesh.current) {
       mesh.current.rotation.x += 0.001;
       mesh.current.rotation.y += 0.001;
@@ -28,6 +32,8 @@ const Icosahedron = () => {
       mesh.current.rotation.y = THREE.MathUtils.lerp(mesh.current.rotation.y, targetRotation.y, 0.05);
     }
   });
+
+  if (!mounted) return null;
 
   return (
     <mesh ref={mesh} scale={viewport.width / 5}>

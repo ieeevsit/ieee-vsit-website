@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [societiesOpen, setSocietiesOpen] = useState(false); // For desktop dropdown
+  const [mobileSocietiesOpen, setMobileSocietiesOpen] = useState(false); // For mobile dropdown
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -14,8 +16,6 @@ const Header = () => {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      // Optionally reset scroll behavior if needed
-      // document.documentElement.style.scrollBehavior = '';
     };
   }, []);
 
@@ -95,6 +95,37 @@ const Header = () => {
               {link.label}
             </a>
           ))}
+          {/* Our Societies Dropdown (Desktop) */}
+          <div
+            className="relative"
+            onMouseEnter={() => setSocietiesOpen(true)}
+            onMouseLeave={() => setSocietiesOpen(false)}
+          >
+            <button
+              className="nav-link text-base sm:text-lg text-gray-300 hover:text-blue-500 transition-colors relative px-2 py-1 flex items-center"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={societiesOpen}
+            >
+              Our Societies
+              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {societiesOpen && (
+              <div
+                className="absolute left-0 mt-2 w-56 bg-black border border-gray-700 rounded-lg shadow-lg z-50"
+              >
+                <a
+                  href="/societies/wie"
+                  className="block px-5 py-3 text-gray-200 hover:bg-blue-600 hover:text-white rounded-t-lg transition-colors"
+                >
+                  Women in Engineering (WIE)
+                </a>
+                {/* Add more societies here if needed */}
+              </div>
+            )}
+          </div>
         </div>
         <a href="#" className="bg-blue-600 hover:bg-blue-700 text-base sm:text-lg font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-300">Join IEEE</a>
       </nav>
@@ -111,6 +142,32 @@ const Header = () => {
             {link.label}
           </a>
         ))}
+        {/* Our Societies Dropdown (Mobile) */}
+        <div>
+          <button
+            className="w-full text-left block py-3 px-6 text-base hover:bg-gray-800 flex items-center justify-between"
+            style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
+            onClick={() => setMobileSocietiesOpen(open => !open)}
+          >
+            Our Societies
+            <svg className={`ml-2 w-4 h-4 transform transition-transform ${mobileSocietiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {mobileSocietiesOpen && (
+            <div className="bg-black/95">
+              <a
+                href="/societies/wie"
+                className="block py-3 px-10 text-base hover:bg-blue-600 hover:text-white"
+                style={{ fontSize: '1.05rem' }}
+                onClick={() => setMenuOpen(false)}
+              >
+                Women in Engineering (WIE)
+              </a>
+              {/* Add more societies here if needed */}
+            </div>
+          )}
+        </div>
         <a href="#" className="block py-3 px-6 text-base hover:bg-gray-800">Join IEEE</a>
       </div>
     </header>
