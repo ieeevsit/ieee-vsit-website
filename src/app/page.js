@@ -76,7 +76,6 @@ export default function Home() {
         <EventsSection />
         <PastEventsSection />
         <DomainsSection />
-        {/* <AiQuerySection /> */}
         <TeamSection />
       </main>
       <Footer />

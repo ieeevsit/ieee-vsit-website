@@ -40,7 +40,10 @@ const Footer = () => (
               <a href="#events" className="hover:text-blue-400 hover:underline transition-all duration-200 text-lg">Upcoming</a>
             </li>
             <li>
-              <a href="#team" className="hover:text-blue-400 hover:underline transition-all duration-200 text-lg">Council</a>
+              <a href="#past-events" className="hover:text-blue-400 hover:underline transition-all duration-200 text-lg">Past Events</a>
+            </li>
+            <li>
+              <a href="#team" className="hover:text-blue-400 hover:underline transition-all duration-200 text-lg">Committee</a>
             </li>
             <li>
               <a
