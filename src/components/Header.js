@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 
-const Header = () => {
+const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [societiesOpen, setSocietiesOpen] = useState(false); // For desktop dropdown
@@ -53,6 +53,14 @@ const Header = () => {
   const handleNavClick = (e, href) => {
     if (href.startsWith('#')) {
         e.preventDefault();
+        
+        // If onNavigate prop is provided (for external pages), use it
+        if (onNavigate) {
+          onNavigate(href.substring(1)); // Remove # from href
+          return;
+        }
+        
+        // Otherwise, use normal scroll behavior (for main page)
         const el = document.querySelector(href);
         if (el) {
             // Calculate offset for fixed header
@@ -147,7 +155,11 @@ const Header = () => {
             )}
           </div>
         </div>
-        <a href="#" className="bg-blue-600 hover:bg-blue-700 text-base sm:text-lg font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-300">Join IEEE</a>
+        {hideJoinButton ? (
+          customButton || <div className="w-32 sm:w-36"></div>
+        ) : (
+          <a href="/join-ieee" className="bg-blue-600 hover:bg-blue-700 text-base sm:text-lg font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-300">Join IEEE</a>
+        )}
       </nav>
       {/* Mobile Menu Dropdown */}
       <div className={`${menuOpen ? 'block' : 'hidden'} md:hidden bg-black/90`}>
@@ -192,7 +204,15 @@ const Header = () => {
             </div>
           )}
         </div>
-        <a href="#" className="block py-3 px-6 text-base hover:bg-gray-800">Join IEEE</a>
+        {hideJoinButton ? (
+          customButton ? (
+            <div className="block py-3 px-6 text-base hover:bg-gray-800">
+              {customButton}
+            </div>
+          ) : null
+        ) : (
+          <a href="/join-ieee" className="block py-3 px-6 text-base hover:bg-gray-800">Join IEEE</a>
+        )}
       </div>
     </header>
   );
