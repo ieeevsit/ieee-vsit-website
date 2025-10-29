@@ -65,6 +65,9 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
     if (href.startsWith('#')) {
         e.preventDefault();
         
+        // Close mobile menu
+        setMenuOpen(false);
+        
         // If onNavigate prop is provided (for external pages), use it
         if (onNavigate) {
           onNavigate(href.substring(1)); // Remove # from href
@@ -84,7 +87,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
                 top: scrollTo,
                 behavior: 'smooth'
             });
-            setMenuOpen(false);
             // Update hash in URL without jumping
             history.replaceState(null, '', href);
         }
@@ -104,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
   };
 
   return (
-    <header className={`md:fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/70 backdrop-blur-sm' : ''}`}>
+    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? 'bg-black/70 backdrop-blur-sm' : ''}`}>
       {/* Mobile Header: logo left, burger right */}
       <div className="flex items-center justify-between md:hidden container mx-auto px-3 sm:px-6 py-4 sm:py-6">
         <a href="/" className="text-2xl sm:text-3xl font-bold text-white tracking-wider flex items-center gap-3 sm:gap-4">
@@ -119,7 +121,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
             <span className="ml-2 sm:ml-0">-VSIT</span>
           </span>
         </a>
-        <button onClick={handleMenuToggle} className="text-white focus:outline-none">
+        <button 
+          onClick={handleMenuToggle} 
+          className="text-white focus:outline-none z-[110] relative p-2 touch-manipulation"
+          aria-label="Toggle mobile menu"
+          type="button"
+        >
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
@@ -187,22 +194,22 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         )}
       </nav>
       {/* Mobile Menu Dropdown */}
-      <div className={`${menuOpen ? 'block' : 'hidden'} md:hidden bg-black/90`}>
+      <div className={`${menuOpen ? 'block' : 'hidden'} md:hidden bg-black/95 backdrop-blur-sm relative z-[110] w-full`}>
         {navLinks.map(link => (
           <a
             key={link.href}
             href={link.href}
             onClick={e => handleNavClick(e, link.href)}
-            className="block py-3 px-6 text-base hover:bg-gray-800"
+            className="block py-3 px-6 text-base hover:bg-gray-800 text-white border-b border-gray-700/50"
             style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
           >
             {link.label}
           </a>
         ))}
         {/* Our Societies Dropdown (Mobile) */}
-        <div>
+        <div className="border-b border-gray-700/50">
           <span
-            className="w-full text-left py-3 px-6 text-base hover:bg-gray-800 flex items-center justify-between cursor-pointer select-none"
+            className="block w-full text-left py-3 px-6 text-base hover:bg-gray-800 cursor-pointer select-none text-white"
             style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
             onClick={handleMobileSocietiesClick}
             tabIndex={0}
@@ -211,7 +218,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
             aria-expanded={mobileSocietiesOpen}
           >
             Our Societies
-            <svg className={`ml-2 w-4 h-4 transform transition-transform ${mobileSocietiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg className={`inline ml-2 w-4 h-4 transform transition-transform ${mobileSocietiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </span>
@@ -219,7 +226,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
             <div className="bg-black/95">
               <a
                 href="/societies/wie"
-                className="block py-3 px-10 text-base hover:bg-blue-600 hover:text-white"
+                className="block py-3 px-10 text-base hover:bg-blue-600 hover:text-white text-gray-300"
                 style={{ fontSize: '1.05rem' }}
                 onClick={() => setMenuOpen(false)}
               >
@@ -231,12 +238,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         </div>
         {hideJoinButton ? (
           customButton ? (
-            <div className="block py-3 px-6 text-base hover:bg-gray-800">
+            <div className="block py-3 px-6 text-base hover:bg-gray-800 border-b border-gray-700/50">
               {customButton}
             </div>
           ) : null
         ) : (
-          <a href="/join-ieee" className="block py-3 px-6 text-base hover:bg-gray-800">Join IEEE</a>
+          <a href="/join-ieee" className="block py-3 px-6 text-base hover:bg-gray-800 text-white border-b border-gray-700/50">Join IEEE</a>
         )}
       </div>
     </header>
