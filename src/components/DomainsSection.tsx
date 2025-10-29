@@ -1,8 +1,14 @@
 import React from 'react';
 import { BrainCircuit, Code, ShieldCheck, CircuitBoard } from 'lucide-react';
 
-const DomainsSection = () => {
-    const domains = [
+interface Domain {
+  name: string;
+  desc: string;
+  icon: React.ReactNode;
+}
+
+const DomainsSection: React.FC = () => {
+    const domains: Domain[] = [
         { name: 'AI & ML', desc: 'Exploring intelligent systems and data-driven solutions.', icon: <BrainCircuit className="h-12 sm:h-16 w-12 sm:w-16 mx-auto text-blue-500" /> },
         { name: 'Web & App Dev', desc: 'Building modern, responsive digital experiences.', icon: <Code className="h-12 sm:h-16 w-12 sm:w-16 mx-auto text-blue-500" /> },
         { name: 'Cybersecurity', desc: 'Protecting digital assets in an interconnected world.', icon: <ShieldCheck className="h-12 sm:h-16 w-12 sm:w-16 mx-auto text-blue-500" /> },

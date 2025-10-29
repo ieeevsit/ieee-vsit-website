@@ -26,6 +26,7 @@ export default function Home() {
       }
     }
   }, []);
+  
   return (
     <div className="bg-black text-gray-200 font-sans">
       <style jsx global>{`
@@ -69,14 +70,14 @@ export default function Home() {
             display: none;
         }
       `}</style>
-      <Header />
+      <Header onNavigate={undefined} />
       <main>
         <HeroSection />
         <AboutSection />
         <EventsSection />
         <PastEventsSection />
         <DomainsSection />
-        <TeamSection />
+        <TeamSection wieCore={false} />
       </main>
       <Footer />
     </div>

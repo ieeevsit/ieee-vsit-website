@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 
-const PastEventsSection = () => {
+interface PastEvent {
+  year: number;
+  date: string;
+  title: string;
+  desc: string;
+  img: string;
+}
+
+interface YearTab {
+  label: string;
+  value: number;
+}
+
+const PastEventsSection: React.FC = () => {
     // Add a year property to each event
-    const pastEvents = [
+    const pastEvents: PastEvent[] = [
         { year: 2025, date: "MARCH 2025", title: "Robotics & Automation", desc: "Hands-on workshop on building and programming autonomous robots.", img: "Robotics+Workshop" },
         { year: 2025, date: "JANUARY 2025", title: "Cyberthon '25", desc: "A 12-hour hackathon focused on ethical hacking and cybersecurity challenges.", img: "Cyberthon" },
         { year: 2024, date: "NOVEMBER 2024", title: "Full-Stack Web Dev Series", desc: "A multi-part series covering everything from React to Node.js.", img: "Web+Dev+Series" },
@@ -11,13 +23,13 @@ const PastEventsSection = () => {
     ];
 
     // Tabs for years
-    const yearTabs = [
+    const yearTabs: YearTab[] = [
         { label: "2025", value: 2025 },
         { label: "2024", value: 2024 },
     ];
 
     // Default to latest year
-    const [activeYear, setActiveYear] = useState(yearTabs[0].value);
+    const [activeYear, setActiveYear] = useState<number>(yearTabs[0].value);
 
     // Filter events by year
     const filteredEvents = pastEvents.filter(ev => ev.year === activeYear);
@@ -70,5 +82,3 @@ const PastEventsSection = () => {
 };
 
 export default PastEventsSection;
-
-

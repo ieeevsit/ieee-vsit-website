@@ -3,8 +3,23 @@ import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const FloatingShape = ({ position, rotation, scale, rotationSpeed }) => {
-    const mesh = useRef();
+interface FloatingShapeProps {
+  position: THREE.Vector3;
+  rotation: THREE.Euler;
+  scale: number;
+  rotationSpeed: THREE.Vector3;
+}
+
+interface ShapeInfo {
+  id: number;
+  position: THREE.Vector3;
+  rotation: THREE.Euler;
+  scale: number;
+  rotationSpeed: THREE.Vector3;
+}
+
+const FloatingShape: React.FC<FloatingShapeProps> = ({ position, rotation, scale, rotationSpeed }) => {
+    const mesh = useRef<THREE.Mesh>(null);
     useFrame(() => {
         if(mesh.current) {
             mesh.current.rotation.x += rotationSpeed.x;
@@ -20,14 +35,14 @@ const FloatingShape = ({ position, rotation, scale, rotationSpeed }) => {
     );
 };
 
-const FloatingShapes = () => {
+const FloatingShapes: React.FC = () => {
     const { viewport } = useThree();
-    const [mounted, setMounted] = useState(false);
+    const [mounted, setMounted] = useState<boolean>(false);
     useEffect(() => setMounted(true), []);
     const shapes = useMemo(() => {
         if (!mounted) return [];
         // Only generate random shapes after mount (client-side)
-        return Array.from({ length: 15 }).map((_, i) => {
+        return Array.from({ length: 15 }).map((_, i): ShapeInfo => {
             const position = new THREE.Vector3(
                 (Math.random() - 0.5) * viewport.width,
                 (Math.random() - 0.5) * viewport.height * 1.5,
@@ -38,7 +53,6 @@ const FloatingShapes = () => {
             const rotationSpeed = new THREE.Vector3(Math.random() * 0.005, Math.random() * 0.005, Math.random() * 0.005);
             return { id: i, position, rotation, scale, rotationSpeed };
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [viewport, mounted]); // Only regenerate on viewport/mounted
 
     if (!mounted) return null; // Don't render on server

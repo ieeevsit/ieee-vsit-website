@@ -1,13 +1,24 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 
-const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [societiesOpen, setSocietiesOpen] = useState(false); // For desktop dropdown
-  const [mobileSocietiesOpen, setMobileSocietiesOpen] = useState(false); // For mobile dropdown
+interface NavLink {
+  href: string;
+  label: string;
+}
 
-  const societiesRef = useRef(null);
+interface HeaderProps {
+  onNavigate?: (href: string) => void;
+  hideJoinButton?: boolean;
+  customButton?: React.ReactNode;
+}
+
+const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, customButton = null }) => {
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [societiesOpen, setSocietiesOpen] = useState<boolean>(false); // For desktop dropdown
+  const [mobileSocietiesOpen, setMobileSocietiesOpen] = useState<boolean>(false); // For mobile dropdown
+
+  const societiesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -23,10 +34,10 @@ const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => 
 
   useEffect(() => {
     // Close societies dropdown on outside click (desktop)
-    function handleClickOutside(event) {
+    function handleClickOutside(event: MouseEvent) {
       if (
         societiesRef.current &&
-        !societiesRef.current.contains(event.target)
+        !societiesRef.current.contains(event.target as Node)
       ) {
         setSocietiesOpen(false);
       }
@@ -41,7 +52,7 @@ const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => 
     };
   }, [societiesOpen]);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { href: '#about', label: 'About' },
     { href: '#events', label: 'Upcoming Events' },
     { href: '#past-events', label: 'Event Rewind' },
@@ -50,7 +61,7 @@ const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => 
   ];
 
   // Helper for smooth scroll
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
         e.preventDefault();
         
@@ -80,6 +91,18 @@ const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => 
     }
   };
 
+  const handleSocietiesClick = () => {
+    setSocietiesOpen(open => !open);
+  };
+
+  const handleMobileSocietiesClick = () => {
+    setMobileSocietiesOpen(open => !open);
+  };
+
+  const handleMenuToggle = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <header className={`md:fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/70 backdrop-blur-sm' : ''}`}>
       {/* Mobile Header: logo left, burger right */}
@@ -96,8 +119,10 @@ const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => 
             <span className="ml-2 sm:ml-0">-VSIT</span>
           </span>
         </a>
-        <button onClick={() => setMenuOpen(!menuOpen)} className="text-white focus:outline-none">
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        <button onClick={handleMenuToggle} className="text-white focus:outline-none">
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
         </button>
       </div>
       {/* Desktop Header */}
@@ -133,7 +158,7 @@ const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => 
               aria-haspopup="true"
               aria-expanded={societiesOpen}
               tabIndex={0}
-              onClick={() => setSocietiesOpen(open => !open)}
+              onClick={handleSocietiesClick}
             >
               Our Societies
               <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -177,9 +202,9 @@ const Header = ({ onNavigate, hideJoinButton = false, customButton = null }) => 
         {/* Our Societies Dropdown (Mobile) */}
         <div>
           <span
-            className="w-full text-left block py-3 px-6 text-base hover:bg-gray-800 flex items-center justify-between cursor-pointer select-none"
+            className="w-full text-left py-3 px-6 text-base hover:bg-gray-800 flex items-center justify-between cursor-pointer select-none"
             style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
-            onClick={() => setMobileSocietiesOpen(open => !open)}
+            onClick={handleMobileSocietiesClick}
             tabIndex={0}
             role="button"
             aria-haspopup="true"

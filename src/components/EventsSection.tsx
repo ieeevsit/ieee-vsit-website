@@ -1,12 +1,23 @@
 import React from 'react';
 
-const lumaLinks = {
+interface Event {
+  title: string;
+  type: string;
+  desc: string;
+  img: string;
+}
+
+interface LumaLinks {
+  [key: string]: string;
+}
+
+const lumaLinks: LumaLinks = {
   "AI & Machine Learning Bootcamp": "https://lu.ma/ai-ml-bootcamp",
   "The Future of Quantum Computing": "https://lu.ma/quantum-future"
 };
 
 // Set to empty array when no events are scheduled
-const events = [
+const events: Event[] = [
   // Uncomment and modify when you have an event:
   // {
   //   title: "AI & Machine Learning Bootcamp",
@@ -16,7 +27,7 @@ const events = [
   // }
 ];
 
-const EventsSection = () => (
+const EventsSection: React.FC = () => (
   <section id="events" className="py-14 sm:py-20 bg-[#0A0F1A]">
     <div className="container mx-auto px-2 sm:px-6">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">Upcoming Events</h2>
@@ -43,7 +54,7 @@ const EventsSection = () => (
                 <a 
                   href="#past-events" 
                   className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 text-sm sm:text-base"
-                  onClick={(e) => {
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                     e.preventDefault();
                     const el = document.querySelector('#past-events');
                     if (el) {

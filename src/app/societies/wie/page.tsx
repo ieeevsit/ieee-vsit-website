@@ -5,17 +5,17 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import TeamSection from "../../../components/TeamSection";
 
-export default function WIEPage() {
+const WIEPage: React.FC = () => {
   return (
     <>
-      <Header />
+      <Header onNavigate={undefined} />
       <main className="min-h-screen bg-black text-white pt-24 pb-10">
         <div className="max-w-3xl mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl font-bold text-blue-500 mb-4 text-left">
             Women in Engineering (WIE)
           </h1>
           <p className="mb-8 text-lg text-gray-200">
-            IEEE Women in Engineering (WIE) is one of the world’s largest
+            IEEE Women in Engineering (WIE) is one of the world's largest
             international professional organizations dedicated to promoting women
             engineers and scientists, and inspiring girls around the world to
             follow their academic interests to a career in engineering.
@@ -42,10 +42,12 @@ export default function WIEPage() {
         </div>
         {/* Meet the WIE Core Committee */}
         <section className="max-w-6xl mx-auto mt-16">
-          <TeamSection wieCore />
+          <TeamSection wieCore={true} />
         </section>
       </main>
       <Footer />
     </>
   );
-}
+};
+
+export default WIEPage;

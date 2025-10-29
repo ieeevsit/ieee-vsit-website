@@ -1,17 +1,23 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Icosahedron, Stars } from '@react-three/drei';
+import * as THREE from 'three';
+
+interface MousePosition {
+  x: number;
+  y: number;
+}
 
 function ParallaxIcosahedron() {
-  const mesh = useRef();
+  const mesh = useRef<THREE.Group>(null);
   useThree(); // Only call to ensure context, but don't destructure unused values
-  const mouse = useRef({ x: 0, y: 0 });
-  const target = useRef({ x: 0, y: 0 });
-  const [radius, setRadius] = useState(2.5);
+  const mouse = useRef<MousePosition>({ x: 0, y: 0 });
+  const target = useRef<MousePosition>({ x: 0, y: 0 });
+  const [radius, setRadius] = useState<number>(2.5);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       // Track all cursor movements, normalized to [-1, 1]
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = -(e.clientY / window.innerHeight) * 2 + 1;
@@ -65,10 +71,13 @@ function ParallaxIcosahedron() {
   );
 }
 
-export default function Hero3DIcosahedron() {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+const Hero3DIcosahedron: React.FC = () => {
+  const [mounted, setMounted] = useState<boolean>(false);
+  
+  useEffect(() => setMounted(true), []);
+  
   if (!mounted) return null;
+  
   return (
     <div className="absolute inset-0 w-full h-full z-0">
       <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
@@ -81,11 +90,12 @@ export default function Hero3DIcosahedron() {
           saturation={2} // increased for more vivid stars
           fade
           speed={2}
-          color="#fff" // force stars to be white
         />
         <ambientLight intensity={0.8} />
         <ParallaxIcosahedron />
       </Canvas>
     </div>
   );
-}
+};
+
+export default Hero3DIcosahedron;

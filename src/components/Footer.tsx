@@ -1,19 +1,10 @@
 import React from 'react';
 import { FaInstagram, FaLinkedin, FaGithub, FaRegEnvelope, FaArrowUp } from 'react-icons/fa';
 
-const Footer = () => (
-  <footer className="relative z-10 mt-10">
-    {/* Animated Gradient Border */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="w-full h-full rounded-t-3xl border-t-4 border-b-0 border-x-0 border-transparent"
-        style={{
-          borderImage: 'linear-gradient(90deg, #2563eb 0%, #0ea5e9 50%, #6366f1 100%) 1',
-          borderTopStyle: 'solid',
-        }}
-      ></div>
-    </div>
+const Footer: React.FC = () => (
+  <footer className="relative z-10">
     {/* Glassmorphism Footer Content */}
-    <div className="relative bg-gradient-to-br from-[#0a1629]/90 via-[#101c36]/90 to-[#1e293b]/90 backdrop-blur-xl rounded-t-3xl shadow-2xl border-t border-blue-900/60 px-2 sm:px-4 py-6 sm:py-7 md:py-8">
+    <div className="relative bg-gradient-to-br from-[#0a1629]/90 via-[#101c36]/90 to-[#1e293b]/90 backdrop-blur-xl rounded-t-3xl shadow-2xl px-2 sm:px-4 py-6 sm:py-7 md:py-8">
       <div className="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-6">
         {/* IEEE Logo and Name */}
         <div className="flex flex-col items-center gap-2 md:col-span-3 mb-4 md:mb-0">
@@ -47,7 +38,7 @@ const Footer = () => (
             </li>
             <li>
               <a
-                href="mailto:ieeevsit2025@gmail.com"
+                href="mailto:ieee@vsit.edu.in"
                 className="hover:text-blue-400 hover:underline transition-all duration-200 text-lg md:text-base"
               >
                 Contact Us
@@ -104,12 +95,12 @@ const Footer = () => (
               </a>
             </li>
             <li>
-              <a href="mailto:ieeevsit2025@gmail.com"
+              <a href="mailto:ieee@vsit.edu.in"
                 className="flex items-center gap-3 group hover:text-yellow-300 transition-all">
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400/20 to-yellow-200/10 group-hover:bg-yellow-400/30 transition">
                   <FaRegEnvelope className="text-2xl group-hover:scale-110 transition-transform" />
                 </span>
-                <span className="text-base sm:text-lg break-all">ieeevsit2025@gmail.com</span>
+                <span className="text-base sm:text-lg break-all">ieee@vsit.edu.in</span>
               </a>
             </li>
           </ul>
@@ -137,4 +128,3 @@ const Footer = () => (
 );
 
 export default Footer;
-

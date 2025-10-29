@@ -3,17 +3,22 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const Icosahedron = () => {
-  const mesh = useRef();
+interface TargetRotation {
+  x: number;
+  y: number;
+}
+
+const Icosahedron: React.FC = () => {
+  const mesh = useRef<THREE.Mesh>(null);
   const { viewport } = useThree();
-  const [targetRotation, setTargetRotation] = useState({ x: 0, y: 0 });
-  const [mounted, setMounted] = useState(false);
+  const [targetRotation, setTargetRotation] = useState<TargetRotation>({ x: 0, y: 0 });
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     if (!mounted) return;
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       const { clientX, clientY } = event;
       const x = (clientX / window.innerWidth) * 2 - 1;
       const y = -(clientY / window.innerHeight) * 2 + 1;

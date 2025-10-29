@@ -28,10 +28,24 @@ import {
   FaStar
 } from "react-icons/fa";
 
-export default function JoinIEEEPage() {
+interface CounterState {
+  events: number;
+  members: number;
+  projects: number;
+  awards: number;
+}
+
+interface CounterTargets {
+  events: number;
+  members: number;
+  projects: number;
+  awards: number;
+}
+
+const JoinIEEEPage: React.FC = () => {
   const router = useRouter();
-  const [counters, setCounters] = useState({ events: 0, members: 0, projects: 0, awards: 0 });
-  const [isVisible, setIsVisible] = useState(false);
+  const [counters, setCounters] = useState<CounterState>({ events: 0, members: 0, projects: 0, awards: 0 });
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   React.useEffect(() => {
     document.body.style.backgroundColor = '#050510';
@@ -61,18 +75,19 @@ export default function JoinIEEEPage() {
   }, [isVisible]);
 
   const animateCounters = () => {
-    const targets = { events: 50, members: 200, projects: 25, awards: 15 };
+    const targets: CounterTargets = { events: 50, members: 200, projects: 25, awards: 15 };
     const duration = 2000;
     const interval = 20;
     const steps = duration / interval;
     
     Object.keys(targets).forEach(key => {
-      const increment = targets[key] / steps;
+      const targetKey = key as keyof CounterTargets;
+      const increment = targets[targetKey] / steps;
       let current = 0;
       const timer = setInterval(() => {
         current += increment;
-        if (current >= targets[key]) {
-          current = targets[key];
+        if (current >= targets[targetKey]) {
+          current = targets[targetKey];
           clearInterval(timer);
         }
         setCounters(prev => ({ ...prev, [key]: Math.floor(current) }));
@@ -84,8 +99,18 @@ export default function JoinIEEEPage() {
     router.push('/registration');
   };
 
-  const handleHeaderNavigation = (section) => {
+  const handleHeaderNavigation = (section: string) => {
     router.push(`/#${section}`);
+  };
+
+  const scrollToElement = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      window.scrollTo({ 
+        top: element.offsetTop - 100, 
+        behavior: 'smooth' 
+      });
+    }
   };
 
   return (
@@ -228,13 +253,13 @@ export default function JoinIEEEPage() {
               {/* Call-to-Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 md:mb-8 px-4">
                 <button 
-                  onClick={() => window.scrollTo({ top: document.getElementById('benefits-section').offsetTop - 100, behavior: 'smooth' })}
+                  onClick={() => scrollToElement('benefits-section')}
                   className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-blue-600 hover:bg-blue-700 rounded-full text-base md:text-lg font-bold transition-all duration-300"
                 >
                   Explore Benefits
                 </button>
                 <button 
-                  onClick={() => window.scrollTo({ top: document.getElementById('stats-section').offsetTop - 100, behavior: 'smooth' })}
+                  onClick={() => scrollToElement('stats-section')}
                   className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 border-2 border-blue-400 text-blue-400 rounded-full text-base md:text-lg font-semibold hover:bg-blue-500 hover:border-blue-500 hover:text-white transition-all duration-300"
                 >
                   Learn More
@@ -264,10 +289,10 @@ export default function JoinIEEEPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
               {[
-                { key: 'events', label: 'Events Organized', suffix: '+', icon: FaCalendarAlt },
-                { key: 'members', label: 'Active Members', suffix: '+', icon: FaUsers },
-                { key: 'projects', label: 'Projects Completed', suffix: '+', icon: FaProjectDiagram },
-                { key: 'awards', label: 'Awards Won', suffix: '+', icon: FaMedal }
+                { key: 'events' as keyof CounterState, label: 'Events Organized', suffix: '+', icon: FaCalendarAlt },
+                { key: 'members' as keyof CounterState, label: 'Active Members', suffix: '+', icon: FaUsers },
+                { key: 'projects' as keyof CounterState, label: 'Projects Completed', suffix: '+', icon: FaProjectDiagram },
+                { key: 'awards' as keyof CounterState, label: 'Awards Won', suffix: '+', icon: FaMedal }
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="glass-card rounded-2xl md:rounded-3xl p-4 md:p-8 hover:border-blue-400/50 transition-all duration-300">
@@ -451,5 +476,6 @@ export default function JoinIEEEPage() {
       <Footer />
     </>
   );
-}
+};
 
+export default JoinIEEEPage;

@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic';
+import React from 'react';
+
 const Hero3DIcosahedron = dynamic(() => import('./3d/Hero3DIcosahedron'), { ssr: false });
 
-
-const HeroSection = () => (
+const HeroSection: React.FC = () => (
   <section id="hero" className="relative min-h-[80vh] h-screen flex flex-col items-center justify-center text-center overflow-hidden px-2 sm:px-0">
     {/* 3D Icosahedron background */}
     <div className="absolute inset-0 z-0 bg-black pointer-events-none select-none">
@@ -18,7 +19,7 @@ const HeroSection = () => (
       <a
         href="#about"
         className="bg-transparent border-2 border-blue-500 text-blue-500 font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300"
-        onClick={e => {
+        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
           e.preventDefault();
           const el = document.querySelector('#about');
           if (el) {
