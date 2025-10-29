@@ -62,8 +62,9 @@ body {
   .gap-8 { gap: 1.5rem !important; }
   .space-x-8 { gap: 1rem !important; }
   .py-7, .py-8 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
-  .h-16, .w-16 { height: 3rem !important; width: 3rem !important; }
-  .h-12, .w-12 { height: 2.5rem !important; width: 2.5rem !important; }
+  /* Fixed: Only apply square dimensions to icons, not decorative lines */
+  img.h-16, img.w-16, svg.h-16, svg.w-16, .icon.h-16, .icon.w-16 { height: 3rem !important; width: 3rem !important; }
+  img.h-12, img.w-12, svg.h-12, svg.w-12, .icon.h-12, .icon.w-12 { height: 2.5rem !important; width: 2.5rem !important; }
   /* TeamSection tab buttons mobile fix */
   #team .flex.flex-col > button {
     width: 100% !important;
