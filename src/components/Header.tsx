@@ -58,6 +58,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
     { href: '#past-events', label: 'Event Rewind' },
     { href: '#domains', label: 'Domains' },
     { href: '#team', label: 'Team' },
+    { href: '/certificates', label: 'Certificates' },
   ];
 
   // Helper for smooth scroll
@@ -90,6 +91,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
             // Update hash in URL without jumping
             history.replaceState(null, '', href);
         }
+    } else if (href.startsWith('/')) {
+        // Handle internal page navigation
+        setMenuOpen(false);
+        window.location.href = href;
     }
   };
 
@@ -108,17 +113,17 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
   return (
     <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? 'bg-black/70 backdrop-blur-sm' : ''}`}>
       {/* Mobile Header: logo left, burger right */}
-      <div className="flex items-center justify-between md:hidden container mx-auto px-3 sm:px-6 py-4 sm:py-6">
-        <a href="/" className="text-2xl sm:text-3xl font-bold text-white tracking-wider flex items-center gap-3 sm:gap-4">
+      <div className="flex items-center justify-between lg:hidden container mx-auto px-3 sm:px-6 py-3 sm:py-4">
+        <a href="/" className="text-lg sm:text-xl font-bold text-white tracking-wider flex items-center gap-2">
           <img
             src="/ieee-emblem.png"
             alt="IEEE Emblem"
-            className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
+            className="h-6 w-6 sm:h-8 sm:w-8 object-contain"
             style={{ display: 'inline-block', verticalAlign: 'middle' }}
           />
-          <span className="leading-none flex items-center sm:flex-col">
+          <span className="leading-none flex items-center">
             <span className="text-blue-500">IEEE</span>
-            <span className="ml-2 sm:ml-0">-VSIT</span>
+            <span className="ml-1">-VSIT</span>
           </span>
         </a>
         <button 
@@ -127,13 +132,52 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
           aria-label="Toggle mobile menu"
           type="button"
         >
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
       </div>
+      
+      {/* Tablet Header (Medium Screens) */}
+      <nav className="hidden md:flex lg:hidden container mx-auto px-3 sm:px-6 py-4 sm:py-6 justify-between items-center">
+        <a href="/" className="text-xl font-bold text-white tracking-wider flex items-center gap-2">
+          <img
+            src="/ieee-emblem.png"
+            alt="IEEE Emblem"
+            className="h-8 w-8 object-contain"
+            style={{ display: 'inline-block', verticalAlign: 'middle' }}
+          />
+          <span className="leading-none flex items-center">
+            <span className="text-blue-500">IEEE</span>
+            <span className="ml-1">-VSIT</span>
+          </span>
+        </a>
+        <div className="flex items-center space-x-2">
+          <a href="/certificates" className="text-xs text-gray-300 hover:text-blue-500 transition-colors px-1 py-1">Certificates</a>
+          <div className="relative" ref={societiesRef}>
+            <span
+              className="text-xs text-gray-300 hover:text-blue-500 transition-colors px-1 py-1 flex items-center cursor-pointer select-none"
+              onClick={handleSocietiesClick}
+            >
+              Societies
+              <svg className="ml-1 w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+            {societiesOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-black border border-gray-700 rounded-lg shadow-lg z-50">
+                <a href="/societies/wie" className="block px-4 py-2 text-gray-200 hover:bg-blue-600 hover:text-white rounded-t-lg transition-colors text-sm">
+                  Women in Engineering (WIE)
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+        <a href="/join-ieee" className="bg-blue-600 hover:bg-blue-700 text-xs font-bold py-2 px-3 rounded-lg transition-colors duration-300">Join IEEE</a>
+      </nav>
+      
       {/* Desktop Header */}
-      <nav className="hidden md:flex container mx-auto px-3 sm:px-6 py-4 sm:py-6 justify-between items-center">
+      <nav className="hidden lg:flex container mx-auto px-3 sm:px-6 py-4 sm:py-6 justify-between items-center">
         <a href="/" className="text-2xl sm:text-3xl font-bold text-white tracking-wider flex items-center gap-3 sm:gap-4">
           <img
             src="/ieee-emblem.png"
@@ -146,12 +190,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
             <span className="ml-2">-VSIT</span>
           </span>
         </a>
-        <div className="flex items-center space-x-6 sm:space-x-10">
+        <div className="flex items-center space-x-3 lg:space-x-6">
           {navLinks.map(link => (
             <a
               key={link.href}
               href={link.href}
-              className="nav-link text-base sm:text-lg text-gray-300 hover:text-blue-500 transition-colors relative px-2 py-1"
+              className="nav-link text-sm lg:text-base text-gray-300 hover:text-blue-500 transition-colors relative px-1 lg:px-2 py-1 whitespace-nowrap"
               onClick={e => handleNavClick(e, link.href)}
             >
               {link.label}
@@ -160,7 +204,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
           {/* Our Societies Dropdown (Desktop) */}
           <div className="relative" ref={societiesRef}>
             <span
-              className="nav-link text-base sm:text-lg text-gray-300 hover:text-blue-500 transition-colors relative px-2 py-1 flex items-center cursor-pointer select-none"
+              className="nav-link text-sm lg:text-base text-gray-300 hover:text-blue-500 transition-colors relative px-1 lg:px-2 py-1 flex items-center cursor-pointer select-none whitespace-nowrap"
               role="button"
               aria-haspopup="true"
               aria-expanded={societiesOpen}
@@ -168,7 +212,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
               onClick={handleSocietiesClick}
             >
               Our Societies
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg className="ml-1 w-3 h-3 lg:w-4 lg:h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
@@ -188,13 +232,13 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
           </div>
         </div>
         {hideJoinButton ? (
-          customButton || <div className="w-32 sm:w-36"></div>
+          customButton || <div className="w-24 lg:w-32"></div>
         ) : (
-          <a href="/join-ieee" className="bg-blue-600 hover:bg-blue-700 text-base sm:text-lg font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-300">Join IEEE</a>
+          <a href="/join-ieee" className="bg-blue-600 hover:bg-blue-700 text-sm lg:text-base font-bold py-2 lg:py-3 px-3 lg:px-6 rounded-lg transition-colors duration-300 whitespace-nowrap">Join IEEE</a>
         )}
       </nav>
       {/* Mobile Menu Dropdown */}
-      <div className={`${menuOpen ? 'block' : 'hidden'} md:hidden bg-black/95 backdrop-blur-sm relative z-[110] w-full`}>
+      <div className={`${menuOpen ? 'block' : 'hidden'} lg:hidden bg-black/95 backdrop-blur-sm relative z-[110] w-full`}>
         {navLinks.map(link => (
           <a
             key={link.href}

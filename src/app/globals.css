@@ -85,17 +85,17 @@ body {
     margin-right: 0 !important;
   }
   /* Header mobile row fix */
-  header > .flex.items-center.justify-between.md\:hidden {
+  header > .flex.items-center.justify-between.lg\:hidden {
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
   }
   /* Keep header title in one line for mobile */
-  header .flex.items-center.gap-3 > span.flex.items-center {
+  header .flex.items-center.gap-2 > span.flex.items-center {
     flex-direction: row !important;
   }
   @media (min-width: 640px) {
-    header .flex.items-center.gap-3 > span.flex.items-center.sm\:flex-col {
+    header .flex.items-center.gap-2 > span.flex.items-center.sm\:flex-col {
       flex-direction: column !important;
     }
   }
