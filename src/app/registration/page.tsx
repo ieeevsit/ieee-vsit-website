@@ -16,6 +16,7 @@ import {
   FiLoader,
   FiInfo,
   FiUserPlus,
+  FiXCircle, // CHANGED: Added error icon
 } from "react-icons/fi";
 
 interface FormData {
@@ -28,6 +29,7 @@ interface FormData {
   motivation: string;
 }
 
+// ... (The FormInput component remains exactly the same as in your file) ...
 interface FormErrors {
   [key: string]: string;
 }
@@ -189,9 +191,10 @@ const FormInput: React.FC<FormInputProps> = ({
   );
 };
 
+
 const RegistrationPage: React.FC = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState<FormData>({
+  const initialFormData: FormData = {
     name: "",
     rollNo: "",
     course: "",
@@ -199,10 +202,12 @@ const RegistrationPage: React.FC = () => {
     email: "",
     phone: "",
     motivation: "",
-  });
+  };
+  const [formData, setFormData] = useState<FormData>(initialFormData); // CHANGED: Added initial state
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitStatus, setSubmitStatus] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null); // CHANGED: Added state for error messages
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   useEffect(() => {
@@ -236,14 +241,50 @@ const RegistrationPage: React.FC = () => {
     }
   };
 
+  // CHANGED: This is the new submission handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
+    setSubmitError(null);
+    setErrors({}); // Clear old errors
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // If server returns an error, handle it
+        if (data.error === 'Validation Error') {
+          // Handle Mongoose validation errors
+          const validationErrors: FormErrors = {};
+          for (const key in data.details) {
+            validationErrors[key] = data.details[key].message;
+          }
+          setErrors(validationErrors);
+          throw new Error('Please correct the errors in the form.');
+        } else {
+          // Handle other errors (like duplicate email)
+          throw new Error(data.error || 'Submission failed. Please try again.');
+        }
+      }
+
+      // Success
       setSubmitStatus("success");
-    }, 2000);
+      setFormData(initialFormData); // Clear the form
+    } catch (error: any) {
+      setSubmitStatus("error");
+      setSubmitError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -425,7 +466,17 @@ const RegistrationPage: React.FC = () => {
                 <div className="mt-8 p-6 bg-green-600/20 border-2 border-green-400 rounded-xl flex items-center justify-center shadow-lg">
                   <FiCheckCircle className="text-green-400 mr-3 text-xl" />
                   <span className="text-green-400 text-lg font-semibold">
-                    Registration submitted successfully!
+                    Registration submitted successfully! We'll be in touch.
+                  </span>
+                </div>
+              )}
+              
+              {/* CHANGED: Added this error message block */}
+              {submitStatus === "error" && (
+                <div className="mt-8 p-6 bg-red-600/20 border-2 border-red-400 rounded-xl flex items-center justify-center shadow-lg">
+                  <FiXCircle className="text-red-400 mr-3 text-xl" />
+                  <span className="text-red-400 text-lg font-semibold">
+                    {submitError || "An unknown error occurred."}
                   </span>
                 </div>
               )}
