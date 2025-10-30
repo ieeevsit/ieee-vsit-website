@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-
-interface PastEvent {
-  year: number;
-  date: string;
-  title: string;
-  desc: string;
-  img: string;
-}
+import Link from 'next/link';
+import { getAvailableYears, getLimitedEventsByYear } from '@/lib/data/events';
 
 interface YearTab {
   label: string;
@@ -14,25 +8,20 @@ interface YearTab {
 }
 
 const PastEventsSection: React.FC = () => {
-    // Add a year property to each event
-    const pastEvents: PastEvent[] = [
-        { year: 2025, date: "OCTOBER 2025", title: "Gittopia", desc: "Hands-on workshop on Git and GitHub.", img: "GitHub" },
-        { year: 2025, date: "AUGUST 2025", title: "Ctrl + Play", desc: "Movie screening event.", img: "Ctrl + Play" },
-        { year: 2025, date: "MARCH 2025", title: "Treasure Hunt", desc: "AR Treasure Hunt.", img: "Treasure Hunt" },
-        { year: 2024, date: "SEPTEMBER 2024", title: "Unity Workshop", desc: "Hands-on Unity Workshop.", img: "Unity" },
-    ];
-
+    // Get available years dynamically
+    const availableYears = getAvailableYears();
+    
     // Tabs for years
-    const yearTabs: YearTab[] = [
-        { label: "2025", value: 2025 },
-        { label: "2024", value: 2024 },
-    ];
+    const yearTabs: YearTab[] = availableYears.map(year => ({
+        label: year.toString(),
+        value: year
+    }));
 
     // Default to latest year
-    const [activeYear, setActiveYear] = useState<number>(yearTabs[0].value);
+    const [activeYear, setActiveYear] = useState<number>(yearTabs[0]?.value || new Date().getFullYear());
 
-    // Filter events by year
-    const filteredEvents = pastEvents.filter(ev => ev.year === activeYear);
+    // Get limited events for the active year
+    const { mobile: mobileEvents, desktop: desktopEvents, hasMore } = getLimitedEventsByYear(activeYear);
 
     return (
         <section id="past-events" className="py-14 sm:py-20 bg-[#0A0F1A]">
@@ -42,6 +31,7 @@ const PastEventsSection: React.FC = () => {
                 <p className="text-center max-w-3xl mx-auto text-gray-300 mb-8 sm:mb-12">
                     We believe in learning by doing. Our past events have empowered students with new skills, sparked innovative ideas, and created lasting connections. Here's a glimpse of the action.
                 </p>
+                
                 {/* Year Tabs */}
                 <div className="flex flex-col gap-3 items-stretch max-w-xs mx-auto mb-10 sm:flex-row sm:justify-center sm:gap-0 sm:max-w-none">
                     {yearTabs.map(tab => (
@@ -63,18 +53,83 @@ const PastEventsSection: React.FC = () => {
                         </button>
                     ))}
                 </div>
-                {/* Responsive grid for mobile, flex-row for larger screens */}
-                <div className="grid grid-cols-1 gap-y-14 gap-x-0 sm:gap-y-8 sm:gap-x-6 sm:grid-cols-2 lg:flex lg:flex-row lg:space-x-8 pb-6 sm:pb-8">
-                    {filteredEvents.map(event => (
-                        <div key={event.title} className="w-full glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 min-w-0 sm:w-80 flex-shrink-0">
-                            <img src={`https://placehold.co/600x400/1f2937/ffffff?text=${event.img}`} alt={event.title} className="w-full h-36 sm:h-40 object-cover"/>
-                            <div className="p-4 sm:p-6">
-                                <p className="text-xs text-blue-400">{event.date}</p>
-                                <h3 className="text-base sm:text-lg font-bold mt-1">{event.title}</h3>
-                                <p className="text-xs sm:text-sm text-gray-400 mt-2">{event.desc}</p>
-                            </div>
+
+                {/* Mobile Events (2 events) */}
+                <div className="block sm:hidden">
+                    <div className="grid grid-cols-1 gap-6 mb-8">
+                        {mobileEvents.map(event => (
+                            <Link 
+                                key={event.id} 
+                                href={`/events/${event.year}/${event.slug}`}
+                                className="block w-full"
+                            >
+                                <div className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2">
+                                    <img 
+                                        src={`https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(event.image)}`} 
+                                        alt={event.title} 
+                                        className="w-full h-48 object-cover"
+                                    />
+                                    <div className="p-4">
+                                        <p className="text-xs text-blue-400 mb-1">{event.date}</p>
+                                        <h3 className="text-lg font-bold mb-2 line-clamp-2">{event.title}</h3>
+                                        <p className="text-sm text-gray-400 line-clamp-3">{event.shortDescription}</p>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                    {hasMore && (
+                        <div className="text-center">
+                            <Link 
+                                href={`/events/${activeYear}`}
+                                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                            >
+                                View More Events
+                                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </Link>
                         </div>
-                    ))}
+                    )}
+                </div>
+
+                {/* Desktop Events (4 events) */}
+                <div className="hidden sm:block">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        {desktopEvents.map(event => (
+                            <Link 
+                                key={event.id} 
+                                href={`/events/${event.year}/${event.slug}`}
+                                className="block w-full"
+                            >
+                                <div className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 h-full">
+                                    <img 
+                                        src={`https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(event.image)}`} 
+                                        alt={event.title} 
+                                        className="w-full h-40 object-cover"
+                                    />
+                                    <div className="p-4 flex flex-col h-full">
+                                        <p className="text-xs text-blue-400 mb-1">{event.date}</p>
+                                        <h3 className="text-base font-bold mb-2 line-clamp-2 flex-grow-0">{event.title}</h3>
+                                        <p className="text-sm text-gray-400 line-clamp-3 flex-grow">{event.shortDescription}</p>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                    {hasMore && (
+                        <div className="text-center">
+                            <Link 
+                                href={`/events/${activeYear}`}
+                                className="inline-flex items-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                            >
+                                View More Events
+                                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

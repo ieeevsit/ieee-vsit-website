@@ -46,11 +46,22 @@ const WIEPage: React.FC = () => {
             transform: translateY(-5px);
           }
         }
+        /* Ensure header area is isolated from 3D canvas */
+        header {
+          isolation: isolate;
+          position: relative;
+          z-index: 999 !important;
+        }
+        /* Ensure mobile menu is clickable */
+        header button {
+          isolation: isolate;
+          position: relative;
+        }
       `}</style>
       <Header onNavigate={handleNavigate} />
       
       {/* 3D Background */}
-      <div className="fixed inset-0 z-0" style={{ pointerEvents: 'none' }}>
+      <div className="fixed inset-0 z-[-1]" style={{ pointerEvents: 'none', top: '80px' }}>
         <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
           <ambientLight intensity={0.1} />
           <pointLight position={[10, 10, 10]} intensity={0.5} />

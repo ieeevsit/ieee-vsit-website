@@ -66,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
     if (href.startsWith('#')) {
         e.preventDefault();
         
-        // Close mobile menu
+        // Close mobile menu first (always)
         setMenuOpen(false);
         
         // If onNavigate prop is provided (for external pages), use it
@@ -75,7 +75,17 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
           return;
         }
         
-        // Otherwise, use normal scroll behavior (for main page)
+        // Check if we're on the main page (home page)
+        const currentPath = window.location.pathname;
+        const isOnMainPage = currentPath === '/';
+        
+        if (!isOnMainPage) {
+          // If not on main page, navigate to main page with the hash
+          window.location.href = '/' + href;
+          return;
+        }
+        
+        // If on main page, use normal scroll behavior
         const el = document.querySelector(href);
         if (el) {
             // Calculate offset for fixed header
@@ -110,8 +120,14 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
     setMenuOpen(!menuOpen);
   };
 
+  const handleMenuClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? 'bg-black/85 backdrop-blur-md' : 'bg-black/20 backdrop-blur-sm'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-300 ${scrolled ? 'bg-black/85 backdrop-blur-md' : 'bg-black/20 backdrop-blur-sm'}`}>
       {/* Mobile Header: logo left, burger right */}
       <div className="flex items-center justify-between lg:hidden container mx-auto px-4 sm:px-6 py-4 sm:py-5 min-h-[60px] sm:min-h-[70px]">
         <a href="/" className="text-xl sm:text-2xl font-bold text-white tracking-wider flex items-center gap-2 sm:gap-3">
@@ -127,8 +143,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
           </span>
         </a>
         <button 
-          onClick={handleMenuToggle} 
-          className="text-white focus:outline-none z-[110] relative p-3 touch-manipulation bg-black/30 rounded-lg hover:bg-black/50 transition-colors"
+          onClick={handleMenuClick} 
+          className="text-white focus:outline-none z-[1001] relative p-3 touch-manipulation bg-black/30 rounded-lg hover:bg-black/50 transition-colors"
           aria-label="Toggle mobile menu"
           type="button"
         >
@@ -238,7 +254,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         )}
       </nav>
       {/* Mobile Menu Dropdown */}
-      <div className={`${menuOpen ? 'block' : 'hidden'} lg:hidden bg-black/95 backdrop-blur-md relative z-[110] w-full border-t border-gray-700/30`}>
+      <div className={`${menuOpen ? 'block' : 'hidden'} lg:hidden bg-black/95 backdrop-blur-md relative z-[1000] w-full border-t border-gray-700/30`}>
         {navLinks.map(link => (
           <a
             key={link.href}

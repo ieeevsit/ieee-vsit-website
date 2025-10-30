@@ -19,16 +19,7 @@ This is the official website for the IEEE-VSIT student chapter, built with Next.
    ```bash
    npm run dev
    ```
-
-3. **Set up environment variables:**
-   ```bash
-   cp .env.example .env.local
-   ```
-   Then edit `.env.local` and add your configuration:
-   - `NEXT_PUBLIC_CERTIFICATE_API_URL`: URL for certificate generation API
-   - `ATTENDEES_DATA`: JSON string containing attendee data for certificate generation
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 - `src/components/` — All React components
