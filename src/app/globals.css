@@ -120,6 +120,32 @@ body {
     padding: 12px 16px !important;
     min-height: 44px !important;
   }
+  
+  /* Better mobile header spacing */
+  header {
+    min-height: 60px !important;
+  }
+  
+  /* Improve mobile tap targets */
+  .touch-manipulation {
+    touch-action: manipulation !important;
+  }
+  
+  /* Mobile-specific scrolling improvements */
+  html {
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* Prevent zoom on focus for iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
 
 /* Extra small screens */

@@ -111,14 +111,14 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? 'bg-black/70 backdrop-blur-sm' : ''}`}>
+    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? 'bg-black/85 backdrop-blur-md' : 'bg-black/20 backdrop-blur-sm'}`}>
       {/* Mobile Header: logo left, burger right */}
-      <div className="flex items-center justify-between lg:hidden container mx-auto px-3 sm:px-6 py-3 sm:py-4">
-        <a href="/" className="text-lg sm:text-xl font-bold text-white tracking-wider flex items-center gap-2">
+      <div className="flex items-center justify-between lg:hidden container mx-auto px-4 sm:px-6 py-4 sm:py-5 min-h-[60px] sm:min-h-[70px]">
+        <a href="/" className="text-xl sm:text-2xl font-bold text-white tracking-wider flex items-center gap-2 sm:gap-3">
           <img
             src="/ieee-emblem.png"
             alt="IEEE Emblem"
-            className="h-6 w-6 sm:h-8 sm:w-8 object-contain"
+            className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
             style={{ display: 'inline-block', verticalAlign: 'middle' }}
           />
           <span className="leading-none flex items-center">
@@ -128,12 +128,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         </a>
         <button 
           onClick={handleMenuToggle} 
-          className="text-white focus:outline-none z-[110] relative p-2 touch-manipulation"
+          className="text-white focus:outline-none z-[110] relative p-3 touch-manipulation bg-black/30 rounded-lg hover:bg-black/50 transition-colors"
           aria-label="Toggle mobile menu"
           type="button"
         >
-          <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
       </div>
@@ -238,31 +238,31 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         )}
       </nav>
       {/* Mobile Menu Dropdown */}
-      <div className={`${menuOpen ? 'block' : 'hidden'} lg:hidden bg-black/95 backdrop-blur-sm relative z-[110] w-full`}>
+      <div className={`${menuOpen ? 'block' : 'hidden'} lg:hidden bg-black/95 backdrop-blur-md relative z-[110] w-full border-t border-gray-700/30`}>
         {navLinks.map(link => (
           <a
             key={link.href}
             href={link.href}
             onClick={e => handleNavClick(e, link.href)}
-            className="block py-3 px-6 text-base hover:bg-gray-800 text-white border-b border-gray-700/50"
-            style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
+            className="block py-4 px-6 text-lg hover:bg-gray-800/80 text-white border-b border-gray-700/30 transition-colors touch-manipulation"
+            style={{ fontSize: '1.125rem', letterSpacing: '0.01em', minHeight: '56px', display: 'flex', alignItems: 'center' }}
           >
             {link.label}
           </a>
         ))}
         {/* Our Societies Dropdown (Mobile) */}
-        <div className="border-b border-gray-700/50">
+        <div className="border-b border-gray-700/30">
           <span
-            className="block w-full text-left py-3 px-6 text-base hover:bg-gray-800 cursor-pointer select-none text-white"
-            style={{ fontSize: '1.1rem', letterSpacing: '0.01em' }}
+            className="block w-full text-left py-4 px-6 text-lg hover:bg-gray-800/80 cursor-pointer select-none text-white transition-colors touch-manipulation"
+            style={{ fontSize: '1.125rem', letterSpacing: '0.01em', minHeight: '56px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
             onClick={handleMobileSocietiesClick}
             tabIndex={0}
             role="button"
             aria-haspopup="true"
             aria-expanded={mobileSocietiesOpen}
           >
-            Our Societies
-            <svg className={`inline ml-2 w-4 h-4 transform transition-transform ${mobileSocietiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <span>Our Societies</span>
+            <svg className={`w-5 h-5 transform transition-transform ${mobileSocietiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </span>
@@ -270,8 +270,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
             <div className="bg-black/95">
               <a
                 href="/societies/wie"
-                className="block py-3 px-10 text-base hover:bg-blue-600 hover:text-white text-gray-300"
-                style={{ fontSize: '1.05rem' }}
+                className="block py-4 px-10 text-lg hover:bg-blue-600 hover:text-white text-gray-300 transition-colors touch-manipulation"
+                style={{ fontSize: '1.05rem', minHeight: '52px', display: 'flex', alignItems: 'center' }}
                 onClick={() => setMenuOpen(false)}
               >
                 Women in Engineering (WIE)
@@ -282,12 +282,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         </div>
         {hideJoinButton ? (
           customButton ? (
-            <div className="block py-3 px-6 text-base hover:bg-gray-800 border-b border-gray-700/50">
+            <div className="block py-4 px-6 text-lg hover:bg-gray-800/80 border-b border-gray-700/30 touch-manipulation" style={{ minHeight: '56px', display: 'flex', alignItems: 'center' }}>
               {customButton}
             </div>
           ) : null
         ) : (
-          <a href="/join-ieee" className="block py-3 px-6 text-base hover:bg-gray-800 text-white border-b border-gray-700/50">Join IEEE</a>
+          <a href="/join-ieee" className="block py-4 px-6 text-lg hover:bg-gray-800/80 text-white border-b border-gray-700/30 transition-colors touch-manipulation" style={{ minHeight: '56px', display: 'flex', alignItems: 'center' }}>Join IEEE</a>
         )}
       </div>
     </header>

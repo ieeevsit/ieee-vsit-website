@@ -263,7 +263,7 @@ const CertificatesPage: React.FC = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="Enter your full name"
+                        placeholder="Enter your first name and last name only"
                         className="w-full px-3 sm:px-4 py-3 sm:py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base min-h-[44px] touch-manipulation"
                         required
                         disabled={loading}

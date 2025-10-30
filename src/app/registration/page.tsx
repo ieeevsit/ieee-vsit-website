@@ -54,6 +54,141 @@ interface FormInputProps {
   isFocused: boolean;
 }
 
+const FormInput: React.FC<FormInputProps> = ({
+  label,
+  name,
+  type = "text",
+  icon: Icon,
+  placeholder,
+  required = false,
+  pattern,
+  maxLength,
+  options,
+  value,
+  onChange,
+  onFocus,
+  onBlur,
+  error,
+  isFocused,
+}) => {
+  const isError = !!error;
+  const hasValue = value && value.length > 0;
+  const showFloatingLabel = isFocused || hasValue;
+
+  return (
+    <div className="relative group mb-4 sm:mb-6">
+      <div
+        className={`relative flex items-center border-2 rounded-xl transition-all duration-200
+      ${
+        isFocused
+          ? "border-blue-400 bg-gray-800/80"
+          : "border-gray-600 hover:border-gray-500"
+      }
+      ${isError ? "border-red-400" : ""}
+      bg-gray-800/60 min-h-[56px] sm:min-h-[60px]`}
+      >
+        {Icon && (
+          <div className="pl-3 sm:pl-4 pr-2 flex-shrink-0">
+            <Icon
+              className={`transition-colors text-lg sm:text-xl ${
+                isFocused ? "text-blue-400" : "text-gray-400"
+              }`}
+            />
+          </div>
+        )}
+
+        <div className="relative w-full">
+          <label
+            className={`absolute left-0 transition-all duration-200 pointer-events-none font-medium
+            ${
+              showFloatingLabel
+                ? "-top-5 text-xs text-blue-400"
+                : "top-1/2 -translate-y-1/2 text-base text-gray-400"
+            }`}
+          >
+            {label} {required && <span className="text-red-400">*</span>}
+          </label>
+
+          {type === "textarea" ? (
+            <textarea
+              name={name}
+              value={value}
+              onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              maxLength={maxLength}
+              rows={4}
+              className="w-full px-3 sm:px-4 py-4 bg-transparent text-white placeholder-gray-500 focus:outline-none resize-none text-base"
+              placeholder={showFloatingLabel ? placeholder : ""}
+              style={{ fontSize: '16px', minHeight: '44px' }}
+            />
+          ) : type === "select" ? (
+            <select
+              name={name}
+              value={value}
+              onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              className="w-full px-3 sm:px-4 py-4 bg-transparent text-white appearance-none cursor-pointer focus:outline-none text-base"
+              style={{ fontSize: '16px', minHeight: '44px' }}
+            >
+              <option value="" disabled className="text-gray-500">
+              </option>
+              {options?.map((option) => (
+                <option
+                  key={option}
+                  value={option}
+                  className="text-white bg-gray-800"
+                >
+                  {option}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input
+              type={type}
+              name={name}
+              value={value}
+              onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              pattern={pattern}
+              maxLength={maxLength}
+              className="w-full px-3 sm:px-4 py-4 bg-transparent text-white placeholder-gray-500 focus:outline-none text-base"
+              placeholder={showFloatingLabel ? placeholder : ""}
+              style={{ fontSize: '16px', minHeight: '44px' }}
+            />
+          )}
+        </div>
+        {type === "select" && (
+          <div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+            <svg
+              className="w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+        )}
+      </div>
+
+      {error && (
+        <p className="text-red-400 text-sm mt-2 ml-1 flex items-center">
+          <FiInfo className="mr-1" />
+          {error}
+        </p>
+      )}
+    </div>
+  );
+};
+
 const RegistrationPage: React.FC = () => {
   const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
@@ -111,138 +246,6 @@ const RegistrationPage: React.FC = () => {
     }, 2000);
   };
 
-  const FormInput: React.FC<FormInputProps> = ({
-    label,
-    name,
-    type = "text",
-    icon: Icon,
-    placeholder,
-    required = false,
-    pattern,
-    maxLength,
-    options,
-    value,
-    onChange,
-    onFocus,
-    onBlur,
-    error,
-    isFocused,
-  }) => {
-    const isError = !!error;
-    const hasValue = value && value.length > 0;
-    const showFloatingLabel = isFocused || hasValue;
-
-    return (
-      <div className="relative group mb-6">
-        <div
-          className={`relative flex items-center border-2 rounded-xl transition-all duration-200
-        ${
-          isFocused
-            ? "border-blue-400 bg-gray-800/80"
-            : "border-gray-600 hover:border-gray-500"
-        }
-        ${isError ? "border-red-400" : ""}
-        bg-gray-800/60`}
-        >
-          {Icon && (
-            <div className="pl-4 pr-2 flex-shrink-0">
-              <Icon
-                className={`transition-colors text-lg ${
-                  isFocused ? "text-blue-400" : "text-gray-400"
-                }`}
-              />
-            </div>
-          )}
-
-          <div className="relative w-full">
-            <label
-              className={`absolute left-0 transition-all duration-200 pointer-events-none font-medium
-              ${
-                showFloatingLabel
-                  ? "-top-5 text-xs text-blue-400"
-                  : "top-1/2 -translate-y-1/2 text-base text-gray-400"
-              }`}
-            >
-              {label} {required && <span className="text-red-400">*</span>}
-            </label>
-
-            {type === "textarea" ? (
-              <textarea
-                name={name}
-                value={value}
-                onChange={onChange}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                maxLength={maxLength}
-                rows={4}
-                className="w-full px-4 py-4 bg-transparent text-white placeholder-gray-500 focus:outline-none"
-                placeholder={showFloatingLabel ? placeholder : ""}
-              />
-            ) : type === "select" ? (
-              <select
-                name={name}
-                value={value}
-                onChange={onChange}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                className="w-full px-4 py-4 bg-transparent text-white appearance-none cursor-pointer focus:outline-none"
-              >
-                <option value="" disabled className="text-gray-500">
-                </option>
-                {options?.map((option) => (
-                  <option
-                    key={option}
-                    value={option}
-                    className="text-white bg-gray-800"
-                  >
-                    {option}
-                  </option>
-                ))}
-              </select>
-            ) : (
-              <input
-                type={type}
-                name={name}
-                value={value}
-                onChange={onChange}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                pattern={pattern}
-                maxLength={maxLength}
-                className="w-full px-4 py-4 bg-transparent text-white placeholder-gray-500 focus:outline-none"
-                placeholder={showFloatingLabel ? placeholder : ""}
-              />
-            )}
-          </div>
-          {type === "select" && (
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg
-                className="w-5 h-5 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-          )}
-        </div>
-
-        {error && (
-          <p className="text-red-400 text-sm mt-2 ml-1 flex items-center">
-            <FiInfo className="mr-1" />
-            {error}
-          </p>
-        )}
-      </div>
-    );
-  };
-
   return (
     <>
       <style jsx global>{`
@@ -266,24 +269,24 @@ const RegistrationPage: React.FC = () => {
         }
       />
 
-      <main className="min-h-screen bg-gradient-to-br from-blue-900 via-black to-blue-900 text-white pt-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full mb-6 shadow-lg">
-                <FiUserPlus className="text-4xl text-white" />
+      <main className="min-h-screen bg-gradient-to-br from-blue-900 via-black to-blue-900 text-white pt-24 sm:pt-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12">
+              <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full mb-4 sm:mb-6 shadow-lg">
+                <FiUserPlus className="text-3xl sm:text-4xl text-white" />
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-4">
                 Join <span className="text-blue-400">IEEE VSIT</span>
               </h1>
-              <p className="text-gray-300 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
+              <p className="text-gray-300 text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto px-4">
                 Fill out this form to become part of our innovative community
               </p>
             </div>
 
-            <div className="glass-card rounded-3xl p-8 md:p-12 shadow-2xl">
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid lg:grid-cols-2 gap-8">
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-2xl mx-2 sm:mx-0">
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                   <FormInput
                     label="Full Name"
                     name="name"
@@ -302,7 +305,7 @@ const RegistrationPage: React.FC = () => {
                     label="Roll Number"
                     name="rollNo"
                     icon={FiHash}
-                    placeholder="e.g., 2021BTECHCS001"
+                    placeholder="e.g., 25302F000X"
                     required
                     value={formData.rollNo}
                     onChange={handleInputChange}
@@ -313,7 +316,7 @@ const RegistrationPage: React.FC = () => {
                   />
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                   <FormInput
                     label="Course"
                     name="course"
@@ -345,13 +348,13 @@ const RegistrationPage: React.FC = () => {
                   />
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                   <FormInput
                     label="Email Address"
                     name="email"
                     type="email"
                     icon={FiMail}
-                    placeholder="your.email@example.com"
+                    placeholder="youremail@example.com"
                     required
                     value={formData.email}
                     onChange={handleInputChange}
@@ -386,7 +389,6 @@ const RegistrationPage: React.FC = () => {
                     type="textarea"
                     icon={FiEdit3}
                     placeholder="Tell us about your motivation and what you hope to achieve..."
-                    required
                     maxLength={500}
                     value={formData.motivation}
                     onChange={handleInputChange}
@@ -397,11 +399,12 @@ const RegistrationPage: React.FC = () => {
                   />
                 </div>
 
-                <div className="pt-8">
+                <div className="pt-4 sm:pt-8">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-600 disabled:to-gray-700 text-white font-bold py-5 px-8 rounded-xl transition-all duration-300 flex items-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-600 disabled:to-gray-700 text-white font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-xl transition-all duration-300 flex items-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] touch-manipulation"
+                    style={{ fontSize: '16px', minHeight: '56px' }}
                   >
                     {isSubmitting ? (
                       <>
