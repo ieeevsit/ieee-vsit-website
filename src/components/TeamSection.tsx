@@ -80,7 +80,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ wieCore = false }) => {
   // If wieCore is true, render only the WIE Core Committee (no tabs)
   if (wieCore) {
     return (
-      <section id="team" className="py-10 bg-[#0A0F1A]">
+      <section id="team" className="py-10 bg-[#0A0F1A] rounded-3xl">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet the WIE Core Committee</h2>
           <div className="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
@@ -119,7 +119,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ wieCore = false }) => {
   return (
     <>
       {/* Meet the Faculty Section */}
-      <section id="faculty" className="py-10 bg-gradient-to-b from-[#0A0F1A] to-[#0D1423]">
+      <section id="faculty" className="py-10 bg-gradient-to-b bg-[#0A0F1A]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet the Faculty</h2>
           <div className="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
@@ -146,7 +146,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ wieCore = false }) => {
       </section>
 
       {/* Meet the Committee Section */}
-      <section id="team" className="py-10 bg-gradient-to-b from-[#0D1423] to-[#0A0F1A]">
+      <section id="team" className="py-10 bg-gradient-to-b bg-[#0A0F1A]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet the Committee</h2>
           <div className="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>

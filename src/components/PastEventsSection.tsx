@@ -35,7 +35,7 @@ const PastEventsSection: React.FC = () => {
     const filteredEvents = pastEvents.filter(ev => ev.year === activeYear);
 
     return (
-        <section id="past-events" className="py-14 sm:py-20 bg-gray-900/50">
+        <section id="past-events" className="py-14 sm:py-20 bg-[#0A0F1A]">
             <div className="container mx-auto px-2 sm:px-6">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">Event Rewind</h2>
                 <div className="w-16 sm:w-24 h-1 bg-blue-500 mx-auto mb-8 sm:mb-12"></div>
