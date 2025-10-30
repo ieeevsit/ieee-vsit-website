@@ -5,22 +5,32 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@pdf-lib/fontkit": "^1.1.1",
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.3.0",
+    "axios": "^1.13.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "fontkit": "^2.0.4",
+    "fs-extra": "^11.3.2",
     "lucide-react": "^0.534.0",
     "next": "15.4.5",
+    "path": "^0.12.7",
+    "pdf-lib": "^1.17.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-icons": "^5.5.0",
+    "server": "^1.0.42",
     "three": "^0.178.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "24.1.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",

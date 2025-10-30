@@ -5,27 +5,14 @@ import Footer from "../../components/Footer";
 import { 
   FaCertificate, 
   FaDownload, 
-  FaShieldAlt, 
-  FaUserCheck, 
-  FaBolt, 
-  FaAward,
   FaCheck,
   FaExclamationTriangle,
-  FaSpinner,
-  FaUsers,
-  FaCalendarAlt,
-  FaFileAlt
+  FaSpinner
 } from "react-icons/fa";
 
 interface CertificateFormData {
   name: string;
-  code: string;
-}
-
-interface ApiResponse {
-  success: boolean;
-  message: string;
-  downloadUrl?: string;
+  code: string; // 'code' is used to store the roll number
 }
 
 const CertificatesPage: React.FC = () => {
@@ -44,6 +31,19 @@ const CertificatesPage: React.FC = () => {
     };
   }, []);
 
+  const scrollToForm = () => {
+    setIsFormVisible(true);
+    setTimeout(() => {
+      const formElement = document.getElementById('certificate-form');
+      if (formElement) {
+        formElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }
+    }, 100);
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -58,10 +58,12 @@ const CertificatesPage: React.FC = () => {
     setSuccess("");
 
     try {
-      // Replace with your actual certificate generator API endpoint
-      const API_URL = process.env.NEXT_PUBLIC_CERTIFICATE_API_URL || 'http://localhost:3000';
+      // --- CHANGE 1: API_URL removed ---
+      // We now call the internal Next.js API route directly
       
-      const response = await fetch(`${API_URL}/generate-certificate`, {
+      // --- CHANGE 2: Fetch URL is now relative ---
+      // This calls '/src/app/generate-certificate/route.js'
+      const response = await fetch(`/generate-certificate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +90,9 @@ const CertificatesPage: React.FC = () => {
         setFormData({ name: "", code: "" });
       } else {
         const errorData = await response.json();
-        setError(errorData.message || "Failed to generate certificate. Please check your details.");
+        // --- CHANGE 3: Error handling key fixed ---
+        // The backend sends { "error": "..." }, not "message"
+        setError(errorData.error || "Failed to generate certificate. Please check your details.");
       }
     } catch (err) {
       setError("Unable to connect to certificate service. Please try again later.");
@@ -98,38 +102,8 @@ const CertificatesPage: React.FC = () => {
     }
   };
 
-  const features = [
-    {
-      icon: <FaShieldAlt className="text-3xl text-blue-400" />,
-      title: "Secure Verification",
-      description: "Both name and roll number must match our attendee database for certificate generation."
-    },
-    {
-      icon: <FaBolt className="text-3xl text-yellow-400" />,
-      title: "Instant Generation",
-      description: "Download your PDF certificate immediately after verification."
-    },
-    {
-      icon: <FaUserCheck className="text-3xl text-green-400" />,
-      title: "Flexible Matching",
-      description: "Case-insensitive name and code matching for user convenience."
-    },
-    {
-      icon: <FaAward className="text-3xl text-purple-400" />,
-      title: "Professional Format",
-      description: "High-quality certificates suitable for portfolios and professional use."
-    }
-  ];
-
-  const stats = [
-    { icon: <FaCertificate />, value: "500+", label: "Certificates Generated" },
-    { icon: <FaUsers />, value: "200+", label: "Verified Attendees" },
-    { icon: <FaCalendarAlt />, value: "25+", label: "Events Covered" },
-    { icon: <FaFileAlt />, value: "100%", label: "Success Rate" }
-  ];
-
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-black to-blue-900 min-h-screen text-gray-200 font-sans">
+    <div className="min-h-screen text-gray-200 font-sans">
       <style jsx global>{`
         body {
           background-color: #050510;
@@ -164,12 +138,12 @@ const CertificatesPage: React.FC = () => {
           width: 100%;
         }
         .gradient-border {
-          background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+          background: linear-gradient(45deg, #3b82f6, #1e40af, #2563eb);
           padding: 2px;
           border-radius: 12px;
         }
         .gradient-border-inner {
-          background: #1a1a2e;
+          background: #0A0F1A;
           border-radius: 10px;
         }
       `}</style>
@@ -178,89 +152,84 @@ const CertificatesPage: React.FC = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-50"></div>
+        <section className="relative pt-20 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-blue-800/10"></div>
           <div className="container mx-auto text-center relative z-10">
-            <div className="mb-8">
-              <FaCertificate className="text-6xl text-blue-400 mx-auto mb-6 animate-pulse" />
+            <div className="mb-6 sm:mb-8">
+              <FaCertificate className="text-4xl sm:text-6xl text-blue-400 mx-auto mb-4 sm:mb-6 animate-pulse" />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6  bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-gray-300 px-4 ">
               Certificate Generator
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-300 max-w-3xl mx-auto px-4">
               Generate and download your IEEE VSIT workshop participation certificates instantly
             </p>
             <button
-              onClick={() => setIsFormVisible(true)}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              onClick={scrollToForm}
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg mx-4"
             >
               Generate My Certificate
             </button>
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
+        {/* How It Works Section */}
+        <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
           <div className="container mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center glass-card p-6 rounded-xl certificate-card">
-                  <div className="text-3xl text-blue-400 mb-3 flex justify-center">
-                    {stat.icon}
-                  </div>
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm md:text-base text-gray-300">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="container mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
-              Certificate Generation Features
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 text-white px-4">
+              How It Works
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => (
-                <div key={index} className="glass-card p-8 rounded-xl certificate-card text-center">
-                  <div className="mb-6 flex justify-center">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-white">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    {feature.description}
-                  </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <span className="text-lg sm:text-2xl font-bold text-white">1</span>
                 </div>
-              ))}
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Enter Details</h3>
+                <p className="text-sm sm:text-base text-gray-300 px-2">
+                  Provide your full name and the roll number you received during the event
+                </p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <span className="text-lg sm:text-2xl font-bold text-white">2</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Verification</h3>
+                <p className="text-sm sm:text-base text-gray-300 px-2">
+                  Our system securely verifies your details against our attendee database
+                </p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-800 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <span className="text-lg sm:text-2xl font-bold text-white">3</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Download</h3>
+                <p className="text-sm sm:text-base text-gray-300 px-2">
+                  Get your personalized PDF certificate instantly ready for download
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Certificate Generation Form */}
         {isFormVisible && (
-          <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
+          <section id="certificate-form" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#0A0F1A]">
             <div className="container mx-auto max-w-2xl">
               <div className="gradient-border">
-                <div className="gradient-border-inner p-8">
-                  <div className="text-center mb-8">
-                    <FaCertificate className="text-4xl text-blue-400 mx-auto mb-4" />
-                    <h2 className="text-3xl font-bold text-white mb-4">
+                <div className="gradient-border-inner p-6 sm:p-8">
+                  <div className="text-center mb-6 sm:mb-8">
+                    <FaCertificate className="text-3xl sm:text-4xl text-blue-400 mx-auto mb-3 sm:mb-4" />
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4 px-4">
                       Generate Your Certificate
                     </h2>
-                    <p className="text-gray-300">
-                      Enter your name and unique code to generate your certificate
+                    <p className="text-sm sm:text-base text-gray-300 px-4">
+                      Enter your name and roll number to generate your certificate
                     </p>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                         Full Name
@@ -272,7 +241,7 @@ const CertificatesPage: React.FC = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Enter your full name as registered"
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
                         required
                         disabled={loading}
                       />
@@ -280,7 +249,7 @@ const CertificatesPage: React.FC = () => {
 
                     <div>
                       <label htmlFor="code" className="block text-sm font-medium text-gray-300 mb-2">
-                        Unique Code
+                        Roll Number
                       </label>
                       <input
                         type="text"
@@ -288,8 +257,8 @@ const CertificatesPage: React.FC = () => {
                         name="code"
                         value={formData.code}
                         onChange={handleInputChange}
-                        placeholder="Enter your unique code"
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your college roll number (e.g., 24302F0019)"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
                         required
                         disabled={loading}
                       />
@@ -298,7 +267,8 @@ const CertificatesPage: React.FC = () => {
                     {error && (
                       <div className="flex items-center gap-2 p-4 bg-red-900/30 border border-red-600 rounded-lg">
                         <FaExclamationTriangle className="text-red-400" />
-                        <span className="text-red-300">{error}</span>
+                        {/* Display error message, splitting contacts to new lines */}
+                        <span className="text-red-300 whitespace-pre-wrap">{error}</span>
                       </div>
                     )}
 
@@ -309,11 +279,11 @@ const CertificatesPage: React.FC = () => {
                       </div>
                     )}
 
-                    <div className="flex gap-4">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                       <button
                         type="submit"
                         disabled={loading || !formData.name.trim() || !formData.code.trim()}
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-600 disabled:to-gray-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
                       >
                         {loading ? (
                           <>
@@ -330,24 +300,29 @@ const CertificatesPage: React.FC = () => {
                       
                       <button
                         type="button"
-                        onClick={() => setIsFormVisible(false)}
-                        className="px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition-colors"
+                        onClick={() => {
+                          setIsFormVisible(false);
+                          setError("");
+                          setSuccess("");
+                          setFormData({ name: "", code: "" });
+                        }}
+                        className="px-4 sm:px-6 py-2 sm:py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition-colors text-sm sm:text-base"
                       >
                         Cancel
                       </button>
                     </div>
                   </form>
 
-                  <div className="mt-8 p-4 bg-blue-900/20 border border-blue-600 rounded-lg">
-                    <div className="flex items-start gap-3">
-                      <FaCertificate className="text-blue-400 mt-1 flex-shrink-0" />
+                  <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-blue-900/20 border border-blue-600 rounded-lg">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <FaCertificate className="text-blue-400 mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <h4 className="font-semibold text-blue-300 mb-2">Important Notes:</h4>
-                        <ul className="text-sm text-blue-200 space-y-1">
+                        <h4 className="font-semibold text-blue-300 mb-2 text-sm sm:text-base">Important Notes:</h4>
+                        <ul className="text-xs sm:text-sm text-blue-200 space-y-1">
                           <li>• Name matching is case-insensitive</li>
                           <li>• Use the exact name you registered with</li>
-                          <li>• Your unique code was provided during the event</li>
-                          <li>• Contact support if you can't find your code</li>
+                          <li>• Your roll number was provided during the event</li>
+                          <li>• Contact support if you can't find your roll number</li>
                         </ul>
                       </div>
                     </div>
@@ -358,70 +333,30 @@ const CertificatesPage: React.FC = () => {
           </section>
         )}
 
-        {/* How It Works Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="container mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
-              How It Works
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">1</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">Enter Details</h3>
-                <p className="text-gray-300">
-                  Provide your full name and the unique code you received during the event
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">2</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">Verification</h3>
-                <p className="text-gray-300">
-                  Our system securely verifies your details against our attendee database
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-white">3</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">Download</h3>
-                <p className="text-gray-300">
-                  Get your personalized PDF certificate instantly ready for download
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Support Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-900/50 to-blue-900/50">
+        <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0F1A]">
           <div className="container mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-white px-4">
               Need Help with Certificate Generation?
             </h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
               If you attended an event and can't generate your certificate, please contact our support team
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="glass-card p-6 rounded-lg">
-                <h3 className="font-bold text-blue-300 mb-2">Soham Darekar</h3>
-                <p className="text-sm text-gray-300 mb-1">IEEE Chairperson</p>
-                <p className="text-blue-400">+91 8692811341</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
+              <div className="glass-card p-4 sm:p-6 rounded-lg">
+                <h3 className="font-bold text-blue-300 mb-2 text-sm sm:text-base">Soham Darekar</h3>
+                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE Chairperson</p>
+                <p className="text-blue-400 text-sm sm:text-base">+91 8692811341</p>
               </div>
-              <div className="glass-card p-6 rounded-lg">
-                <h3 className="font-bold text-purple-300 mb-2">Shaunik Virdi</h3>
-                <p className="text-sm text-gray-300 mb-1">IEEE Vice-Chairperson</p>
-                <p className="text-purple-400">+91 90826 98665</p>
+              <div className="glass-card p-4 sm:p-6 rounded-lg">
+                <h3 className="font-bold text-blue-400 mb-2 text-sm sm:text-base">Shaunik Virdi</h3>
+                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE Vice-Chairperson</p>
+                <p className="text-blue-500 text-sm sm:text-base">+91 90826 98665</p>
               </div>
-              <div className="glass-card p-6 rounded-lg">
-                <h3 className="font-bold text-pink-300 mb-2">Rishi Desai</h3>
-                <p className="text-sm text-gray-300 mb-1">IEEE General Secretary</p>
-                <p className="text-pink-400">+91 8169775426</p>
+              <div className="glass-card p-4 sm:p-6 rounded-lg">
+                <h3 className="font-bold text-blue-500 mb-2 text-sm sm:text-base">Rishi Desai</h3>
+                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE General Secretary</p>
+                <p className="text-blue-600 text-sm sm:text-base">+91 8169775426</p>
               </div>
             </div>
           </div>
