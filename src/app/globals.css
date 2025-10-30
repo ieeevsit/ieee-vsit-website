@@ -5,13 +5,6 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -25,7 +18,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Responsive helpers */
 .container {
   max-width: 100%;
   width: 100%;
@@ -35,179 +27,88 @@ body {
   padding-right: 1rem;
 }
 
-/* Removed .ieee-gradient-bg class as we're using the main website theme */
-
-@media (max-width: 640px) {
-  h1, .text-4xl, .md\:text-7xl { font-size: 2rem !important; }
-  h2, .text-3xl, .md\:text-4xl { font-size: 1.5rem !important; }
-  h3, .text-xl, .md\:text-2xl { font-size: 1.125rem !important; }
-  .glass-card, .domain-card {
-    padding: 1rem !important;
-  }
-  .rounded-xl, .rounded-t-3xl {
-    border-radius: 1rem !important;
-  }
-  .px-6 { padding-left: 1rem !important; padding-right: 1rem !important; }
-  .py-20 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
-  .mb-12 { margin-bottom: 2rem !important; }
-  .w-80 { width: 90vw !important; min-width: 260px !important; }
-  .h-40, .h-48 { height: 160px !important; }
-  .max-w-3xl { max-width: 95vw !important; }
-  .grid, .grid-cols-1, .md\:grid-cols-2, .lg\:grid-cols-3, .lg\:grid-cols-4, .sm\:grid-cols-2 {
-    grid-template-columns: 1fr !important;
-  }
-  .flex { flex-direction: column !important; }
-  .items-center { align-items: center !important; }
-  .text-center { text-align: center !important; }
-  .gap-8 { gap: 1.5rem !important; }
-  .space-x-8 { gap: 1rem !important; }
-  .py-7, .py-8 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
-  /* Fixed: Only apply square dimensions to icons, not decorative lines */
-  img.h-16, img.w-16, svg.h-16, svg.w-16, .icon.h-16, .icon.w-16 { height: 3rem !important; width: 3rem !important; }
-  img.h-12, img.w-12, svg.h-12, svg.w-12, .icon.h-12, .icon.w-12 { height: 2.5rem !important; width: 2.5rem !important; }
-  /* TeamSection tab buttons mobile fix */
-  #team .flex.flex-col > button {
-    width: 100% !important;
-    margin-bottom: 0.5rem !important;
-    border-radius: 9999px !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  #team .flex.flex-col > button:last-child {
-    margin-bottom: 0 !important;
-  }
-  #team .flex.flex-col {
-    gap: 0.5rem !important;
-  }
-  /* Remove horizontal margin for mobile tabs */
-  #team .flex.flex-col > button.sm\:mx-2 {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  /* Header mobile row fix */
-  header > .flex.items-center.justify-between.lg\:hidden {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-  }
-  /* Keep header title in one line for mobile */
-  header .flex.items-center.gap-2 > span.flex.items-center {
-    flex-direction: row !important;
-  }
-  @media (min-width: 640px) {
-    header .flex.items-center.gap-2 > span.flex.items-center.sm\:flex-col {
-      flex-direction: column !important;
-    }
-  }
-  /* Header mobile: disable sticky/fixed */
-  @media (max-width: 767px) {
-    header {
-      position: static !important;
-    }
-  }
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Custom animations - simplified for main theme */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Removed gradient-specific animations and classes */
-
-/* Improved responsive design for Join IEEE page */
 @media (max-width: 640px) {
-  /* Join IEEE specific mobile optimizations */
-  .text-8xl { font-size: 3rem !important; }
-  .text-6xl { font-size: 2.5rem !important; }
-  .text-5xl { font-size: 2rem !important; }
-  
-  /* Floating elements positioning for mobile */
-  .absolute.top-20.left-10 { left: 5% !important; }
-  .absolute.top-40.right-20 { right: 5% !important; }
-  .absolute.bottom-20.left-1\/3 { left: 10% !important; }
-  
-  /* Grid fixes for mobile */
-  .grid-cols-2.md\:grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
-  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 { grid-template-columns: 1fr !important; }
-  .grid-cols-1.md\:grid-cols-3 { grid-template-columns: 1fr !important; }
-  
-  /* Padding adjustments */
-  .py-20 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
-  .pt-32 { padding-top: 6rem !important; }
-  .pb-20 { padding-bottom: 3rem !important; }
-}
-
-/* Join IEEE page specific responsive fixes */
-@media (max-width: 640px) {
-  /* Hero title whitespace fix */
-  .whitespace-nowrap {
-    white-space: nowrap !important;
-    overflow: hidden !important;
+  h1, .text-4xl, .md\:text-6xl { 
+    font-size: 2.5rem !important; 
+    line-height: 1.2 !important; 
   }
   
-  /* Ensure single line title on all mobile devices */
-  h1.whitespace-nowrap {
-    font-size: clamp(1.5rem, 8vw, 2.5rem) !important;
-    line-height: 1.1 !important;
+  h2, .text-3xl, .md\:text-4xl { 
+    font-size: 1.75rem !important; 
   }
   
-  /* Grid responsive fixes */
-  .grid-cols-2.md\:grid-cols-4 { 
-    grid-template-columns: repeat(2, 1fr) !important; 
-    gap: 0.5rem !important;
+  h3, .text-xl, .md\:text-2xl { 
+    font-size: 1.25rem !important; 
   }
   
-  /* Card padding fixes */
   .glass-card {
-    padding: 1rem !important;
+    padding: 1.5rem !important;
   }
   
-  /* Remove black bar above footer */
-  section.bg-gray-900\/50:last-of-type {
-    background: transparent !important;
+  .rounded-xl, .rounded-t-3xl, .rounded-3xl {
+    border-radius: 1rem !important;
+  }
+  
+  .px-6 { 
+    padding-left: 1rem !important; 
+    padding-right: 1rem !important; 
+  }
+  
+  .py-5 { 
+    padding-top: 1rem !important; 
+    padding-bottom: 1rem !important; 
+  }
+  
+  .text-lg { 
+    font-size: 1rem !important; 
+  }
+  
+  .text-xl { 
+    font-size: 1.125rem !important; 
+  }
+  
+  .text-2xl { 
+    font-size: 1.25rem !important; 
+  }
+  
+  .grid.lg\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  input, select, textarea {
+    font-size: 16px !important;
   }
 }
 
 @media (max-width: 480px) {
-  /* Extra small devices */
-  h1.whitespace-nowrap {
-    font-size: clamp(1.25rem, 7vw, 2rem) !important;
-  }
-  
   .px-4 {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
 }
 
-.hover\:bg-pos-100:hover {
-  background-position: 100% 100%;
-}
-
-/* Improved responsive design for Join IEEE page */
-@media (max-width: 640px) {
-  /* Join IEEE specific mobile optimizations */
-  .text-8xl { font-size: 3rem !important; }
-  .text-6xl { font-size: 2.5rem !important; }
-  .text-5xl { font-size: 2rem !important; }
-  
-  /* Floating elements positioning for mobile */
-  .absolute.top-20.left-10 { left: 5% !important; }
-  .absolute.top-40.right-20 { right: 5% !important; }
-  .absolute.bottom-20.left-1\/3 { left: 10% !important; }
-  
-  /* Grid fixes for mobile */
-  .grid-cols-2.md\:grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
-  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 { grid-template-columns: 1fr !important; }
-  .grid-cols-1.md\:grid-cols-3 { grid-template-columns: 1fr !important; }
-  
-  /* Padding adjustments */
-  .py-20 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
-  .pt-32 { padding-top: 6rem !important; }
-  .pb-20 { padding-bottom: 3rem !important; }
+@media (max-width: 767px) {
+  header {
+    position: static !important;
+  }
 }
