@@ -65,42 +65,42 @@ const Footer: React.FC = () => (
         <div className="block md:hidden border-t border-blue-900/40 my-2"></div>
         {/* Social Links */}
         <div className="flex flex-col items-center md:items-start md:col-span-3">
-          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-2 text-blue-300 tracking-wide text-center md:text-left">Socials</h4>
-          <ul className="flex flex-row md:flex-col items-center justify-center gap-3 md:justify-start md:gap-4 text-gray-300 text-sm sm:text-base md:text-lg">
-            <li>
+          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-2 text-blue-300 tracking-wide text-center">Socials</h4>
+          <ul className="flex flex-col sm:flex-row md:flex-col items-center justify-center gap-2 sm:gap-3 md:justify-start md:gap-4 text-gray-300 text-sm sm:text-base md:text-lg w-full">
+            <li className="w-full sm:w-auto">
               <a href="https://instagram.com/ieee.vsit" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-3 group hover:text-pink-400 transition-all">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500/20 to-pink-400/10 group-hover:bg-pink-500/30 transition">
-                  <FaInstagram className="text-2xl group-hover:scale-110 transition-transform" />
+                className="flex items-center gap-2 sm:gap-3 group hover:text-pink-400 transition-all justify-center sm:justify-start">
+                <span className="inline-flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-tr from-pink-500/20 to-pink-400/10 group-hover:bg-pink-500/30 transition">
+                  <FaInstagram className="text-lg sm:text-2xl group-hover:scale-110 transition-transform" />
                 </span>
-                <span className="text-base sm:text-lg">ieee.vsit</span>
+                <span className="text-sm sm:text-base md:text-lg">ieee.vsit</span>
               </a>
             </li>
-            <li>
+            <li className="w-full sm:w-auto">
               <a href="https://www.linkedin.com/company/ieeevsit/" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-3 group hover:text-blue-400 transition-all">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500/20 to-blue-400/10 group-hover:bg-blue-500/30 transition">
-                  <FaLinkedin className="text-2xl group-hover:scale-110 transition-transform" />
+                className="flex items-center gap-2 sm:gap-3 group hover:text-blue-400 transition-all justify-center sm:justify-start">
+                <span className="inline-flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-tr from-blue-500/20 to-blue-400/10 group-hover:bg-blue-500/30 transition">
+                  <FaLinkedin className="text-lg sm:text-2xl group-hover:scale-110 transition-transform" />
                 </span>
-                <span className="text-base sm:text-lg">ieeevsit</span>
+                <span className="text-sm sm:text-base md:text-lg">ieeevsit</span>
               </a>
             </li>
-            <li>
+            <li className="w-full sm:w-auto">
               <a href="https://github.com/ieeevsit" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-3 group hover:text-gray-100 transition-all">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-gray-500/20 to-gray-400/10 group-hover:bg-gray-500/30 transition">
-                  <FaGithub className="text-2xl group-hover:scale-110 transition-transform" />
+                className="flex items-center gap-2 sm:gap-3 group hover:text-gray-100 transition-all justify-center sm:justify-start">
+                <span className="inline-flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-tr from-gray-500/20 to-gray-400/10 group-hover:bg-gray-500/30 transition">
+                  <FaGithub className="text-lg sm:text-2xl group-hover:scale-110 transition-transform" />
                 </span>
-                <span className="text-base sm:text-lg">ieeevsit</span>
+                <span className="text-sm sm:text-base md:text-lg">ieeevsit</span>
               </a>
             </li>
-            <li>
+            <li className="w-full sm:w-auto">
               <a href="mailto:ieee@vsit.edu.in"
-                className="flex items-center gap-3 group hover:text-yellow-300 transition-all">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400/20 to-yellow-200/10 group-hover:bg-yellow-400/30 transition">
-                  <FaRegEnvelope className="text-2xl group-hover:scale-110 transition-transform" />
+                className="flex items-center gap-2 sm:gap-3 group hover:text-yellow-300 transition-all justify-center sm:justify-start">
+                <span className="inline-flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-tr from-yellow-400/20 to-yellow-200/10 group-hover:bg-yellow-400/30 transition">
+                  <FaRegEnvelope className="text-lg sm:text-2xl group-hover:scale-110 transition-transform" />
                 </span>
-                <span className="text-base sm:text-lg break-all">ieee@vsit.edu.in</span>
+                <span className="text-sm sm:text-base md:text-lg break-words">ieee@vsit.edu.in</span>
               </a>
             </li>
           </ul>

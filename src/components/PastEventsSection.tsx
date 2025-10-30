@@ -16,10 +16,10 @@ interface YearTab {
 const PastEventsSection: React.FC = () => {
     // Add a year property to each event
     const pastEvents: PastEvent[] = [
-        { year: 2025, date: "MARCH 2025", title: "Robotics & Automation", desc: "Hands-on workshop on building and programming autonomous robots.", img: "Robotics+Workshop" },
-        { year: 2025, date: "JANUARY 2025", title: "Cyberthon '25", desc: "A 12-hour hackathon focused on ethical hacking and cybersecurity challenges.", img: "Cyberthon" },
-        { year: 2024, date: "NOVEMBER 2024", title: "Full-Stack Web Dev Series", desc: "A multi-part series covering everything from React to Node.js.", img: "Web+Dev+Series" },
-        { year: 2024, date: "SEPTEMBER 2024", title: "Tech Talk: Life at Google", desc: "An inspiring session with a Google software engineer on tech careers.", img: "Tech+Talk" },
+        { year: 2025, date: "OCTOBER 2025", title: "Gittopia", desc: "Hands-on workshop on Git and GitHub.", img: "GitHub" },
+        { year: 2025, date: "AUGUST 2025", title: "Ctrl + Play", desc: "Movie screening event.", img: "Ctrl + Play" },
+        { year: 2025, date: "MARCH 2025", title: "Treasure Hunt", desc: "AR Treasure Hunt.", img: "Treasure Hunt" },
+        { year: 2024, date: "SEPTEMBER 2024", title: "Unity Workshop", desc: "Hands-on Unity Workshop.", img: "Unity" },
     ];
 
     // Tabs for years
