@@ -87,17 +87,21 @@ export default async function EventDetailPage({ params }: Props) {
 
         {/* Event Header */}
         <div className="mb-12">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-12">
-            {/* Event Image */}
-            <div className="lg:w-1/2 mb-8 lg:mb-0">
-              <div className="relative rounded-xl overflow-hidden">
+          <div className="flex flex-col xl:flex-row xl:items-start xl:space-x-12">
+            {/* Event Image - Updated for full portrait display */}
+            <div className="xl:w-2/5 mb-8 xl:mb-0 flex justify-center">
+              <div className="relative rounded-xl overflow-hidden max-w-md w-full">
                 <Image 
-                  src={`https://placehold.co/800x600/1f2937/ffffff?text=${encodeURIComponent(event.image)}`} 
+                  src={event.image.startsWith('/') ? event.image : `https://placehold.co/800x600/1f2937/ffffff?text=${encodeURIComponent(event.image)}`}
                   alt={event.title} 
-                  className="w-full h-64 sm:h-80 lg:h-96 object-cover"
-                  width={800}
-                  height={600}
+                  className="w-full h-auto object-cover object-center"
+                  width={600}
+                  height={850}
                   priority
+                  style={{
+                    aspectRatio: 'auto',
+                    maxHeight: '70vh'
+                  }}
                 />
                 {event.featured && (
                   <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -112,8 +116,8 @@ export default async function EventDetailPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Event Info */}
-            <div className="lg:w-1/2">
+            {/* Event Info - Updated proportions */}
+            <div className="xl:w-3/5">
               <p className="text-blue-400 font-medium mb-2">{event.date}</p>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
                 {event.title}
@@ -187,11 +191,11 @@ export default async function EventDetailPage({ params }: Props) {
                 >
                   <div className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2">
                     <Image 
-                      src={`https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(relatedEvent.image)}`} 
+                      src={relatedEvent.image.startsWith('/') ? relatedEvent.image : `https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(relatedEvent.image)}`}
                       alt={relatedEvent.title} 
-                      className="w-full h-40 object-cover"
+                      className="w-full h-48 sm:h-56 object-cover object-center"
                       width={600}
-                      height={400}
+                      height={800}
                     />
                     <div className="p-4">
                       <p className="text-xs text-blue-400 mb-2">{relatedEvent.date}</p>

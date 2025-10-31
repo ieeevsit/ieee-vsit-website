@@ -65,9 +65,9 @@ const PastEventsSection: React.FC = () => {
                             >
                                 <div className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2">
                                     <img 
-                                        src={`https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(event.image)}`} 
+                                        src={event.image.startsWith('/') ? event.image : `https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(event.image)}`}
                                         alt={event.title} 
-                                        className="w-full h-48 object-cover"
+                                        className="w-full h-64 sm:h-72 object-cover object-center"
                                     />
                                     <div className="p-4">
                                         <p className="text-xs text-blue-400 mb-1">{event.date}</p>
@@ -104,9 +104,9 @@ const PastEventsSection: React.FC = () => {
                             >
                                 <div className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 h-full">
                                     <img 
-                                        src={`https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(event.image)}`} 
+                                        src={event.image.startsWith('/') ? event.image : `https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(event.image)}`}
                                         alt={event.title} 
-                                        className="w-full h-40 object-cover"
+                                        className="w-full h-48 sm:h-56 object-cover object-center"
                                     />
                                     <div className="p-4 flex flex-col h-full">
                                         <p className="text-xs text-blue-400 mb-1">{event.date}</p>

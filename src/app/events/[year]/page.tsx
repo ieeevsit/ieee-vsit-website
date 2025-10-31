@@ -92,9 +92,9 @@ export default async function YearlyEventsPage({ params }: Props) {
                   {/* Event Image */}
                   <div className="relative overflow-hidden">
                     <img 
-                      src={`https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(event.image)}`} 
+                      src={event.image.startsWith('/') ? event.image : `https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(event.image)}`}
                       alt={event.title} 
-                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-64 sm:h-72 lg:h-80 object-cover object-center transition-transform duration-300 group-hover:scale-105"
                     />
                     {event.featured && (
                       <div className="absolute top-3 right-3 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">

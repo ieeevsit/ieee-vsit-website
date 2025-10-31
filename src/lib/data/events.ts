@@ -17,62 +17,75 @@ export const eventsData: EventData[] = [
     id: "gittopia-2025",
     slug: "gittopia",
     year: 2025,
-    date: "OCTOBER 2025",
+    date: "SEPTEMBER 2025",
     title: "Gittopia",
     description: "An immersive hands-on workshop designed to take participants from Git basics to advanced GitHub workflows. Participants will learn version control, collaboration techniques, and industry best practices.",
     shortDescription: "Hands-on workshop on Git and GitHub.",
-    image: "gittopia",
+    image: "/posters/gittopia.jpg", // Changed to actual image path
     category: "workshop",
     featured: true
   },
-  {
-    id: "ctrl-play-2025",
-    slug: "ctrl-play",
-    year: 2025,
-    date: "AUGUST 2025",
-    title: "Ctrl + Play",
-    description: "A unique movie screening event that combines entertainment with technology insights. Features tech-themed movies followed by discussions on their real-world applications.",
-    shortDescription: "Movie screening event.",
-    image: "ctrl-play",
-    category: "entertainment",
-    featured: true
-  },
-  {
-    id: "wie-day-celebration",
-    slug: "workshop",
-    year: 2025,
-    date: "JULY 2025",
-    title: "WIE Day Celebrations",
-    description: "3 Day Event Conducted.",
-    shortDescription: "Industry expert talks.",
-    image: "wie day",
-    category: "talk",
-    featured: true
-  },
-  {
-    id: "unity-workshop-2024",
-    slug: "unity-workshop",
-    year: 2024,
-    date: "SEPTEMBER 2024",
-    title: "Unity Workshop",
-    description: "Comprehensive game development workshop using Unity engine. Participants learned 2D and 3D game development, scripting, and publishing workflows.",
-    shortDescription: "Hands-on Unity Workshop.",
-    image: "unity",
-    category: "workshop",
-    featured: true
-  },
-  {
-    id: "symposium-2024",
-    slug: "symposium",
-    year: 2024,
-    date: "AUGUST 2024",
-    title: "Symposium",
-    description: "A comprehensive summit on Artificial Intelligence featuring workshops, talks, and hands-on sessions on machine learning and deep learning.",
-    shortDescription: "AI and ML focused summit.",
-    image: "symposium",
-    category: "summit",
-    featured: true
-  },
+
+{
+  id: "ieee-day-2025",
+  slug: "ieee-day",
+  year: 2025,
+  date: "OCTOBER 2025",
+  title: "IEEE Day 2025 Celebration",
+  description: "A celebration of innovation and collaboration, highlighting IEEE’s global mission, membership benefits, and the inspiring journeys of student leaders. The event brought together over 60 participants to connect, learn, and grow within the IEEE community.",
+  shortDescription: "Celebrating IEEE’s mission and community.",
+  image: "/posters/ieee-day-2025.jpg",
+  category: "community",
+  featured: true
+},
+{
+  id: "ieee-membership-drive-2025",
+  slug: "ieee-membership-drive",
+  year: 2025,
+  date: "SEPTEMBER 2025",
+  title: "IEEE Membership Drive 2025-26",
+  description:
+    "A week-long initiative introducing students to the benefits of joining IEEE and the Women in Engineering (WIE) group. Featured live demonstrations, Q&A sessions, and new member registrations to encourage active participation.",
+  shortDescription: "Week-long campaign promoting IEEE and WIE memberships.",
+  image: "/posters/ieee-membership-drive-2025.jpg",
+  category: "informative",
+},
+{
+  id: "nextedge-2025",
+  slug: "nextedge",
+  year: 2025,
+  date: "AUGUST 2025",
+  title: "NextEdge: National Level Conclave",
+  description: "A national-level conclave bridging academia and industry, focusing on cutting-edge advancements in AI for Cybersecurity and Data Analytics. Featured keynote, expert panel, and student project presentations with over 170 participants nationwide.",
+  shortDescription: "National-level conclave on AI, Cybersecurity, and Data Analytics.",
+  image: "/posters/nextedge-2025.png",
+  category: "conference",
+  featured: true
+},
+{
+  id: "ctrl-play-2025",
+  slug: "ctrl-play",
+  year: 2025,
+  date: "SEPTEMBER 2025",
+  title: "CTRL + PLAY: IEEE-VSIT Movie Screening",
+  description: "An engaging movie screening event featuring the sci-fi adventure film 'Crater,' organized by IEEE VSIT and WIE. The event explored themes of friendship, exploration, and curiosity, aligning with IEEE’s mission of fostering innovation and collaboration.",
+  shortDescription: "Sci-fi movie screening and discussion event.",
+  image: "/posters/ctrl-play.png", // Update this when the CTRL + PLAY poster is ready
+  category: "entertainment",
+},
+{
+  id: "wie-day-2025",
+  slug: "wie-day",
+  year: 2025,
+  date: "JULY 2025",
+  title: "WIE Day 2025: Roots and Reach | Voice Her | NextWave",
+  description: "A three-day celebration organized by the WIE-VSIT Student Branch, featuring mentorship sessions, inspiring talks by industry professionals, and hands-on learning experiences. Focused on empowering women in technology through connection, leadership, and skill development.",
+  shortDescription: "Three-day celebration empowering women in technology through mentorship, leadership talks, and professional workshops.",
+  image: "WIE Day Celebration", // Update this with the official WIE Day poster
+  category: "empowerment",
+},
+
+
 ];
 
 // Helper functions for easy data access
