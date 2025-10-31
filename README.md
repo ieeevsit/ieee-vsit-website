@@ -28,19 +28,4 @@ This is the official website for the IEEE-VSIT student chapter, built with Next.
 - `src/app/certificates/` — Certificate generation page
 - `src/app/generate-certificate/` — API route for certificate generation
 
-## Certificate Generation
-The certificate generation feature allows attendees to download their participation certificates by entering their name and roll number. The attendee data is stored securely in environment variables and not exposed in the public repository.
-
-### Security Notes
-- Attendee data is stored in `.env.local` file which is ignored by git
-- Never commit sensitive attendee information to the repository
-- The `ATTENDEES_DATA` environment variable should contain a JSON string with attendee objects
-
-## Customization
-- Replace placeholder images and text with your own content.
-- Update the AI Query section with your Gemini API key if needed.
-- Add attendee data to the `ATTENDEES_DATA` environment variable for certificate generation.
-
 ---
-
-Reimagined with Next.js & Gemini.
