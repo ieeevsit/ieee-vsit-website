@@ -44,6 +44,9 @@ const Footer: React.FC = () => (
                 Contact Us
               </a>
             </li>
+            <li>
+              <a href="/sitemap.xml" className="hover:text-blue-400 hover:underline transition-all duration-200 text-lg">Sitemap</a>
+            </li>
           </ul>
         </div>
         {/* Divider for mobile */}

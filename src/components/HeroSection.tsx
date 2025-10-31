@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => (
     </div>
     <div className="relative z-10 px-2 sm:px-4">
       <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold text-white mb-4 leading-tight">
-        Innovating Tomorrow, <br /> <span className="text-[#3b82f6]">Empowering Today.</span>
+        IEEE VSIT: <span className="text-[#3b82f6]">Innovating Tomorrow.</span>
       </h1>
       <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
         The official student chapter of IEEE at VSIT, fostering technical innovation, leadership, and a vibrant community of engineers.

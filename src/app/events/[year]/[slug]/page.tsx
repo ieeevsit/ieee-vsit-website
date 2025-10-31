@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getEventBySlugAndYear, getEventsByYear, getAvailableYears } from '@/lib/data/events';
 import { getEventMarkdownContent } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
@@ -90,10 +91,13 @@ export default async function EventDetailPage({ params }: Props) {
             {/* Event Image */}
             <div className="lg:w-1/2 mb-8 lg:mb-0">
               <div className="relative rounded-xl overflow-hidden">
-                <img 
+                <Image 
                   src={`https://placehold.co/800x600/1f2937/ffffff?text=${encodeURIComponent(event.image)}`} 
                   alt={event.title} 
                   className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                  width={800}
+                  height={600}
+                  priority
                 />
                 {event.featured && (
                   <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -182,10 +186,12 @@ export default async function EventDetailPage({ params }: Props) {
                   className="block group"
                 >
                   <div className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2">
-                    <img 
+                    <Image 
                       src={`https://placehold.co/600x400/1f2937/ffffff?text=${encodeURIComponent(relatedEvent.image)}`} 
                       alt={relatedEvent.title} 
                       className="w-full h-40 object-cover"
+                      width={600}
+                      height={400}
                     />
                     <div className="p-4">
                       <p className="text-xs text-blue-400 mb-2">{relatedEvent.date}</p>
