@@ -126,7 +126,7 @@ export async function POST(req) {
     page.drawText(subheading, { x: centerX(subheading, lato, 40), y: 810, size: 40, font: lato, color: rgb(0.79, 0.47, 0.09) });
     const nameFontSize = 190;
     page.drawText(attendee.name, { x: centerX(attendee.name, allura, nameFontSize), y: 650, size: nameFontSize, font: allura, color: rgb(0.23, 0.13, 0.33) });
-    const description = "For participation in the Gittopia workshop on Git & GitHub, held on September 22nd, 2025, as part of the IEEE Day 2025 celebrations. Organized by the IEEE-VSIT Student Branch in collaboration with the IEEE WIE VSIT Affinity Group.";
+    const description = "For participation in the NewTech Horizons session on 'Sneak Peek Into the IT Industry: How Projects Are Built, Tested & Enhanced with AI', conducted by Ms. Ketaki Pendse (IBM) and held on 27th November 2025. Organized by the IEEE-VSIT Student Branch"
     const maxWidth = 1520;
     const lineHeight = 46;
     let descLines = [];
