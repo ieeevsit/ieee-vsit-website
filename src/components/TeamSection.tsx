@@ -46,7 +46,6 @@ const heads: TeamMember[] = [
   { name: 'Alka Saw', role: 'Digital Head (Photography)', img: '/img/Alka_Saw.jpeg' },
   { name: 'Saniya Telgu', role: 'Digital Head (Editing)', img: '/img/Saniya_Telgu.jpeg' },
   { name: 'Siddharth Pitale', role: 'Membership Head', img: '/img/Siddharth_Pitale.jpg' },
-  { name: 'Toshal Rane', role: 'Content Head', img: '/img/Toshal_Rane.jpg' },
   { name: 'Gayatri Chavan', role: 'Documentation Head', img: '/img/Gayatri_Chavan.jpeg' },
 ];
 
@@ -54,7 +53,6 @@ const heads: TeamMember[] = [
 const members: TeamMember[] = [
   { name: 'Nihar Kulkarni', role: 'Design Member', img: '/img/Nihar_Kulkarni.jpg' },
   { name: 'Vedant Raut', role: 'Digital Member', img: '/img/Vedant_Raut.jpg' },
-  { name: 'Tanish Mehere', role: 'Digital Member', img: '/img/Tanish_Mehere.jpg' },
   { name: 'Pratham Dangwal', role: 'Technical Member', img: '/img/Pratham_Dangwal.jpg' },
   { name: 'Harini Nadar', role: 'Documentation Member', img: '/img/Harini_Nadar.jpeg' },
 ];
