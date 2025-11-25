@@ -12,19 +12,18 @@ interface LumaLinks {
 }
 
 const lumaLinks: LumaLinks = {
-  "AI & Machine Learning Bootcamp": "https://lu.ma/ai-ml-bootcamp",
-  "The Future of Quantum Computing": "https://lu.ma/quantum-future"
+  "NewTech Horizons": "https://luma.com/7ymlch3s",
 };
 
 // Set to empty array when no events are scheduled
 const events: Event[] = [
   // Uncomment and modify when you have an event:
-  // {
-  //   title: "AI & Machine Learning Bootcamp",
-  //   type: "Workshop",
-  //   desc: "A deep dive into neural networks and practical applications with Python and TensorFlow.",
-  //   img: "Workshop"
-  // }
+  {
+    title: "NewTech Horizons",
+    type: "Seminar",
+    desc: "Sneak Peek Into the IT Industry: How Projects Are Built, Tested & Enhanced with AI",
+    img: "/posters/new-tech-horizons.png"
+  }
 ];
 
 const EventsSection: React.FC = () => (
@@ -93,9 +92,9 @@ const EventsSection: React.FC = () => (
                 className="glass-card rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20"
               >
                 <img
-                  src={`https://placehold.co/600x400/0a0a0a/3b82f6?text=${event.img}`}
-                  alt="Event"
-                  className="w-full h-48 sm:h-56 object-cover"
+                  src={event.img}
+                  alt={event.title}
+                  className="w-full aspect-[3/2] object-contain bg-gray-900"
                 />
                 <div className="p-6 sm:p-8">
                   <span className="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs sm:text-sm font-semibold rounded-full mb-3">
