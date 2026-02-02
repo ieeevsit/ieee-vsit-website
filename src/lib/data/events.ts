@@ -13,6 +13,31 @@ export interface EventData {
 
 // Events data - easy to add new events here
 export const eventsData: EventData[] = [
+{
+  id: "new-tech-horizons",
+  slug: "new-tech-horizons",
+  year: 2025,
+  date: "NOVEMBER 2025",
+  title: "New Tech Horizons",
+  description: "",
+  shortDescription: "Sneak Peek Into the IT Industry: How Projects Are Built, Tested & Enhanced with AI",
+  image: "/posters/new-tech-horizons.png",
+  category: "seminar",
+  featured: false
+},
+{
+  id: "ieee-day-2025",
+  slug: "ieee-day-2025",
+  year: 2025,
+  date: "OCTOBER 2025",
+  title: "IEEE Day 2025 Celebration",
+  description: "A celebration of innovation and collaboration, highlighting IEEE’s global mission, membership benefits, and the inspiring journeys of student leaders. The event brought together over 60 participants to connect, learn, and grow within the IEEE community.",
+  shortDescription: "Celebrating IEEE’s mission and community.",
+  image: "/posters/ieee-day-2025.jpg",
+  category: "community",
+  featured: true
+},
+
   {
     id: "gittopia-2025",
     slug: "gittopia",
@@ -26,18 +51,6 @@ export const eventsData: EventData[] = [
     featured: true
   },
 
-{
-  id: "ieee-day-2025",
-  slug: "ieee-day",
-  year: 2025,
-  date: "OCTOBER 2025",
-  title: "IEEE Day 2025 Celebration",
-  description: "A celebration of innovation and collaboration, highlighting IEEE’s global mission, membership benefits, and the inspiring journeys of student leaders. The event brought together over 60 participants to connect, learn, and grow within the IEEE community.",
-  shortDescription: "Celebrating IEEE’s mission and community.",
-  image: "/posters/ieee-day-2025.jpg",
-  category: "community",
-  featured: true
-},
 {
   id: "ieee-membership-drive-2025",
   slug: "ieee-membership-drive",
