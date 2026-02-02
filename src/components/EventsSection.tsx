@@ -18,12 +18,12 @@ const lumaLinks: LumaLinks = {
 // Set to empty array when no events are scheduled
 const events: Event[] = [
   // Uncomment and modify when you have an event:
-  {
-    title: "NewTech Horizons",
-    type: "Seminar",
-    desc: "Sneak Peek Into the IT Industry: How Projects Are Built, Tested & Enhanced with AI",
-    img: "/posters/new-tech-horizons.png"
-  }
+  // {
+  //   title: "",
+  //   type: "",
+  //   desc: "",
+  //   img: ""
+  // }
 ];
 
 const EventsSection: React.FC = () => (
