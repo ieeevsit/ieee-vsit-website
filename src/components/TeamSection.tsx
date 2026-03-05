@@ -18,18 +18,18 @@ interface TeamSectionProps {
 
 // IEEE Core Committee data
 const ieeeCoreCommittee: TeamMember[] = [
-  { name: 'Soham Darekar', role: 'Chairperson', img: '/img/Soham_Darekar.JPG' },
-  { name: 'Shaunik Virdi', role: 'Vice-Chairperson', img: '/img/Shaunik_Virdi.jpg' },
-  { name: 'Rishi Desai', role: 'General Secretary', img: '/img/Rishi_Desai.jpg' },
-  { name: 'Prarthana Shetty', role: 'WIE Chairperson', img: '/img/Prarthana_Shetty.jpg' },
-  { name: 'Shreya Badgujar', role: 'WIE Vice-Chairperson', img: '/img/Shreya_Badgujar.jpg' },
-  { name: 'Aaditi Bhagwat', role: 'WIE General Secretary', img: '/img/Aaditi_Bhagwat.jpeg' },
+  { name: 'Kaivalya Vairat', role: 'Chairperson', img: '/img/Kaivalya_Vairat.png' },
+  { name: 'Nakul Mathane', role: 'Vice-Chairperson', img: '/img/Nakul_Mathane.png' },
+  { name: 'Atharva Hajare', role: 'General Secretary', img: '/img/Atharva_Hajare.png' },
+  { name: 'Amulya Gogate', role: 'WIE Chairperson', img: '/img/Amulya_Gogate.png' },
+  { name: 'Mrunali Pawar', role: 'WIE Vice-Chairperson', img: '/img/Mrunali_Pawar.png' },
+  { name: 'Pranjal Pawar', role: 'WIE General Secretary', img: '/img/Pranjal_Pawar.png' },
 ];
 
 const wieCoreCommittee: TeamMember[] = [
-  { name: 'Prarthana Shetty', role: 'Chairperson', img: '/img/Prarthana_Shetty.jpg' },
-  { name: 'Shreya Badgujar', role: 'Vice-Chairperson', img: '/img/Shreya_Badgujar.jpg' },
-  { name: 'Aaditi Bhagwat', role: 'General Secretary', img: '/img/Aaditi_Bhagwat.jpeg' },
+  { name: 'Amulya Gogate', role: 'Chairperson', img: '/img/Amulya_Gogate.png' },
+  { name: 'Mrunali Pawar', role: 'Vice-Chairperson', img: '/img/Mrunali_Pawar.png' },
+  { name: 'Pranjal Pawar', role: 'General Secretary', img: '/img/Pranjal_Pawar.png' },
 ];
 
 // Faculty data
