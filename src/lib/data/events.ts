@@ -14,6 +14,18 @@ export interface EventData {
 // Events data - easy to add new events here
 export const eventsData: EventData[] = [
 {
+  id: "synapse-2026",
+  slug: "synapse-2026",
+  year: 2026,
+  date: "FEBRUARY 2026",
+  title: "Synapse",
+  description: "",
+  shortDescription: "A lively quiz-based workshop that promoted learning, competition, and marked the handover to the new committee.",
+  image: "/posters/synapse-2026-poster.png",
+  category: "workshop",
+  featured: false
+},
+{
   id: "new-tech-horizons",
   slug: "new-tech-horizons",
   year: 2025,
