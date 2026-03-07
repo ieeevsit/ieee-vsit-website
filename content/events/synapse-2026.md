@@ -3,7 +3,7 @@
 **Organized by:** IEEE-WIE Student Branch, Vidyalankar School of Information Technology (VSIT)  
 **Date:** February 7, 2026  
 **Time:** 10:00 AM – 12:00 PM  
-**Venue:** X-Block, X-103 Lab  
+**Venue:** VSIT X-103 Lab  
 **Participants:** 30+ students  
 
 ---
