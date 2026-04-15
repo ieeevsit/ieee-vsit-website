@@ -70,7 +70,7 @@ export async function POST(req) {
     if (!attendee) {
       console.log('Attendee not found or code mismatch:', { name, code });
       
-      const contactInfo = "\n\nIf you have attended the event and still can't generate your certificate, please contact:\n• Soham Darekar (IEEE Chairperson): +91 8692811341\n• Shaunik Virdi (IEEE Vice-Chairperson): +91 90826 98665\n• Rishi Desai (IEEE General Secretary): +91 8169775426";
+      const contactInfo = "\n\nIf you have attended the event and still can't generate your certificate, please contact:\n• Kaivalya Vairat (IEEE Chairperson): +91 8169361749\n• Nakul Mathane (IEEE Vice-Chairperson): +91 8657362824\n• Atharva Hajare (IEEE General Secretary): +91 8108930393";
       
       if (!nameMatch && !codeExists) {
         return NextResponse.json({ 

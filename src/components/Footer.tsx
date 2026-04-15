@@ -61,7 +61,7 @@ const Footer: React.FC = () => (
             Mumbai, Maharashtra 400037
           </address>
           <p className="text-gray-300 text-sm sm:text-base md:text-lg mt-2 text-center md:text-left">
-            <span className="font-semibold text-blue-200">+91 8692811341</span> <span className="text-gray-400">– Soham Darekar (Chairperson)</span>
+            <span className="font-semibold text-blue-200">+91 8169361749</span> <span className="text-gray-400">– Kaivalya Vairat (Chairperson)</span>
           </p>
         </div>
         {/* Divider for mobile */}

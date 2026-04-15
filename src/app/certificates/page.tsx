@@ -369,19 +369,19 @@ const CertificatesPage: React.FC = () => {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 max-w-4xl mx-auto">
               <div className="glass-card p-3 sm:p-4 lg:p-6 rounded-lg">
-                <h3 className="font-bold text-blue-300 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Soham Darekar</h3>
+                <h3 className="font-bold text-blue-300 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Kaivalya Vairat</h3>
                 <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE Chairperson</p>
-                <p className="text-blue-400 text-xs sm:text-sm lg:text-base break-all">+91 8692811341</p>
+                <p className="text-blue-400 text-xs sm:text-sm lg:text-base break-all">+91 8169361749</p>
               </div>
               <div className="glass-card p-3 sm:p-4 lg:p-6 rounded-lg">
-                <h3 className="font-bold text-blue-400 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Shaunik Virdi</h3>
+                <h3 className="font-bold text-blue-400 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Nakul Mathane</h3>
                 <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE Vice-Chairperson</p>
-                <p className="text-blue-500 text-xs sm:text-sm lg:text-base break-all">+91 9082698665</p>
+                <p className="text-blue-500 text-xs sm:text-sm lg:text-base break-all">+91 8657362824</p>
               </div>
               <div className="glass-card p-3 sm:p-4 lg:p-6 rounded-lg sm:col-span-2 lg:col-span-1">
-                <h3 className="font-bold text-blue-500 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Rishi Desai</h3>
+                <h3 className="font-bold text-blue-500 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Atharva Hajare</h3>
                 <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE General Secretary</p>
-                <p className="text-blue-600 text-xs sm:text-sm lg:text-base break-all">+91 8169775426</p>
+                <p className="text-blue-600 text-xs sm:text-sm lg:text-base break-all">+91 8108930393</p>
               </div>
             </div>
           </div>
