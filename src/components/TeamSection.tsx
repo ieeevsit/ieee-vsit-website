@@ -41,12 +41,12 @@ const faculty: TeamMember[] = [
 
 // Heads data
 const heads: TeamMember[] = [
-  { name: 'Atharva Gajakosh', role: 'Technical Head', img: '/img/Atharva_Gajakosh.jpg' },
-  { name: 'Isha Salgarkar', role: 'Design Head', img: '/img/Isha_Salgarkar.jpg' },
-  { name: 'Alka Saw', role: 'Digital Head (Photography)', img: '/img/Alka_Saw.jpeg' },
-  { name: 'Saniya Telgu', role: 'Digital Head (Editing)', img: '/img/Saniya_Telgu.jpeg' },
-  { name: 'Siddharth Pitale', role: 'Membership Head', img: '/img/Siddharth_Pitale.jpg' },
-  { name: 'Gayatri Chavan', role: 'Documentation Head', img: '/img/Gayatri_Chavan.jpeg' },
+  { name: 'Arnav Behere', role: 'Technical Head', img: '/img/Arnav_Behere.png' },
+  { name: 'Vidula Kshirsagar', role: 'Website Head', img: '/img/Vidula_Kshirsagar.png' },
+  { name: 'Shubhan Salunkhe', role: 'Digital Head', img: '/img/Shubhan_Salunkhe.png' },
+  { name: 'Aryan Palande', role: 'Design Head', img: '/img/Aryan_Palande.png' },
+  { name: 'Nishtha Rajput', role: 'Content Head', img: '/img/Nishtha_Rajput.png' },
+  { name: 'Shubhra Rasam', role: 'Documentation Head', img: '/img/Shubhra_Rasam.png' },
 ];
 
 // Members data
@@ -61,7 +61,7 @@ const members: TeamMember[] = [
 const tabs: Tab[] = [
   { label: "Core Committee", key: "core" },
   { label: "Heads", key: "heads" },
-  { label: "Members", key: "members" },
+  // { label: "Members", key: "members" },
 ];
 
 // Helper to get team data by tab
