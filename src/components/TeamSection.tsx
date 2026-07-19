@@ -45,7 +45,6 @@ const heads: TeamMember[] = [
   { name: 'Vidula Kshirsagar', role: 'Website Head', img: '/img/Vidula_Kshirsagar.png' },
   { name: 'Shubhan Salunkhe', role: 'Digital Head', img: '/img/Shubhan_Salunkhe.png' },
   { name: 'Aryan Palande', role: 'Design Head', img: '/img/Aryan_Palande.png' },
-  { name: 'Nishtha Rajput', role: 'Content Head', img: '/img/Nishtha_Rajput.png' },
   { name: 'Shubhra Rasam', role: 'Documentation Head', img: '/img/Shubhra_Rasam.png' },
 ];
 
@@ -62,6 +61,7 @@ const tabs: Tab[] = [
   { label: "Core Committee", key: "core" },
   { label: "Heads", key: "heads" },
   // { label: "Members", key: "members" },
+  // to hide members section for now
 ];
 
 // Helper to get team data by tab
