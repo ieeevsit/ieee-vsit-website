@@ -13,6 +13,18 @@ export interface EventData {
 
 // Events data - easy to add new events here
 export const eventsData: EventData[] = [
+  {
+  id: "cineverse-2026",
+  slug: "cineverse-2026",
+  year: 2026,
+  date: "JULY 2026",
+  title: "Cineverse 2026",
+  description: "",
+  shortDescription:"CINEVERSE was an IEEE-WIE movie screening event where over 200 students enjoyed the screening of Project Hail Mary.",
+  image: "/posters/cineverse-2026-poster.jpeg",
+  category: "movie screening",
+  featured: false
+},
 {
   id: "stree-2026",
   slug: "stree-2026",
