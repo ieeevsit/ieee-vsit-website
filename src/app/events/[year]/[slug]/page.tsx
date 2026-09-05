@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getEventBySlugAndYear, getEventsByYear, getAvailableYears } from '@/lib/data/events';
+import { getEventBySlugAndYear, getEventsByYear, getAvailableYears, isUpcomingEvent } from '@/lib/data/events';
 import { getEventMarkdownContent } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import PageLayout from '@/components/PageLayout';
+import LumaRegisterButton from '@/components/LumaRegisterButton';
 
 interface Props {
   params: Promise<{
@@ -108,6 +109,11 @@ export default async function EventDetailPage({ params }: Props) {
                     Featured Event
                   </div>
                 )}
+                {isUpcomingEvent(event) && (
+                  <div className="absolute bottom-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    Upcoming
+                  </div>
+                )}
                 {event.category && (
                   <div className="absolute top-4 left-4 bg-gray-900/80 text-white px-3 py-1 rounded-full text-sm capitalize">
                     {event.category}
@@ -127,7 +133,19 @@ export default async function EventDetailPage({ params }: Props) {
               </p>
 
               {/* Event Meta */}
-              <div className="space-y-4">
+              <div className="space-y-4 mb-8">
+                {event.time && (
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-gray-300">Time: {event.time}</span>
+                  </div>
+                )}
+                {event.venue && (
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-gray-300">Venue: {event.venue}</span>
+                  </div>
+                )}
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                   <span className="text-gray-300">Year: {event.year}</span>
@@ -141,6 +159,12 @@ export default async function EventDetailPage({ params }: Props) {
                   <span className="text-gray-300">Organized by IEEE VSIT</span>
                 </div>
               </div>
+
+              {event.registration?.enabled && (
+                <div className="max-w-xs">
+                  <LumaRegisterButton registration={event.registration} />
+                </div>
+              )}
             </div>
           </div>
         </div>

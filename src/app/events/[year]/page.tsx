@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getEventsByYear, getAvailableYears } from '@/lib/data/events';
+import { getEventsByYear, getAvailableYears, isUpcomingEvent } from '@/lib/data/events';
 import { notFound } from 'next/navigation';
 import PageLayout from '@/components/PageLayout';
 
@@ -99,6 +99,11 @@ export default async function YearlyEventsPage({ params }: Props) {
                     {event.featured && (
                       <div className="absolute top-3 right-3 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                         Featured
+                      </div>
+                    )}
+                    {isUpcomingEvent(event) && (
+                      <div className="absolute bottom-3 left-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                        Upcoming
                       </div>
                     )}
                     {event.category && (

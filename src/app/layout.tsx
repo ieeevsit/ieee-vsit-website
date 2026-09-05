@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Metadata, Viewport } from "next";
 
@@ -52,6 +53,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="dns-prefetch" href="https://lu.ma" />
+        <link rel="dns-prefetch" href="https://embed.lu.ma" />
+        <link rel="preconnect" href="https://lu.ma" />
+        <link rel="preconnect" href="https://embed.lu.ma" crossOrigin="" />
+        <Script
+          id="luma-checkout"
+          src="https://embed.lu.ma/checkout-button.js"
+          strategy="beforeInteractive"
+        />
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{

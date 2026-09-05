@@ -31,6 +31,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const eventPages: MetadataRoute.Sitemap = []
 
   years.forEach(year => {
+    // Yearly archive page, e.g. /events/2026
+    eventPages.push({
+      url: `${baseUrl}events/${year}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    })
+
     const events = getEventsByYear(year)
     events.forEach(event => {
       eventPages.push({

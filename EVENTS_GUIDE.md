@@ -1,205 +1,277 @@
-# Events Management System
+# Events Management Guide
 
-This guide explains how to easily add and manage events in the IEEE VSIT website.
+This guide explains how to add, update, and register events on the IEEE VSIT
+website. **You do not need to know React, Next.js, or any programming to do
+this.** You only ever need to edit one data file (plain text, in the format
+shown below), drop in a poster image, and optionally paste in a Luma link.
 
-## Quick Start: Adding a New Event
+---
 
-### 1. Add Event Data
-Edit `/src/lib/data/events.ts` and add your event to the `eventsData` array:
+## How the events system works (read this once)
 
-```typescript
+- All events live in **one file**: `src/lib/data/events.ts`. Each event is a
+  block of fields (title, date, poster, description, etc.).
+- Every event's poster image lives in **`public/posters/`**.
+- Every event's long write-up (used on its own page) lives in
+  **`content/events/<event-id>.md`** and is optional — if you skip it, the
+  page shows a friendly "content coming soon" message instead of breaking.
+- **Upcoming vs. Past is automatic.** If you give an event a real date in the
+  `eventDate` field, the site checks that date against today:
+  - Date is today or in the future → shows under **Upcoming Events** on the
+    homepage, with a "Register Now" button if registration is enabled.
+  - Date is in the past (or you leave `eventDate` out) → shows under
+    **Past Events** / **Event Rewind**.
+
+  You never have to move an event between sections by hand.
+- **Registration is optional and powered by Luma.** IEEE-VSIT never stores
+  attendee data, tickets, or payments — Luma handles all of that. The website
+  only shows the "Register Now" button and opens Luma's registration
+  experience on top of the page (no page navigation).
+- If something in an event is missing or wrong (like a missing title or a
+  broken registration link), the website automatically skips that event and
+  logs a clear error instead of breaking the whole site. See
+  [Troubleshooting](#troubleshooting) below.
+
+---
+
+## Adding an event — step by step
+
+### 1. Add the poster image
+
+Drop the poster file into:
+
+```
+public/posters/your-event-slug.jpg
+```
+
+Use a short, URL-safe file name (lowercase, hyphens, no spaces), e.g.
+`ai-workshop-2026.jpg`. JPG or PNG both work.
+
+### 2. Open the event data file
+
+Open `src/lib/data/events.ts` in the repository. Scroll to the
+`rawEventsData` list — it's a list of `{ ... }` blocks, one per event.
+
+### 3. Copy the template and fill it in
+
+At the bottom of the list there's a commented-out template you can copy.
+Paste a new block like this **above** the closing `];` of the list:
+
+```ts
 {
-  id: "event-name-2025",
-  slug: "event-name",
-  year: 2025,
-  date: "MONTH YEAR",
-  title: "Event Title",
-  description: "Detailed description of the event for the individual event page",
-  shortDescription: "Brief description for cards and listings",
-  image: "event-image-name",
-  category: "workshop", // workshop, competition, talk, etc.
-  featured: true // Optional: shows "Featured" badge
-}
+  id: "ai-workshop-2026",
+  slug: "ai-workshop-2026",
+  year: 2026,
+  date: "20 SEPTEMBER 2026",       // shown on the site (any readable format)
+  eventDate: "2026-09-20",         // YYYY-MM-DD — this drives Upcoming/Past
+  time: "10:00 AM - 1:00 PM",      // optional
+  venue: "VSIT Seminar Hall",      // optional
+  title: "AI Workshop",
+  description: "A hands-on workshop introducing students to practical AI tools and workflows.",
+  shortDescription: "Hands-on workshop on practical AI tools.",
+  image: "/posters/ai-workshop-2026.jpg",
+  category: "workshop",
+  featured: false,
+  registration: {
+    enabled: true,
+    platform: "luma",
+    url: "https://lu.ma/your-event-slug",
+    eventId: "evt-xxxxxxxxxxxxxxxx",
+  },
+},
 ```
 
-### 2. Create Markdown Content
-Create a new file `/content/events/event-name-2025.md` with your event content:
+**Required fields:** `id`, `slug`, `year`, `date`, `title`, `image`.
+Everything else is optional.
 
-```markdown
-# Event Title
+- `id` and `slug` — use the same lowercase-hyphenated text (e.g.
+  `ai-workshop-2026`). `id` must be unique across all events; `slug` must be
+  unique within the same `year`.
+- `eventDate` — only add this for events that have a specific day. Leave it
+  out for events you're only adding after the fact (e.g. old events); they'll
+  correctly show as Past.
 
-## About the Event
-Write about what the event was about...
+### 4. Set up registration on Luma (if this event needs it)
 
-## What We Covered
-- Point 1
-- Point 2
+If the event does **not** need registration, either remove the whole
+`registration: { ... }` block, or set:
 
-## Event Highlights
-- Statistic 1
-- Statistic 2
-
-## Feedback
-> "Quote from participant" - Participant Name
+```ts
+registration: { enabled: false },
 ```
 
-### 3. That's It!
-The event will automatically appear in:
-- Past Events section (showing 2 on mobile, 4 on desktop)
-- `/events-YEAR` page (showing all events for that year)
-- `/events-YEAR/event-slug` page (individual event page)
+If it **does** need registration:
 
-## Directory Structure
+1. Create the event on [lu.ma](https://lu.ma) as usual (it's free).
+2. Copy the **event page URL** shown in your browser, e.g.
+   `https://lu.ma/abc123xyz`. Paste it into `registration.url`.
+3. For the "Register Now" button to open registration right on the
+   IEEE-VSIT website (instead of sending people to lu.ma), go to your event's
+   **Manage** page on Luma → **More** tab → **"Embed Registration Button"**.
+   Copy the **event ID** shown there (it looks like `evt-AbCdEfGh...`) and
+   paste it into `registration.eventId`.
+   - If you skip `eventId`, the button still works — it just sends visitors
+     straight to your Luma page instead of opening the embedded checkout.
+4. Optional: add `closesAt: "2026-09-19T23:59:00"` (ISO date/time) if you
+   want the button to automatically switch to "Registration Closed" after a
+   certain moment (e.g. the night before the event).
 
+Luma remains fully responsible for registration, ticketing, capacity,
+registration questions, confirmations, and payment (if any). The website only
+provides the entry point.
+
+### 5. Add the event's write-up (optional)
+
+Create `content/events/ai-workshop-2026.md` (filename = `id` + `.md`) with
+whatever you want on the event's own page — Markdown headings, bullet lists,
+bold text, quotes, links, etc. If you skip this step, the page still works
+and shows a "content coming soon" message.
+
+### 6. Push to GitHub
+
+Commit and push your changes (the poster, the `events.ts` edit, and the
+markdown file if you added one). Once deployed, the event automatically
+appears:
+
+- On the homepage, under **Upcoming Events** (if `eventDate` is today or
+  later and it wasn't already there) or under **Event Rewind** (if it's in
+  the past).
+- On `/events/<year>` — the full list of events for that year.
+- On `/events/<year>/<slug>` — the event's own page.
+
+You don't need to edit any other file for a normal event.
+
+---
+
+## Copy-paste-ready example
+
+**An upcoming event with registration:**
+
+```ts
+{
+  id: "hackverse-2026",
+  slug: "hackverse-2026",
+  year: 2026,
+  date: "5 OCTOBER 2026",
+  eventDate: "2026-10-05",
+  time: "9:00 AM - 6:00 PM",
+  venue: "VSIT Main Auditorium",
+  title: "Hackverse 2026",
+  description: "A 9-hour campus hackathon for teams of 2-4 building projects around open themes, with mentorship and prizes.",
+  shortDescription: "A one-day campus hackathon with mentorship and prizes.",
+  image: "/posters/hackverse-2026.jpg",
+  category: "competition",
+  featured: true,
+  registration: {
+    enabled: true,
+    platform: "luma",
+    url: "https://lu.ma/hackverse2026",
+    eventId: "evt-AbCdEfGhIjKlMnOp",
+    closesAt: "2026-10-04T23:59:00",
+  },
+},
 ```
-src/
-├── lib/
-│   ├── data/
-│   │   └── events.ts          # Event metadata
-│   └── markdown.ts            # Markdown loading utilities
-├── app/
-│   ├── events-[year]/
-│   │   ├── page.tsx           # Yearly events listing
-│   │   └── [slug]/
-│   │       └── page.tsx       # Individual event page
-│   └── ...
-├── components/
-│   └── PastEventsSection.tsx  # Homepage events section
-└── ...
 
-content/
-└── events/
-    ├── event-id-2025.md       # Event content in markdown
-    └── ...
+**An upcoming event with no registration:**
+
+```ts
+{
+  id: "open-mic-2026",
+  slug: "open-mic-2026",
+  year: 2026,
+  date: "12 OCTOBER 2026",
+  eventDate: "2026-10-12",
+  time: "5:00 PM",
+  venue: "VSIT Amphitheatre",
+  title: "IEEE Open Mic Night",
+  description: "An informal evening of talks, music, and games — walk in, no registration needed.",
+  shortDescription: "An informal evening of talks, music, and games.",
+  image: "/posters/open-mic-2026.jpg",
+  category: "entertainment",
+  registration: { enabled: false },
+},
 ```
 
-## Features
+---
 
-### Responsive Design
-- **Mobile**: Shows 2 events per year with "View More" button
-- **Desktop**: Shows 4 events per year with "View More" button
-- **Text Overflow**: Automatically handled with line clamping
+## How to test locally before publishing
 
-### SEO Optimized
-- Dynamic meta titles and descriptions
-- Structured URLs (`/events-2025/event-name`)
-- Static generation for fast loading
+1. Install dependencies once: `npm install`
+2. Start the local site: `npm run dev`
+3. Open `http://localhost:3000` in your browser.
+4. Check:
+   - The event appears under **Upcoming Events** (if `eventDate` is today or
+     later) or under **Event Rewind** (if it's in the past).
+   - The poster image loads correctly.
+   - Title, date, time, and venue look right.
+   - If registration is enabled, **Register Now** appears and opens Luma's
+     registration when clicked. If `closesAt` has passed, it should read
+     **Registration Closed** instead.
+   - If registration is disabled, no button appears at all.
+   - Resize your browser (or use your browser's device toolbar) to check
+     mobile and tablet layouts.
+5. Stop the dev server (Ctrl+C) once you're happy, and push your changes.
 
-### Easy Management
-- Add events by editing one file
-- Markdown content for rich formatting
-- Automatic URL generation
-- Year-based organization
-
-### Navigation
-- Breadcrumb navigation
-- Related events suggestions
-- Back to home/year links
-- Year tabs for easy browsing
-
-## Event Categories
-
-Use these categories for consistency:
-- `workshop` - Hands-on learning sessions
-- `competition` - Hackathons, contests
-- `talk` - Lectures, presentations
-- `entertainment` - Movie nights, games
-- `bootcamp` - Intensive training
-- `summit` - Large conferences
-- `expo` - Exhibitions, showcases
-
-## Markdown Features
-
-Your markdown content supports:
-- Headers (H1, H2, H3)
-- Lists (ordered and unordered)
-- **Bold** and *italic* text
-- Links
-- Blockquotes for testimonials
-- Code blocks (if needed)
-
-## File Naming Convention
-
-- Event IDs: `event-name-year` (e.g., `gittopia-2025`)
-- Slugs: `event-name` (used in URLs)
-- Markdown files: `event-id.md` (e.g., `gittopia-2025.md`)
-
-## Images
-
-Currently using placeholder images. To add real images:
-1. Add images to `/public/events/`
-2. Update the image references in components
-3. Use the `image` field in event data to specify filename
-
-## Best Practices
-
-### Event Descriptions
-- **Short Description**: 1-2 sentences for cards
-- **Description**: 1-2 paragraphs for event pages
-- **Markdown Content**: Detailed information, testimonials, statistics
-
-### Content Structure
-1. Start with event overview
-2. Include what was covered/learned
-3. Add statistics and highlights
-4. Include participant feedback
-5. Mention resources/follow-up
-
-### SEO Tips
-- Use descriptive titles
-- Include relevant keywords naturally
-- Add alt text for images
-- Use proper heading hierarchy
+---
 
 ## Troubleshooting
 
-### Event Not Showing
-1. Check event data is in `events.ts`
-2. Verify year is in `getAvailableYears()`
-3. Ensure slug matches URL
+### My event isn't showing up
+Open your browser's dev tools console (or check the terminal running
+`npm run dev`) for a message starting with `[events] Skipping invalid
+event...` — it will tell you exactly what's missing (e.g. a missing title,
+poster, or date). Fix that field and refresh.
 
-### Markdown Not Loading
-1. Check file exists in `/content/events/`
-2. Verify filename matches event ID
-3. Check markdown syntax
+### The "Register Now" button doesn't appear
+- Make sure `registration.enabled` is `true`.
+- Make sure `registration.platform` is exactly `"luma"`.
+- Make sure `registration.url` is a full link starting with `https://`.
 
-### 404 Errors on Event Pages
-1. **Next.js 15 Compatibility**: Ensure `params` is awaited in dynamic routes
-2. **Development Server**: Try restarting the dev server with `npm run dev`
-3. **Static Generation**: Check `generateStaticParams` returns correct paths
-4. **URL Format**: Ensure URLs follow `/events-YEAR/slug` format
+### The button says "Registration Closed" but shouldn't
+Check `registration.closesAt` — it must be in the future, in ISO format
+(e.g. `"2026-10-04T23:59:00"`).
 
-### Common Development Issues
-1. **Params Error**: If you see "params should be awaited", ensure all dynamic route handlers use `await params`
-2. **404 in Development**: Sometimes hot reload doesn't pick up new dynamic routes - restart the dev server
-3. **Build Errors**: Run `npm run build` to check for build-time errors
+### My event shows under the wrong section (Upcoming/Past)
+Check `eventDate`. It must be `YYYY-MM-DD` format. If it's missing, the event
+is always treated as past.
 
-### Styling Issues
-1. Text overflow: Check line-clamp classes
-2. Mobile responsive: Test on different screen sizes
-3. Images: Verify placeholder URLs
+### Clicking Register opens lu.ma instead of registering on-site
+This happens when `registration.eventId` is missing, or when Luma's embed
+script fails to load (e.g. an ad blocker). This is expected, graceful
+fallback behavior — the visitor still lands on your Luma registration page
+and can register there.
 
-### Next.js 15 Updates
-This codebase is compatible with Next.js 15. Key changes made:
-- All `params` objects are awaited before use
-- Metadata generation properly handles async params
-- Static generation works with new async patterns
+---
 
-## Contributing
+## File map (for reference)
 
-When adding events:
-1. Follow the existing data structure
-2. Use consistent naming conventions
-3. Write comprehensive markdown content
-4. Test on both mobile and desktop
-5. Verify all links work correctly
+```
+public/
+└── posters/
+    └── <slug>.jpg                     # Event poster images
 
-## Future Enhancements
+content/
+└── events/
+    └── <event-id>.md                  # Optional long-form write-up per event
 
-Planned improvements:
-- Real image upload system
-- Event registration integration
-- Photo galleries
-- Event calendar view
-- Search and filtering
-- Event tags and categories
+src/
+├── lib/
+│   └── data/
+│       └── events.ts                  # ⭐ The one file you edit for every event
+├── components/
+│   ├── EventsSection.tsx              # Homepage "Upcoming Events" (data-driven)
+│   ├── PastEventsSection.tsx          # Homepage "Event Rewind" (data-driven)
+│   └── LumaRegisterButton.tsx         # Shared "Register Now" / "Registration Closed" button
+└── app/
+    └── events/
+        └── [year]/
+            ├── page.tsx               # Yearly events listing
+            └── [slug]/page.tsx        # Individual event page
+```
+
+## Event categories
+
+Use these for consistency (any short lowercase word works):
+`workshop`, `competition`, `talk`, `entertainment`, `bootcamp`, `summit`,
+`expo`, `panel discussion`, `seminar`, `community`, `informative`,
+`conference`, `empowerment`.
