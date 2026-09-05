@@ -50,18 +50,20 @@ const heads: TeamMember[] = [
 
 // Members data
 const members: TeamMember[] = [
-  { name: 'Nihar Kulkarni', role: 'Design Member', img: '/img/Nihar_Kulkarni.jpg' },
-  { name: 'Vedant Raut', role: 'Digital Member', img: '/img/Vedant_Raut.jpg' },
-  { name: 'Pratham Dangwal', role: 'Technical Member', img: '/img/Pratham_Dangwal.jpg' },
-  { name: 'Harini Nadar', role: 'Documentation Member', img: '/img/Harini_Nadar.jpeg' },
+  { name: 'Shrutesh Gaikwad', role: 'Design Member', img: '/img/Shrutesh_Gaikwad.png' },
+  // { name: 'Vedant Raut', role: 'Digital Member', img: '/img/Vedant_Raut.png' },
+  { name: 'Divya Patwari', role: 'Technical Member', img: '/img/Divya_Patwari.png' },
+  { name: 'Sagar Sharma', role: 'Technical Member', img: '/img/Sagar_Sharma.png' },
+  { name: 'Aryan Jadhav', role: 'Technical Member', img: '/img/Aryan_Jadhav.png' },
+  { name: 'Arun Pal', role: 'Website Member', img: '/img/Arun_Pal.png' },
+  { name: 'Parnavi Janbhor', role: 'Documentation Member', img: '/img/Parnavi_Janbhor.png' },
 ];
 
 // Tabs config
 const tabs: Tab[] = [
   { label: "Core Committee", key: "core" },
   { label: "Heads", key: "heads" },
-  // { label: "Members", key: "members" },
-  // to hide members section for now
+  { label: "Members", key: "members" },
 ];
 
 // Helper to get team data by tab
