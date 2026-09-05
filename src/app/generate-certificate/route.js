@@ -126,7 +126,7 @@ export async function POST(req) {
     page.drawText(subheading, { x: centerX(subheading, lato, 40), y: 810, size: 40, font: lato, color: rgb(0.79, 0.47, 0.09) });
     const nameFontSize = 190;
     page.drawText(attendee.name, { x: centerX(attendee.name, allura, nameFontSize), y: 650, size: nameFontSize, font: allura, color: rgb(0.23, 0.13, 0.33) });
-    const description = "For participation in the NewTech Horizons session on 'Sneak Peek Into the IT Industry: How Projects Are Built, Tested & Enhanced with AI', conducted by Ms. Ketaki Pendse (IBM) and held on 27th November 2025. Organized by the IEEE-VSIT Student Branch"
+    const description = "For participation in the 'Beyond the Data: Think. Code. Decode.' workshop, conducted by Mr. Kshitij Datar as part of NewTech Horizons – Session 2 and held on 26th August 2026. Organized by the IEEE-WIE VSIT Student Branch";
     const maxWidth = 1520;
     const lineHeight = 46;
     let descLines = [];
