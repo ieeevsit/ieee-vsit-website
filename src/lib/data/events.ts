@@ -101,7 +101,7 @@ const rawEventsData: EventData[] = [
   id: "newtech-horizons-2-2026",
   slug: "newtech-horizons-2-2026",
   year: 2026,
-  date: "26th August, 2026",
+  date: "August 2026",
   title: "NewTech Horizons – Session 2",
   description:
     "Beyond the Data: Think. Code. Decode. — an interactive hands-on data exploration workshop designed to provide students with practical insights into data and its real-world applications.",
