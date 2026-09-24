@@ -21,8 +21,10 @@ const CertificatesPage: React.FC = () => {
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
   const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
+  const [isLocalhost, setIsLocalhost] = useState<boolean>(false);
 
   React.useEffect(() => {
+    setIsLocalhost(window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
     document.body.style.backgroundColor = '#050510';
     document.body.style.color = '#e5e7eb';
     return () => {
@@ -42,6 +44,40 @@ const CertificatesPage: React.FC = () => {
         });
       }
     }, 100);
+  };
+
+  const handleEmptyCertificate = async () => {
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const response = await fetch(`/generate-certificate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ empty: true }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to generate empty certificate.");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'empty_Certificate.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      setSuccess("Empty certificate generated and downloaded successfully!");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to generate empty certificate.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -322,6 +358,18 @@ const CertificatesPage: React.FC = () => {
                           </>
                         )}
                       </button>
+
+                      {isLocalhost && (
+                        <button
+                          type="button"
+                          onClick={handleEmptyCertificate}
+                          disabled={loading}
+                          className="w-full sm:flex-1 border border-blue-500 text-blue-300 hover:bg-blue-500/10 disabled:border-gray-600 disabled:text-gray-500 font-bold py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base min-h-[44px] touch-manipulation"
+                        >
+                          <FaDownload />
+                          <span>Download Empty Certificate</span>
+                        </button>
+                      )}
                       
                       <button
                         type="button"

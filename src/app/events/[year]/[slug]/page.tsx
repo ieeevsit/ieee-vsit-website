@@ -91,18 +91,14 @@ export default async function EventDetailPage({ params }: Props) {
           <div className="flex flex-col xl:flex-row xl:items-start xl:space-x-12">
             {/* Event Image - Updated for full portrait display */}
             <div className="xl:w-2/5 mb-8 xl:mb-0 flex justify-center">
-              <div className="relative rounded-xl overflow-hidden max-w-md w-full">
+              <div className="relative rounded-xl overflow-hidden max-w-md w-full aspect-[600/850] bg-gray-900">
                 <Image 
                   src={event.image.startsWith('/') ? event.image : `https://placehold.co/800x600/1f2937/ffffff?text=${encodeURIComponent(event.image)}`}
                   alt={event.title} 
-                  className="w-full h-auto object-cover object-center"
+                  className="w-full h-full object-contain object-center"
                   width={600}
                   height={850}
                   priority
-                  style={{
-                    aspectRatio: 'auto',
-                    maxHeight: '70vh'
-                  }}
                 />
                 {event.featured && (
                   <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">

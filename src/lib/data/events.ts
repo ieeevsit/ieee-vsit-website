@@ -98,6 +98,29 @@ const rawEventsData: EventData[] = [
   // },
   // },
   {
+  id: "ieee-day-2026",
+  slug: "ieee-day-2026",
+  year: 2026,
+  date: "30th September 2026",
+  eventDate: "2026-09-30",
+  time: "2.30 PM - 5:00 PM",
+  venue: "X-004",
+  title: "IEEE Day 2026",
+  description:
+    "Step into the mystery of Escape Room 404: Not Found, an interactive escape room experience organized as part of IEEE Day. A missing student, a deleted project archive, and a trail of cryptic clues await you Working against a 15-minute countdown, teams must decode messages, investigate digital evidence, solve challenges, and distinguish genuine clues from misleading ones. Each discovery brings them closer to recovering the missing files and uncovering the truth behind the mysterious system error.Think critically, collaborate with your team, and follow the evidence. The clock is ticking—can you find what’s not found?",
+  shortDescription:
+    "Escape Room 404: Not Found is an IEEE Day challenge where teams solve tech-themed puzzles, uncover hidden clues, and race to recover a missing digital archive in just 15 minutes.",
+  image: "/posters/ieee-day-2026.png",
+  category: "Community",
+  featured: false,
+  registration: {
+    enabled: true,
+    platform: "luma",
+    url: "https://luma.com/4ui04tnd",
+    eventId: "4ui04tnd",
+  },
+  },
+  {
   id: "newtech-horizons-2-2026",
   slug: "newtech-horizons-2-2026",
   year: 2026,

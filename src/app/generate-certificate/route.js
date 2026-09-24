@@ -29,10 +29,11 @@ const getAttendees = () => {
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, code } = body;
+    const { name, code, empty = false } = body;
+    const isEmptyCertificate = empty === true && process.env.NODE_ENV !== 'production';
     console.log('Received certificate request:', { name, code });
 
-    if (!name || !code) {
+    if (!isEmptyCertificate && (!name || !code)) {
       return NextResponse.json(
         { error: 'Name and roll number are required' },
         { status: 400 }
@@ -50,8 +51,8 @@ export async function POST(req) {
       return code.toUpperCase().replace(/\s+/g, '').trim();
     };
     
-    const normalizedInputName = normalizeNameForComparison(name);
-    const normalizedInputCode = normalizeCodeForComparison(code);
+    const normalizedInputName = normalizeNameForComparison(name || '');
+    const normalizedInputCode = normalizeCodeForComparison(code || '');
     
     const nameMatch = attendees.find(
       (a) => normalizeNameForComparison(a.name) === normalizedInputName
@@ -67,7 +68,7 @@ export async function POST(req) {
         normalizeCodeForComparison(a.code) === normalizedInputCode
     );
     
-    if (!attendee) {
+    if (!attendee && !isEmptyCertificate) {
       console.log('Attendee not found or code mismatch:', { name, code });
       
       const contactInfo = "\n\nIf you have attended the event and still can't generate your certificate, please contact:\n• Kaivalya Vairat (IEEE Chairperson): +91 8169361749\n• Nakul Mathane (IEEE Vice-Chairperson): +91 8657362824\n• Atharva Hajare (IEEE General Secretary): +91 8108930393";
@@ -125,8 +126,10 @@ export async function POST(req) {
     const subheading = "THIS CERTIFICATE IS PRESENTED TO";
     page.drawText(subheading, { x: centerX(subheading, lato, 40), y: 810, size: 40, font: lato, color: rgb(0.79, 0.47, 0.09) });
     const nameFontSize = 190;
-    page.drawText(attendee.name, { x: centerX(attendee.name, allura, nameFontSize), y: 650, size: nameFontSize, font: allura, color: rgb(0.23, 0.13, 0.33) });
-    const description = "For participation in the 'Beyond the Data: Think. Code. Decode.' workshop, conducted by Mr. Kshitij Datar as part of NewTech Horizons – Session 2 and held on 26th August 2026. Organized by the IEEE-WIE VSIT Student Branch";
+    if (!isEmptyCertificate) {
+      page.drawText(attendee.name, { x: centerX(attendee.name, allura, nameFontSize), y: 650, size: nameFontSize, font: allura, color: rgb(0.23, 0.13, 0.33) });
+    }
+    const description = "For participating in “Escape Room 404: Not Found,” an interactive challenge organized as part of IEEE Day by the IEEE-WIE VSIT Student Branch.";
     const maxWidth = 1520;
     const lineHeight = 46;
     let descLines = [];
@@ -153,7 +156,7 @@ export async function POST(req) {
     // ... (End of text drawing logic) ...
 
     const pdfBytes = await pdfDoc.save();
-    const safeName = attendee.name.replace(/\s+/g, '_');
+    const safeName = isEmptyCertificate ? 'empty' : attendee.name.replace(/\s+/g, '_');
 
     // --- Return the PDF as a Response ---
     // This replaces res.send()
