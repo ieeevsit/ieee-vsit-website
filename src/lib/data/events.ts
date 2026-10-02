@@ -86,8 +86,8 @@ const rawEventsData: EventData[] = [
   //   title: "Membership Drive 2026",
   //   description: "",
   //   shortDescription:
-  //     "Join us for our annual membership drive and become a part of the IEEE community.",
-  //   image: "/posters/ieee-membership-drive-2025.jpg",
+  //     "Join us for our annual membership drive and become a part of the IEEE-WIE community.",
+  //   image: "/posters/IEEE-WIE-membership-drive-2025.jpg",
   //   category: "membership",
   //   featured: false,
   //   registration:{
@@ -98,18 +98,18 @@ const rawEventsData: EventData[] = [
   // },
   // },
   {
-  id: "ieee-day-2026",
-  slug: "ieee-day-2026",
+  id: "IEEE-WIE-day-2026",
+  slug: "IEEE-WIE-day-2026",
   year: 2026,
   date: "30th September 2026",
   eventDate: "2026-09-30",
   time: "2.30 PM - 5:00 PM",
   venue: "X-004",
-  title: "IEEE Day 2026",
+  title: "IEEE-WIE Day 2026",
   description:
-    "Step into the mystery of Escape Room 404: Not Found, an interactive escape room experience organized as part of IEEE Day. A missing student, a deleted project archive, and a trail of cryptic clues await you Working against a 15-minute countdown, teams must decode messages, investigate digital evidence, solve challenges, and distinguish genuine clues from misleading ones. Each discovery brings them closer to recovering the missing files and uncovering the truth behind the mysterious system error.Think critically, collaborate with your team, and follow the evidence. The clock is ticking—can you find what’s not found?",
+    "Step into the mystery of Escape Room 404: Not Found, an interactive escape room experience organized as part of IEEE-WIE Day. A missing student, a deleted project archive, and a trail of cryptic clues await you Working against a 15-minute countdown, teams must decode messages, investigate digital evidence, solve challenges, and distinguish genuine clues from misleading ones. Each discovery brings them closer to recovering the missing files and uncovering the truth behind the mysterious system error.Think critically, collaborate with your team, and follow the evidence. The clock is ticking—can you find what’s not found?",
   shortDescription:
-    "Escape Room 404: Not Found is an IEEE Day challenge where teams solve tech-themed puzzles, uncover hidden clues, and race to recover a missing digital archive in just 15 minutes.",
+    "Escape Room 404: Not Found is an IEEE-WIE Day challenge where teams solve tech-themed puzzles, uncover hidden clues, and race to recover a missing digital archive in just 15 minutes.",
   image: "/posters/ieee-day-2026.png",
   category: "Community",
   featured: false,
@@ -142,7 +142,7 @@ const rawEventsData: EventData[] = [
     title: "Cineverse 2026",
     description: "",
     shortDescription:
-      "CINEVERSE was an IEEE-WIE movie screening event where over 200 students enjoyed the screening of Project Hail Mary.",
+      "CINEVERSE was an IEEE-WIE-WIE movie screening event where over 200 students enjoyed the screening of Project Hail Mary.",
     image: "/posters/cineverse-2026-poster.jpeg",
     category: "movie screening",
     featured: false,
@@ -186,15 +186,15 @@ const rawEventsData: EventData[] = [
     featured: false,
   },
   {
-    id: "ieee-day-2025",
-    slug: "ieee-day-2025",
+    id: "IEEE-WIE-day-2025",
+    slug: "IEEE-WIE-day-2025",
     year: 2025,
     date: "OCTOBER 2025",
-    title: "IEEE Day 2025 Celebration",
+    title: "IEEE-WIE Day 2025 Celebration",
     description:
-      "A celebration of innovation and collaboration, highlighting IEEE\u2019s global mission, membership benefits, and the inspiring journeys of student leaders. The event brought together over 60 participants to connect, learn, and grow within the IEEE community.",
-    shortDescription: "Celebrating IEEE\u2019s mission and community.",
-    image: "/posters/ieee-day-2025.jpg",
+      "A celebration of innovation and collaboration, highlighting IEEE-WIE\u2019s global mission, membership benefits, and the inspiring journeys of student leaders. The event brought together over 60 participants to connect, learn, and grow within the IEEE-WIE community.",
+    shortDescription: "Celebrating IEEE-WIE\u2019s mission and community.",
+    image: "/posters/IEEE-WIE-day-2025.jpg",
     category: "community",
     featured: true,
   },
@@ -214,15 +214,15 @@ const rawEventsData: EventData[] = [
   },
 
   {
-    id: "ieee-membership-drive-2025",
-    slug: "ieee-membership-drive",
+    id: "IEEE-WIE-membership-drive-2025",
+    slug: "IEEE-WIE-membership-drive",
     year: 2025,
     date: "SEPTEMBER 2025",
-    title: "IEEE Membership Drive 2025-26",
+    title: "IEEE-WIE Membership Drive 2025-26",
     description:
-      "A week-long initiative introducing students to the benefits of joining IEEE and the Women in Engineering (WIE) group. Featured live demonstrations, Q&A sessions, and new member registrations to encourage active participation.",
-    shortDescription: "Week-long campaign promoting IEEE and WIE memberships.",
-    image: "/posters/ieee-membership-drive-2025.jpg",
+      "A week-long initiative introducing students to the benefits of joining IEEE-WIE and the Women in Engineering (WIE) group. Featured live demonstrations, Q&A sessions, and new member registrations to encourage active participation.",
+    shortDescription: "Week-long campaign promoting IEEE-WIE and WIE memberships.",
+    image: "/posters/IEEE-WIE-membership-drive-2025.jpg",
     category: "informative",
   },
   {
@@ -243,9 +243,9 @@ const rawEventsData: EventData[] = [
     slug: "ctrl-play",
     year: 2025,
     date: "SEPTEMBER 2025",
-    title: "CTRL + PLAY: IEEE-VSIT Movie Screening",
+    title: "CTRL + PLAY: IEEE-WIE-VSIT Movie Screening",
     description:
-      "An engaging movie screening event featuring the sci-fi adventure film 'Crater,' organized by IEEE VSIT and WIE. The event explored themes of friendship, exploration, and curiosity, aligning with IEEE\u2019s mission of fostering innovation and collaboration.",
+      "An engaging movie screening event featuring the sci-fi adventure film 'Crater,' organized by IEEE-WIE VSIT and WIE. The event explored themes of friendship, exploration, and curiosity, aligning with IEEE-WIE\u2019s mission of fostering innovation and collaboration.",
     shortDescription: "Sci-fi movie screening and discussion event.",
     image: "/posters/ctrl-play.png", // Update this when the CTRL + PLAY poster is ready
     category: "entertainment",

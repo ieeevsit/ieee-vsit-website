@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://ieeevsit.vercel.app/sitemap.xml
+Sitemap: https://IEEE-WIEvsit.vercel.app/sitemap.xml

@@ -1,7 +1,7 @@
 
-# IEEE-VSIT Website
+# IEEE-WIE-VSIT Website
 
-This is the official website for the IEEE-VSIT student chapter, built with Next.js, Tailwind CSS, and React Three Fiber for 3D effects.
+This is the official website for the IEEE-WIE-VSIT student chapter, built with Next.js, Tailwind CSS, and React Three Fiber for 3D effects.
 
 ## Features
 - Modern, responsive design

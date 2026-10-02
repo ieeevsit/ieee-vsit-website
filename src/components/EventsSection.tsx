@@ -52,7 +52,7 @@ const EventsSection: React.FC = () => {
                     View Past Events
                   </a>
                   <a
-                    href="https://instagram.com/ieee.vsit"
+                    href="https://instagram.com/IEEE-WIE.vsit"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold rounded-lg transition-all duration-300 text-sm sm:text-base"

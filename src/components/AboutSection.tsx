@@ -6,7 +6,7 @@ const AboutSection: React.FC = () => (
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Who We Are</h2>
       <div className="w-16 sm:w-20 md:w-24 h-1 bg-blue-500 mx-auto mb-8 sm:mb-10 lg:mb-12"></div>
       <p className="max-w-4xl mx-auto text-gray-300 text-base sm:text-lg mb-8 sm:mb-10 lg:mb-12 leading-relaxed px-2">
-        IEEE-VSIT is more than just a student committee; it's a dynamic community dedicated to advancing technology for humanity. We provide a platform for students to explore their passions, develop professional skills, and connect with a global network of experts and peers. Our mission is to inspire innovation and cultivate the next generation of engineering leaders.
+        IEEE-WIE VSIT is more than just a student committee; it's a dynamic community dedicated to advancing technology for humanity. We provide a platform for students to explore their passions, develop professional skills, and connect with a global network of experts and peers. Our mission is to inspire innovation and cultivate the next generation of engineering leaders.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         <div className="glass-card p-4 sm:p-6 lg:p-8 rounded-xl">

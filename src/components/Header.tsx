@@ -133,13 +133,13 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         <a href="/" className="text-xl sm:text-2xl font-bold text-white tracking-wider flex items-center gap-2 sm:gap-3">
           <img
             src="/ieee-emblem.png"
-            alt="IEEE Emblem"
+            alt="IEEE-WIE Emblem"
             className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
             style={{ display: 'inline-block', verticalAlign: 'middle' }}
           />
           <span className="leading-none flex items-center">
-            <span className="text-blue-500">IEEE</span>
-            <span className="ml-1">-VSIT</span>
+            <span className="text-blue-500">IEEE-WIE</span>
+            <span className="ml-1">VSIT</span>
           </span>
         </a>
         <button 
@@ -159,12 +159,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         <a href="/" className="text-xl font-bold text-white tracking-wider flex items-center gap-2">
           <img
             src="/ieee-emblem.png"
-            alt="IEEE Emblem"
+            alt="IEEE-WIE Emblem"
             className="h-8 w-8 object-contain"
             style={{ display: 'inline-block', verticalAlign: 'middle' }}
           />
           <span className="leading-none flex items-center">
-            <span className="text-blue-500">IEEE</span>
+            <span className="text-blue-500">IEEE-WIE</span>
             <span className="ml-1">-VSIT</span>
           </span>
         </a>
@@ -189,7 +189,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
             )}
           </div>
         </div>
-        <a href="/join-ieee" className="bg-blue-600 hover:bg-blue-700 text-xs font-bold py-2 px-3 rounded-lg transition-colors duration-300">Join IEEE</a>
+        <a href="/join-IEEE-WIE" className="bg-blue-600 hover:bg-blue-700 text-xs font-bold py-2 px-3 rounded-lg transition-colors duration-300">Join IEEE-WIE</a>
       </nav>
       
       {/* Desktop Header */}
@@ -197,12 +197,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         <a href="/" className="text-2xl sm:text-3xl font-bold text-white tracking-wider flex items-center gap-3 sm:gap-4">
           <img
             src="/ieee-emblem.png"
-            alt="IEEE Emblem"
+            alt="IEEE-WIE Emblem"
             className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
             style={{ display: 'inline-block', verticalAlign: 'middle' }}
           />
           <span className="leading-none flex items-center">
-            <span className="text-blue-500">IEEE</span>
+            <span className="text-blue-500">IEEE-WIE</span>
             <span className="ml-2">-VSIT</span>
           </span>
         </a>
@@ -250,7 +250,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
         {hideJoinButton ? (
           customButton || <div className="w-24 lg:w-32"></div>
         ) : (
-          <a href="/join-ieee" className="bg-blue-600 hover:bg-blue-700 text-sm lg:text-base font-bold py-2 lg:py-3 px-3 lg:px-6 rounded-lg transition-colors duration-300 whitespace-nowrap">Join IEEE</a>
+          <a href="/join-IEEE-WIE" className="bg-blue-600 hover:bg-blue-700 text-sm lg:text-base font-bold py-2 lg:py-3 px-3 lg:px-6 rounded-lg transition-colors duration-300 whitespace-nowrap">Join IEEE-WIE</a>
         )}
       </nav>
       {/* Mobile Menu Dropdown */}
@@ -303,7 +303,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, hideJoinButton = false, cus
             </div>
           ) : null
         ) : (
-          <a href="/join-ieee" className="block py-4 px-6 text-lg hover:bg-gray-800/80 text-white border-b border-gray-700/30 transition-colors touch-manipulation" style={{ minHeight: '56px', display: 'flex', alignItems: 'center' }}>Join IEEE</a>
+          <a href="/join-IEEE-WIE" className="block py-4 px-6 text-lg hover:bg-gray-800/80 text-white border-b border-gray-700/30 transition-colors touch-manipulation" style={{ minHeight: '56px', display: 'flex', alignItems: 'center' }}>Join IEEE-WIE</a>
         )}
       </div>
     </header>

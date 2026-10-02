@@ -1,6 +1,6 @@
-## **CTRL + PLAY: IEEE-VSIT Movie Screening 2025**
+## **CTRL + PLAY: IEEE-WIE-VSIT Movie Screening 2025**
 
-The **IEEE-VSIT Student Branch**, in collaboration with the **WIE Committee**, organized **CTRL + PLAY: IEEE-VSIT Movie Screening 2025**, offering participants an engaging and thoughtfully curated cinematic experience.  
+The **IEEE-WIE-VSIT Student Branch**, in collaboration with the **WIE Committee**, organized **CTRL + PLAY: IEEE-WIE-VSIT Movie Screening 2025**, offering participants an engaging and thoughtfully curated cinematic experience.  
 The featured film, *Crater*, transported the audience into a futuristic lunar setting, combining emotional storytelling with scientific imagination to create an unforgettable evening.
 
 Beyond its entertainment value, the event fostered meaningful conversations on **friendship, exploration, courage, and personal growth**. It reflected IEEE-WIE’s commitment to inspiring curiosity, critical thinking, and collaboration among the next generation of innovators.
@@ -9,7 +9,7 @@ Beyond its entertainment value, the event fostered meaningful conversations on *
 
 ### **Event Highlights**
 
-- The event began with a warm welcome by **Shaunik Virdi** from the IEEE Student Branch and WIE Committee.  
+- The event began with a warm welcome by **Shaunik Virdi** from the IEEE-WIE Student Branch and WIE Committee.  
   He introduced the purpose of the screening and provided insights into the film *Crater*, a **science fiction adventure chosen through a student poll**.  
   Attendees were reminded of screening etiquette to ensure an immersive experience.
 
@@ -26,10 +26,10 @@ Its combination of **science and human emotion** made it especially fitting for 
 ### **Conclusion**
 
 The session concluded with **Soham Darekar** delivering the closing note, extending gratitude to the **faculty coordinators** and **college staff** for their support and to the attendees for their enthusiasm.  
-He also provided a **sneak peek into NextEdge**, an upcoming **national-level conclave on Data Analytics and Cybersecurity**, encouraging participants to stay engaged with future IEEE-VSIT initiatives.
+He also provided a **sneak peek into NextEdge**, an upcoming **national-level conclave on Data Analytics and Cybersecurity**, encouraging participants to stay engaged with future IEEE-WIE-VSIT initiatives.
 
 The event wrapped up with a lively **group photo**, capturing the shared excitement and camaraderie among participants — a fitting end to a day that combined technology, storytelling, and community.
 
 ---
 
-**CTRL + PLAY** successfully demonstrated how entertainment can be leveraged to inspire **innovation, reflection, and curiosity** — core values that continue to define IEEE-VSIT and its WIE Committee.
+**CTRL + PLAY** successfully demonstrated how entertainment can be leveraged to inspire **innovation, reflection, and curiosity** — core values that continue to define IEEE-WIE-VSIT and its WIE Committee.

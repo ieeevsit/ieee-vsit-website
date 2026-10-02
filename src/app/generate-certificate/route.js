@@ -71,7 +71,7 @@ export async function POST(req) {
     if (!attendee && !isEmptyCertificate) {
       console.log('Attendee not found or code mismatch:', { name, code });
       
-      const contactInfo = "\n\nIf you have attended the event and still can't generate your certificate, please contact:\n• Kaivalya Vairat (IEEE Chairperson): +91 8169361749\n• Nakul Mathane (IEEE Vice-Chairperson): +91 8657362824\n• Atharva Hajare (IEEE General Secretary): +91 8108930393";
+      const contactInfo = "\n\nIf you have attended the event and still can't generate your certificate, please contact:\n• Kaivalya Vairat (IEEE-WIE Chairperson): +91 8169361749\n• Nakul Mathane (IEEE-WIE Vice-Chairperson): +91 8657362824\n• Atharva Hajare (IEEE-WIE General Secretary): +91 8108930393";
       
       if (!nameMatch && !codeExists) {
         return NextResponse.json({ 
@@ -129,7 +129,13 @@ export async function POST(req) {
     if (!isEmptyCertificate) {
       page.drawText(attendee.name, { x: centerX(attendee.name, allura, nameFontSize), y: 650, size: nameFontSize, font: allura, color: rgb(0.23, 0.13, 0.33) });
     }
-    const description = "For participating in “Escape Room 404: Not Found,” an interactive challenge organized as part of IEEE Day by the IEEE-WIE VSIT Student Branch.";
+    page.drawLine({
+      start: { x: 550, y: 620 },
+      end: { x: 1450, y: 620 },
+      thickness: 2,
+      color: rgb(0.23, 0.13, 0.33),
+    });
+    const description = "For participating in “Escape Room 404: Not Found”, a tech-themed interactive escape room challenge organized as part of IEEE-WIE Day by the IEEE-WIE-WIE VSIT Student Branch.";
     const maxWidth = 1520;
     const lineHeight = 46;
     let descLines = [];

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getAvailableYears, getEventsByYear } from '@/lib/data/events'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ieeevsit.vercel.app/'
+  const baseUrl = 'https://IEEE-WIEvsit.vercel.app/'
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}join-ieee`,
+      url: `${baseUrl}join-IEEE-WIE`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,

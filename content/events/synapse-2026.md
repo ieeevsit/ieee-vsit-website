@@ -50,6 +50,6 @@ The event concluded on a memorable note with the committee handover ceremony, sy
 
 ---
 
-#IEEEVSIT #IEEEWIEVSIT #SYNAPSE2026 #StudentEngagement #KnowledgeChallenge #TechnicalCommunity #CampusInnovation #StudentLeadership #IEEEEvents #EmpoweringStudents
+#IEEE-WIEVSIT #IEEE-WIEVSIT #SYNAPSE2026 #StudentEngagement #KnowledgeChallenge #TechnicalCommunity #CampusInnovation #StudentLeadership #IEEE-WIEEvents #EmpoweringStudents
 
 ---

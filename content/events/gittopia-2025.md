@@ -1,6 +1,6 @@
 # 🧠 Gittopia: Navigating Git & GitHub
 
-**Organized by:** IEEE VSIT  
+**Organized by:** IEEE-WIE VSIT  
 **Date:** 22nd September 2025  
 **Venue:** VSIT Lab X-103  
 **Attendees:** Over *60+* enthusiastic students
@@ -9,7 +9,7 @@
 
 ## 📋 Event Overview
 
-**Gittopia: Navigating Git & GitHub**, organized by **IEEE VSIT** in collaboration with the **Women in Engineering (WIE) Committee**, provided participants with an engaging and thoughtfully curated session on version control.  
+**Gittopia: Navigating Git & GitHub**, organized by **IEEE-WIE VSIT** in collaboration with the **Women in Engineering (WIE) Committee**, provided participants with an engaging and thoughtfully curated session on version control.  
 
 The workshop covered **Git and GitHub from the basics**, starting with a foundational understanding of how Git works and how it differs from GitHub. It then transitioned to **hands-on experience** with essential Git commands, collaborative repository setup, and an **interactive quiz** to reinforce learning.
 
@@ -30,7 +30,7 @@ The primary goal was to **demystify version control** for aspiring developers. T
 ## 🧩 Session Highlights
 
 ### 🔹 Welcome & Introduction
-The event began with a **warm welcome by Soham**, representing the IEEE Student Branch.  
+The event began with a **warm welcome by Soham**, representing the IEEE-WIE Student Branch.  
 He introduced the theme of the workshop, emphasizing how version control forms the backbone of modern software engineering. Soham outlined the session flow and encouraged participants to engage actively throughout.
 
 ### 🔹 Theoretical Core
@@ -88,8 +88,8 @@ The hands-on approach made version control **accessible, practical, and fun** fo
 **Gittopia: Navigating Git & GitHub** successfully bridged the gap between theoretical learning and practical implementation.  
 Through expert-led sessions and guided practice, the workshop empowered students with essential skills for modern software development.
 
-Events like Gittopia embody IEEE VSIT’s mission to **foster technical excellence and collaborative learning**, preparing students to thrive in the evolving tech landscape.
+Events like Gittopia embody IEEE-WIE VSIT’s mission to **foster technical excellence and collaborative learning**, preparing students to thrive in the evolving tech landscape.
 
 ---
 
-**#IEEEVSIT #WIE #Gittopia #VersionControl #GitHub #Workshop #StudentDevelopers**
+**#IEEE-WIEVSIT #WIE #Gittopia #VersionControl #GitHub #Workshop #StudentDevelopers**

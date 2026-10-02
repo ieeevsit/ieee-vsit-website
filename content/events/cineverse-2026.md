@@ -10,7 +10,7 @@
 
 The IEEE-WIE Student Branch at Vidyalankar School of Information Technology (VSIT) successfully organized **CINEVERSE**, a movie screening event that brought together over 200 students for the screening of *Project Hail Mary*.
 
-The event commenced with a welcome address by the WIE Chairperson and IEEE Vice Chairperson, followed by a short video showcasing the journey and achievements of the IEEE-WIE Student Branch. After sharing the necessary instructions with the audience, the movie was screened successfully, and the event concluded with a vote of thanks.
+The event commenced with a welcome address by the WIE Chairperson and IEEE-WIE Vice Chairperson, followed by a short video showcasing the journey and achievements of the IEEE-WIE Student Branch. After sharing the necessary instructions with the audience, the movie was screened successfully, and the event concluded with a vote of thanks.
 
 ## Highlights
 

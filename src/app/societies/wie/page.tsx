@@ -79,7 +79,7 @@ const WIEPage: React.FC = () => {
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-6"></div>
             <p className="text-base sm:text-lg text-gray-200 leading-relaxed max-w-3xl mx-auto px-2">
-              IEEE Women in Engineering (WIE) is one of the world's largest
+              IEEE-WIE Women in Engineering (WIE) is one of the world's largest
               international professional organizations dedicated to promoting women
               engineers and scientists, and inspiring girls around the world to
               follow their academic interests to a career in engineering.

@@ -23,20 +23,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ieeevsit.vercel.app/'),
-  title: "IEEE VSIT | Vidyalankar School of Information Technology",
-  description: "Official website of the IEEE VSIT Student Branch. We foster technical innovation, leadership, and a vibrant community of engineers at VSIT.",
-  keywords: ["IEEE VSIT", "IEEE", "VSIT", "Vidyalankar School of Information Technology", "student branch", "engineering", "technology", "mumbai", "events", "workshops"],
+  title: "IEEE-WIE VSIT | Vidyalankar School of Information Technology",
+  description: "Official website of the IEEE-WIE VSIT Student Branch. We foster technical innovation, leadership, and a vibrant community of engineers at VSIT.",
+  keywords: ["IEEE-WIE VSIT", "IEEE-WIE", "VSIT", "Vidyalankar School of Information Technology", "student branch", "engineering", "technology", "mumbai", "events", "workshops"],
   openGraph: {
-    title: "IEEE VSIT | Vidyalankar School of Information Technology",
-    description: "Official website of the IEEE VSIT Student Branch. We foster technical innovation, leadership, and a vibrant community of engineers at VSIT.",
+    title: "IEEE-WIE VSIT | Vidyalankar School of Information Technology",
+    description: "Official website of the IEEE-WIE VSIT Student Branch. We foster technical innovation, leadership, and a vibrant community of engineers at VSIT.",
     url: 'https://ieeevsit.vercel.app/',
-    siteName: "IEEE VSIT",
+    siteName: "IEEE-WIE VSIT",
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "IEEE VSIT | Vidyalankar School of Information Technology",
-    description: "Official website of the IEEE VSIT Student Branch. We foster technical innovation, leadership, and a vibrant community of engineers at VSIT.",
+    title: "IEEE-WIE VSIT | Vidyalankar School of Information Technology",
+    description: "Official website of the IEEE-WIE VSIT Student Branch. We foster technical innovation, leadership, and a vibrant community of engineers at VSIT.",
     images: ['/og-image.png'],
   },
   alternates: {
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "IEEE VSIT",
+              "name": "IEEE-WIE VSIT",
               "url": "https://ieeevsit.vercel.app/",
               "logo": "https://ieeevsit.vercel.app/ieee-emblem.png",
               "contactPoint": {
@@ -78,7 +78,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               },
               "sameAs": [
                 "https://linkedin.com/company/ieee-vsit",
-                "https://instagram.com/ieee_vsit"
+                "https://instagram.com/ieee-vsit"
               ]
             })
           }}

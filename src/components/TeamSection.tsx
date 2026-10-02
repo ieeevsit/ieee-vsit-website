@@ -16,7 +16,8 @@ interface TeamSectionProps {
   wieCore?: boolean;
 }
 
-// IEEE Core Committee data
+
+// IEEE-WIE Core Committee data
 const ieeeCoreCommittee: TeamMember[] = [
   { name: 'Kaivalya Vairat', role: 'Chairperson', img: '/img/Kaivalya_Vairat.png' },
   { name: 'Nakul Mathane', role: 'Vice-Chairperson', img: '/img/Nakul_Mathane.png' },
@@ -34,7 +35,7 @@ const wieCoreCommittee: TeamMember[] = [
 
 // Faculty data
 const faculty: TeamMember[] = [
-  { name: 'Maitreyi Joglekar', role: 'IEEE Faculty Mentor', img: '/img/Maitreyi_Joglekar.png' },
+  { name: 'Maitreyi Joglekar', role: 'IEEE-WIE Faculty Mentor', img: '/img/Maitreyi_Joglekar.png' },
   { name: 'Dr. Asif Rampurawala', role: 'Vice-Principal', img: '/img/Dr_Asif_Rampurawala.png' },
   { name: 'Dr. Rohini Kelkar', role: 'Principal', img: '/img/Dr_Rohini_Kelkar.png' },
 ];

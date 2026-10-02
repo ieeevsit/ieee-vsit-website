@@ -61,4 +61,4 @@ The two-day event combined **knowledge sharing, mentorship, and interactive lear
 
 ---
 
-#IEEEVSIT #STREE2026 #IEEEWIE #WomenInSTEM #WomenInTech #InternationalWomensDay #STEMLeadership
+#IEEE-WIEVSIT #STREE2026 #IEEE-WIE #WomenInSTEM #WomenInTech #InternationalWomensDay #STEMLeadership

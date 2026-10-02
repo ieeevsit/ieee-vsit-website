@@ -221,7 +221,7 @@ const CertificatesPage: React.FC = () => {
               Certificate Generator
             </h1>
             <p className="text-sm sm:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-gray-300 max-w-3xl mx-auto px-2 sm:px-4 leading-relaxed">
-              Generate and download your IEEE VSIT workshop participation certificates instantly
+              Generate and download your IEEE-WIE VSIT workshop participation certificates instantly
             </p>
             <button
               onClick={scrollToForm}
@@ -418,17 +418,17 @@ const CertificatesPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 max-w-4xl mx-auto">
               <div className="glass-card p-3 sm:p-4 lg:p-6 rounded-lg">
                 <h3 className="font-bold text-blue-300 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Kaivalya Vairat</h3>
-                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE Chairperson</p>
+                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE-WIE Chairperson</p>
                 <p className="text-blue-400 text-xs sm:text-sm lg:text-base break-all">+91 8169361749</p>
               </div>
               <div className="glass-card p-3 sm:p-4 lg:p-6 rounded-lg">
                 <h3 className="font-bold text-blue-400 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Nakul Mathane</h3>
-                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE Vice-Chairperson</p>
+                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE-WIE Vice-Chairperson</p>
                 <p className="text-blue-500 text-xs sm:text-sm lg:text-base break-all">+91 8657362824</p>
               </div>
               <div className="glass-card p-3 sm:p-4 lg:p-6 rounded-lg sm:col-span-2 lg:col-span-1">
                 <h3 className="font-bold text-blue-500 mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">Atharva Hajare</h3>
-                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE General Secretary</p>
+                <p className="text-xs sm:text-sm text-gray-300 mb-1">IEEE-WIE General Secretary</p>
                 <p className="text-blue-600 text-xs sm:text-sm lg:text-base break-all">+91 8108930393</p>
               </div>
             </div>

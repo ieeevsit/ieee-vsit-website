@@ -41,12 +41,12 @@ export async function generateMetadata({ params }: Props) {
 
   if (!event) {
     return {
-      title: 'Event Not Found - IEEE VSIT',
+      title: 'Event Not Found - IEEE-WIE VSIT',
     };
   }
 
   return {
-    title: `${event.title} - IEEE VSIT`,
+    title: `${event.title} - IEEE-WIE VSIT`,
     description: event.shortDescription,
   };
 }
@@ -152,7 +152,7 @@ export default async function EventDetailPage({ params }: Props) {
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-gray-300">Organized by IEEE VSIT</span>
+                  <span className="text-gray-300">Organized by IEEE-WIE VSIT</span>
                 </div>
               </div>
 

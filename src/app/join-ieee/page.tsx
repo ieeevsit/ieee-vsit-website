@@ -42,7 +42,7 @@ interface CounterTargets {
   awards: number;
 }
 
-const JoinIEEEPage: React.FC = () => {
+const JoinIEEEWIEPage: React.FC = () => {
   const router = useRouter();
   const [counters, setCounters] = useState<CounterState>({ events: 0, members: 0, projects: 0, awards: 0 });
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -230,18 +230,18 @@ const JoinIEEEPage: React.FC = () => {
         <section className="relative pt-20 md:pt-24 pb-8 md:pb-12 px-4">
           <div className="max-w-6xl mx-auto text-center">
             <div className="relative">
-              {/* IEEE Logo */}
+              {/* IEEE-WIE Logo */}
               <div className="relative inline-block mb-4 md:mb-6">
                 <img
                   src="/ieee-emblem.png"
-                  alt="IEEE Emblem"
+                  alt="IEEE-WIE Emblem"
                   className="h-16 w-16 sm:h-24 sm:w-24 md:h-32 md:w-32 object-contain mx-auto"
                 />
               </div>
               
               {/* Main Title - Single Line */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-3 md:mb-4 leading-tight whitespace-nowrap">
-                <span className="text-blue-400">Join IEEE </span>
+                <span className="text-blue-400">Join IEEE-WIE </span>
                 <span className="text-white">VSIT</span>
               </h1>
               
@@ -317,7 +317,7 @@ const JoinIEEEPage: React.FC = () => {
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">Ready to Join?</h2>
               </div>
               <p className="text-gray-300 mb-4 text-sm md:text-base">
-                Take the first step towards transforming your future with IEEE VSIT
+                Take the first step towards transforming your future with IEEE-WIE VSIT
               </p>
               <button
                 onClick={handleRegistrationClick}
@@ -337,7 +337,7 @@ const JoinIEEEPage: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8 md:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 md:mb-4">
-                Why Choose <span className="text-blue-400">IEEE VSIT?</span>
+                Why Choose <span className="text-blue-400">IEEE-WIE VSIT?</span>
               </h2>
               <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
                 Experience unparalleled growth opportunities and join a community of innovators
@@ -354,7 +354,7 @@ const JoinIEEEPage: React.FC = () => {
                 {
                   icon: FaNetworkWired,
                   title: "Global Networking",
-                  description: "Connect with IEEE professionals worldwide, attend international conferences, and build lasting professional relationships."
+                  description: "Connect with IEEE-WIE professionals worldwide, attend international conferences, and build lasting professional relationships."
                 },
                 {
                   icon: FaChartLine,
@@ -369,12 +369,12 @@ const JoinIEEEPage: React.FC = () => {
                 {
                   icon: FaStar,
                   title: "Competitions & Awards",
-                  description: "Participate in prestigious IEEE competitions, hackathons, and win scholarships and recognition."
+                  description: "Participate in prestigious IEEE-WIE competitions, hackathons, and win scholarships and recognition."
                 },
                 {
                   icon: FaCogs,
                   title: "Research Opportunities",
-                  description: "Collaborate on cutting-edge research projects and publish papers in IEEE journals and conferences."
+                  description: "Collaborate on cutting-edge research projects and publish papers in IEEE-WIE journals and conferences."
                 }
               ].map((benefit, index) => (
                 <div key={index} className="group">
@@ -405,19 +405,19 @@ const JoinIEEEPage: React.FC = () => {
                 {
                   name: "Priya Sharma",
                   role: "Final Year, Computer Engineering",
-                  quote: "IEEE VSIT transformed my college experience. The workshops and networking opportunities helped me land my dream job at a top tech company!",
+                  quote: "IEEE-WIE VSIT transformed my college experience. The workshops and networking opportunities helped me land my dream job at a top tech company!",
                   icon: FaUsers
                 },
                 {
                   name: "Arjun Patel",
                   role: "Third Year, Electronics Engineering", 
-                  quote: "Leading projects through IEEE taught me invaluable leadership skills. I'm now confident in managing teams and driving innovation.",
+                  quote: "Leading projects through IEEE-WIE taught me invaluable leadership skills. I'm now confident in managing teams and driving innovation.",
                   icon: FaRocket
                 },
                 {
                   name: "Sneha Gupta",
                   role: "Alumni, Software Engineer at Google",
-                  quote: "My IEEE journey started at VSIT and opened doors to global opportunities. The community and mentorship are unmatched!",
+                  quote: "My IEEE-WIE journey started at VSIT and opened doors to global opportunities. The community and mentorship are unmatched!",
                   icon: FaGraduationCap
                 }
               ].map((testimonial, index) => (
@@ -444,11 +444,11 @@ const JoinIEEEPage: React.FC = () => {
             <div className="space-y-4 md:space-y-6">
               {[
                 {
-                  question: "Who can join IEEE VSIT?",
+                  question: "Who can join IEEE-WIE VSIT?",
                   answer: "Any VSIT student passionate about technology, innovation, or leadership development. No prior technical experience required - we welcome all backgrounds!"
                 },
                 {
-                  question: "What makes IEEE VSIT special?",
+                  question: "What makes IEEE-WIE VSIT special?",
                   answer: "We offer unique opportunities like international conference participation, direct industry mentorship, and access to cutting-edge research projects that you won't find elsewhere."
                 },
                 {
@@ -478,4 +478,4 @@ const JoinIEEEPage: React.FC = () => {
   );
 };
 
-export default JoinIEEEPage;
+export default JoinIEEEWIEPage;

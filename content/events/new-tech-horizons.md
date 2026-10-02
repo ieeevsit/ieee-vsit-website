@@ -55,8 +55,8 @@ The event aimed to broaden students’ understanding of how software projects ar
 
 **NewTech Horizons – Explore, Engage and Evolve** proved to be an informative and inspiring seminar that successfully bridged the gap between academic learning and industry practices.
 
-The session empowered students with clarity, confidence, and motivation to explore diverse opportunities within the IT domain. IEEE-VSIT continues to remain committed to organizing knowledge-driven initiatives that nurture technical awareness, career readiness, and professional growth among students.
+The session empowered students with clarity, confidence, and motivation to explore diverse opportunities within the IT domain. IEEE-WIE-VSIT continues to remain committed to organizing knowledge-driven initiatives that nurture technical awareness, career readiness, and professional growth among students.
 
 ---
 
-**#IEEEVSIT #NewTechHorizons #IEEEWIE #TechnicalSeminar #AIinIT #CareerGuidance #StudentDevelopment**
+**#IEEE-WIEVSIT #NewTechHorizons #IEEE-WIE #TechnicalSeminar #AIinIT #CareerGuidance #StudentDevelopment**

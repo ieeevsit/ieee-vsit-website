@@ -82,7 +82,7 @@ The session demonstrated how coding can be used to **analyse, interpret, and der
 
 ### 🔹 Conclusion & Vote of Thanks
 
-The event concluded with a **formal vote of thanks delivered by the IEEE Chairperson**.
+The event concluded with a **formal vote of thanks delivered by the IEEE-WIE Chairperson**.
 
 The college professors also expressed their gratitude to **Mr. Kshitij Datar** for conducting the insightful and engaging session.
 
@@ -118,4 +118,4 @@ The event reflected the IEEE-WIE VSIT Student Branch's commitment to **practical
 
 ---
 
-**#IEEEVSIT #WIE #NewTechHorizons #Data #DataExploration #DataDrivenThinking #Workshop #Technology #StudentLearning**
+**#IEEE-WIEVSIT #WIE #NewTechHorizons #Data #DataExploration #DataDrivenThinking #Workshop #Technology #StudentLearning**

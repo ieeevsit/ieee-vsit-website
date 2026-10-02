@@ -1,6 +1,6 @@
 ## **NextEdge: National Level Conclave**
 
-The **IEEE-VSIT Student Branch** successfully organized **National Level Conclave: NextEdge** on **August 2, 2025**, at **Vidyalankar School of Information Technology**.  
+The **IEEE-WIE-VSIT Student Branch** successfully organized **National Level Conclave: NextEdge** on **August 2, 2025**, at **Vidyalankar School of Information Technology**.  
 The conclave served as a bridge between academia and industry, spotlighting groundbreaking developments in **Artificial Intelligence for Cybersecurity and Data Analytics**.
 
 The event commenced with a **formal inauguration ceremony**, setting a professional tone for the day.  
@@ -11,7 +11,7 @@ In the second half, students from across India participated in **two technical t
 The competitive sessions showcased exceptional technical acumen and creativity.
 
 The conclave concluded with an **award ceremony**, celebrating the most innovative student solutions, followed by a heartfelt **vote of thanks**.  
-With **over 170 participants**, the event embodied IEEE’s mission of advancing technology for humanity, fostering collaboration, and promoting technical excellence.
+With **over 170 participants**, the event embodied IEEE-WIE’s mission of advancing technology for humanity, fostering collaboration, and promoting technical excellence.
 
 ---
 

@@ -302,7 +302,7 @@ const RegistrationPage: React.FC = () => {
         hideJoinButton={true}
         customButton={
           <button
-            onClick={() => router.push("/join-ieee")}
+            onClick={() => router.push("/join-IEEE-WIE")}
             className="bg-blue-600 hover:bg-blue-700 text-base sm:text-lg font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-300"
           >
             Back to Info
@@ -318,7 +318,7 @@ const RegistrationPage: React.FC = () => {
                 <FiUserPlus className="text-3xl sm:text-4xl text-white" />
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-4">
-                Join <span className="text-blue-400">IEEE VSIT</span>
+                Join <span className="text-blue-400">IEEE-WIE VSIT</span>
               </h1>
               <p className="text-gray-300 text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto px-4">
                 Fill out this form to become part of our innovative community
@@ -425,7 +425,7 @@ const RegistrationPage: React.FC = () => {
 
                 <div className="w-full">
                   <FormInput
-                    label="Why do you want to join IEEE VSIT?"
+                    label="Why do you want to join IEEE-WIE VSIT?"
                     name="motivation"
                     type="textarea"
                     icon={FiEdit3}

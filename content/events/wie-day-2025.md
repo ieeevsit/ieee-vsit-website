@@ -8,7 +8,7 @@ Each day focused on a unique theme — *Roots and Reach*, *Voice Her*, and *Next
 ### **Day 1: Roots and Reach**
 
 **WIE Connect: Roots and Reach** marked the beginning of WIE Day 2025 with an event designed to foster mentorship, guidance, and collaboration.  
-The interactive session connected **first-year students with seniors and alumni**, helping them gain valuable insights into **career paths, higher education, and networking** within the global IEEE and tech community.
+The interactive session connected **first-year students with seniors and alumni**, helping them gain valuable insights into **career paths, higher education, and networking** within the global IEEE-WIE and tech community.
 
 Through open discussions and personal sharing, participants explored how women in engineering can build strong professional roots and reach new heights through community and collaboration.  
 The session successfully promoted the spirit of **connection, mentorship, and empowerment** that defines WIE.
@@ -51,7 +51,7 @@ Participants also engaged in a hands-on introduction to **performance testing to
 
 #### **Speaker 2: Tirth Dhedhi**
 **Topic:** *LinkedIn Profile Building: Your Gateway to Professional Opportunities*  
-**Tirth Dhedhi**, a **Full Stack Developer** and **former Chairperson of IEEE-VSIT**, led a highly engaging workshop on creating a professional online presence.  
+**Tirth Dhedhi**, a **Full Stack Developer** and **former Chairperson of IEEE-WIE-VSIT**, led a highly engaging workshop on creating a professional online presence.  
 He guided participants through optimizing LinkedIn profiles, networking strategies, and personal branding.  
 Students learned how to craft standout profiles by adding volunteering experiences, attaching certificates, and engaging with industry professionals effectively.
 

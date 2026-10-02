@@ -1,6 +1,6 @@
 # Events Management Guide
 
-This guide explains how to add, update, and register events on the IEEE VSIT
+This guide explains how to add, update, and register events on the IEEE-WIE VSIT
 website. **You do not need to know React, Next.js, or any programming to do
 this.** You only ever need to edit one data file (plain text, in the format
 shown below), drop in a poster image, and optionally paste in a Luma link.
@@ -23,7 +23,7 @@ shown below), drop in a poster image, and optionally paste in a Luma link.
     **Past Events** / **Event Rewind**.
 
   You never have to move an event between sections by hand.
-- **Registration is optional and powered by Luma.** IEEE-VSIT never stores
+- **Registration is optional and powered by Luma.** IEEE-WIE-VSIT never stores
   attendee data, tickets, or payments — Luma handles all of that. The website
   only shows the "Register Now" button and opens Luma's registration
   experience on top of the page (no page navigation).
@@ -106,7 +106,7 @@ If it **does** need registration:
 2. Copy the **event page URL** shown in your browser, e.g.
    `https://lu.ma/abc123xyz`. Paste it into `registration.url`.
 3. For the "Register Now" button to open registration right on the
-   IEEE-VSIT website (instead of sending people to lu.ma), go to your event's
+   IEEE-WIE-VSIT website (instead of sending people to lu.ma), go to your event's
    **Manage** page on Luma → **More** tab → **"Embed Registration Button"**.
    Copy the **event ID** shown there (it looks like `evt-AbCdEfGh...`) and
    paste it into `registration.eventId`.
@@ -183,7 +183,7 @@ You don't need to edit any other file for a normal event.
   eventDate: "2026-10-12",
   time: "5:00 PM",
   venue: "VSIT Amphitheatre",
-  title: "IEEE Open Mic Night",
+  title: "IEEE-WIE Open Mic Night",
   description: "An informal evening of talks, music, and games — walk in, no registration needed.",
   shortDescription: "An informal evening of talks, music, and games.",
   image: "/posters/open-mic-2026.jpg",

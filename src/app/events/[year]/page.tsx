@@ -24,13 +24,13 @@ export async function generateMetadata({ params }: Props) {
   const year = parseInt(resolvedParams.year);
   if (isNaN(year)) {
     return {
-      title: 'Events Not Found - IEEE VSIT',
+      title: 'Events Not Found - IEEE-WIE VSIT',
     };
   }
 
   return {
-    title: `Events ${year} - IEEE VSIT`,
-    description: `Explore all IEEE VSIT events from ${year}. Workshops, talks, competitions, and more.`,
+    title: `Events ${year} - IEEE-WIE VSIT`,
+    description: `Explore all IEEE-WIE VSIT events from ${year}. Workshops, talks, competitions, and more.`,
   };
 }
 
