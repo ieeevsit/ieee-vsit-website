@@ -63,6 +63,9 @@ const Footer: React.FC = () => (
           <p className="text-gray-300 text-sm sm:text-base md:text-lg mt-2 text-center md:text-left">
             <span className="font-semibold text-blue-200">+91 8169361749</span> <span className="text-gray-400">– Kaivalya Vairat (Chairperson)</span>
           </p>
+          <p className="text-gray-300 text-sm sm:text-base md:text-lg mt-2 text-center md:text-left">
+            <span className="font-semibold text-blue-200">+91 9082950275</span> <span className="text-gray-400">– Amulya Gogate (Chairperson)</span>
+          </p>
         </div>
         {/* Divider for mobile */}
         <div className="block md:hidden border-t border-blue-900/40 my-2"></div>
@@ -77,6 +80,15 @@ const Footer: React.FC = () => (
                   <FaInstagram className="text-lg sm:text-2xl group-hover:scale-110 transition-transform" />
                 </span>
                 <span className="text-sm sm:text-base md:text-lg">ieee-vsit</span>
+              </a>
+            </li>
+                        <li className="w-full sm:w-auto">
+              <a href="https://www.instagram.com/wieieeevsit" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 sm:gap-3 group hover:text-pink-400 transition-all justify-center sm:justify-start">
+                <span className="inline-flex items-center justify-center w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-gradient-to-tr from-pink-500/20 to-pink-400/10 group-hover:bg-pink-500/30 transition">
+                  <FaInstagram className="text-lg sm:text-2xl group-hover:scale-110 transition-transform" />
+                </span>
+                <span className="text-sm sm:text-base md:text-lg">wie-vsit</span>
               </a>
             </li>
             <li className="w-full sm:w-auto">
