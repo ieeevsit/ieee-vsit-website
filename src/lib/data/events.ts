@@ -114,7 +114,7 @@ const rawEventsData: EventData[] = [
   category: "Community",
   featured: false,
   registration: {
-    enabled: true,
+    enabled: false,
     platform: "luma",
     url: "https://luma.com/4ui04tnd",
     eventId: "4ui04tnd",
