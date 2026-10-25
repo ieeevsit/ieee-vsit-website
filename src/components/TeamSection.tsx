@@ -51,7 +51,6 @@ const heads: TeamMember[] = [
 
 // Members data
 const members: TeamMember[] = [
-  { name: 'Shrutesh Gaikwad', role: 'Design Member', img: '/img/Shrutesh_Gaikwad.png' },
   // { name: 'Vedant Raut', role: 'Digital Member', img: '/img/Vedant_Raut.png' },
   { name: 'Divya Patwari', role: 'Technical Member', img: '/img/Divya_Patwari.png' },
   { name: 'Sagar Sharma', role: 'Technical Member', img: '/img/Sagar_Sharma.png' },
